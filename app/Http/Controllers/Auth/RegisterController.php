@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -36,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('admin');
     }
 
     /**
@@ -53,7 +55,6 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'school' => 'required|string|max:255',
             'group' => 'required|string|max:255',
-            'note' => 'string|max:255',
         ]);
     }
 
@@ -73,5 +74,12 @@ class RegisterController extends Controller
             'group' => $data['group'],
             'note' => $data['note'],
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        return $this->registered($request, $user) ?: redirect($this->redirectPath());
     }
 }

@@ -33,4 +33,13 @@ Route::group(['prefix' => 'm'], function() {
     Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'Auth\PasswordController@reset');
     */
-Route::get('/m/home', 'HomeController@index')->name('home');
+Route::get('/m', 'HomeController@index');
+Route::group(['middleware' => ['auth', 'admin']], function(){
+    Route::get('/m/register', 'Auth\RegisterController@showRegistrationForm');
+    Route::post('/m/register', 'Auth\RegisterController@register');
+
+    Route::get('/m/users', ['as' => 'users.index', 'uses' => 'UsersController@index']);
+    Route::get('/m/users/{id}/edit', ['as' => 'users.edit', 'uses' => 'UsersController@edit']);
+    Route::patch('/m/users/{id}', ['as' => 'users.update', 'uses' => 'UsersController@update']);
+    Route::delete('/m/users/{id}', ['as' => 'users.delete', 'uses' => 'UsersController@delete']);
+});

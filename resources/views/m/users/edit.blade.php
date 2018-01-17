@@ -1,23 +1,24 @@
 @extends('layouts.manage')
 
-@section('title','建立帳號')
+@section('title','編輯使用者')
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">建立帳號</div>
+                <div class="panel-heading">編輯使用者</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ url('/m/register') }}">
+                    <form class="form-horizontal" method="POST" action="{{ url('/m/users/'.$user->id) }}">
                         {{ csrf_field() }}
+                        {{ method_field('PATCH') }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">帳號</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="account" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="email" type="account" class="form-control" name="email" value="{{ $user->email }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -53,7 +54,7 @@
                             <label for="name" class="col-md-4 control-label">姓名</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" required>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -102,7 +103,7 @@
                             <label for="note" class="col-md-4 control-label">備註</label>
 
                             <div class="col-md-6">
-                                <input id="note" type="text" class="form-control" name="note" value="{{ old('note') }}">
+                                <input id="note" type="text" class="form-control" name="note" value="{{ $user->note }}">
 
                                 @if ($errors->has('note'))
                                     <span class="help-block">
@@ -115,7 +116,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    建立帳號
+                                    更新資訊
                                 </button>
                             </div>
                         </div>
@@ -125,4 +126,15 @@
         </div>
     </div>
 </div>
+
+<script>
+$('#school')
+     .removeAttr('selected')
+     .filter('[value={{ $user->school }}]')
+         .attr('selected', true)
+$('#group')
+     .removeAttr('selected')
+     .filter('[value={{ $user->group }}]')
+         .attr('selected', true)
+</script>
 @endsection
