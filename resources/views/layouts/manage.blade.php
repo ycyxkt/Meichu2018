@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Meichu2018 管理系統') }}</title>
+    <title>@yield('title') - 戊戌梅竹後台</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -28,8 +28,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        Meichu2018 管理系統
+                    <a class="navbar-brand" href="{{ url('/m') }}">
+                        戊戌梅竹後台
                     </a>
                 </div>
 

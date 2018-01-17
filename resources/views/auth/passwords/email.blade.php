@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.manage')
+
+@section('title','重設密碼')
 
 @section('content')
 <div class="container">
