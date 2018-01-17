@@ -33,4 +33,4 @@ Route::group(['prefix' => 'm'], function() {
     Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'Auth\PasswordController@reset');
     */
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/m/home', 'HomeController@index')->name('home');
