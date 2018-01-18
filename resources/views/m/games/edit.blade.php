@@ -160,6 +160,12 @@
                             </div>
                         </div>
                     </form>
+                    <div class="col-md-4">相關隊伍</div>
+                    <div class="col-md-6">
+                        @foreach($game->teams as $team)
+                        <a href="{{ route('teams.show',$team->id) }}" class="btn btn-default" role="button">{{ $team->name }}</a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
