@@ -34,6 +34,7 @@ Route::group(['prefix' => 'm'], function() {
     Route::post('password/reset', 'Auth\PasswordController@reset');
     */
 Route::get('/m', 'HomeController@index');
+
 Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::get('/m/register', 'Auth\RegisterController@showRegistrationForm');
     Route::post('/m/register', 'Auth\RegisterController@register');
@@ -42,4 +43,13 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::get('/m/users/{id}/edit', ['as' => 'users.edit', 'uses' => 'UsersController@edit']);
     Route::patch('/m/users/{id}', ['as' => 'users.update', 'uses' => 'UsersController@update']);
     Route::delete('/m/users/{id}', ['as' => 'users.delete', 'uses' => 'UsersController@delete']);
+});
+Route::group(['middleware' => ['auth', 'committee']], function(){
+    Route::get('/m/games', ['as' => 'games.index', 'uses' => 'GamesController@index']);
+    Route::get('/m/games/{id}/edit', ['as' => 'games.edit', 'uses' => 'GamesController@edit']);
+    Route::patch('/m/games/{id}', ['as' => 'games.update', 'uses' => 'GamesController@update']);
+});
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/m/changepassword', ['as' => 'changepassword', 'uses' => 'Auth\ChangePasswordController@show']);
+    Route::post('/m/changepassword', 'Auth\ChangePasswordController@change');
 });
