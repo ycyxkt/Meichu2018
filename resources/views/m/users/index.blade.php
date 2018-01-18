@@ -24,9 +24,11 @@
                     <th>{{ $user->school }}</th>
                     <th>{{ $user->group }}</th>
                     <th>{{ $user->note }}</th>
-                    <th>{{ $user->updated_at }}</th>
                     <th>
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary" role="button">編輯</a>
+                        {{ \Carbon\Carbon::parse( $user->updated_at )->format('m/d H:i:s')}} 
+                    </th>
+                    <th>
+                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning" role="button">編輯</a>
                     </th>
                     <th>
                         {!! Form::open([

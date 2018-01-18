@@ -6,6 +6,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{{ route('users.index') }}" class="btn btn-default" role="button">< 所有使用者</a>
+                </div>
+            </div>
             <div class="panel panel-default">
                 <div class="panel-heading">編輯使用者</div>
 
@@ -32,7 +37,7 @@
                             <label for="password" class="col-md-4 control-label">密碼</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -46,7 +51,7 @@
                             <label for="password-confirm" class="col-md-4 control-label">確認密碼</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                             </div>
                         </div>
 
@@ -69,9 +74,9 @@
 
                             <div class="col-md-6">
                                 <select id="school" class="form-control" name="school" required>
-                                    <option value ="NTHU">國立清華大學</option>
-                                    <option value ="NCTU">國立交通大學</option>
-                                    <option value="other">其他</option>
+                                    <option value ="NTHU" @if($user->school == 'NTHU') selected @endif>國立清華大學</option>
+                                    <option value ="NCTU" @if($user->school == 'NCTU') selected @endif>國立交通大學</option>
+                                    <option value="other" @if($user->school == 'other') selected @endif>其他</option>
                                 </select>
                                 @if ($errors->has('school'))
                                     <span class="help-block">
@@ -86,10 +91,10 @@
 
                             <div class="col-md-6">
                                 <select id="group" class="form-control" name="group" required>
-                                    <option value ="committee">梅竹賽籌備委員會</option>
-                                    <option value="cheer">後援組織（梅工、梅後）</option>
-                                    <option value ="media">媒體（電台、喀報等）</option>
-                                    <option value="admin">管理員</option>
+                                    <option value ="committee" @if($user->group == 'committee') selected @endif>梅竹賽籌備委員會</option>
+                                    <option value="cheer" @if($user->group == 'cheer') selected @endif>後援組織（梅工、梅後）</option>
+                                    <option value ="media" @if($user->group == 'media') selected @endif>媒體（電台、喀報等）</option>
+                                    <option value="admin" @if($user->group == 'admin') selected @endif>管理員</option>
                                 </select>
                                 @if ($errors->has('group'))
                                     <span class="help-block">
@@ -126,15 +131,4 @@
         </div>
     </div>
 </div>
-
-<script>
-$('#school')
-     .removeAttr('selected')
-     .filter('[value={{ $user->school }}]')
-         .attr('selected', true)
-$('#group')
-     .removeAttr('selected')
-     .filter('[value={{ $user->group }}]')
-         .attr('selected', true)
-</script>
 @endsection

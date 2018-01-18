@@ -20,44 +20,40 @@ class UsersController extends Controller
         $data = compact('users');
         return view('m.users.index', $data);
     }
+
     public function edit($id){
-        $user = \App\User::find($id);
+        $user = \App\User::findOrFail($id);
         $data = compact('user');
         return view('m.users.edit', $data);
     }
-    public function update($id, Request $data){
-        
-        /*// validate
-        // read more on validation at http://laravel.com/docs/validation
-        $rules = array(
-            'name'       => 'required',
-            'email'      => 'required|email',
-            'nerd_level' => 'required|numeric'
-        );
-        $validator = Validator::make(Input::all(), $rules);
-        
 
-        // process the login
-        if ($validator->fails()) {
-            return Redirect::to('nerds/' . $id . '/edit')
-                ->withErrors($validator)
-                ->withInput(Input::except('password'));
-        } else {*/
-            // store
-            $user = \App\User::find($id);
-            
-        $user->update([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'school' => $data['school'],
-            'group' => $data['group'],
-            'note' => $data['note'],
+    public function update($id, Request $request){
+        $user = \App\User::findOrFail($id);
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'school' => 'required|string|max:255',
+            'group' => 'required|string|max:255',
         ]);
-        return Redirect::to('m/users');
+        if($request->password == ''){
+            $validatedData = $request->validate([
+                'password' => 'required|string|min:6|confirmed',
+            ]);
+            $user->update([
+                'password' => bcrypt($request['password']),
+            ]);
+        }
+        $user->update([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'school' => $request['school'],
+            'group' => $request['group'],
+            'note' => $request['note'],
+        ]);
+        return redirect()->route('users.index');
     }
     public function delete($id){
-        $user = \App\User::find($id);
+        $user = \App\User::findOrFail($id);
         $user->delete();
         return redirect()->route('users.index');
     }
