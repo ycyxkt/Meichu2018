@@ -35,7 +35,7 @@ class UsersController extends Controller
             'school' => 'required|string|max:255',
             'group' => 'required|string|max:255',
         ]);
-        if($request->password == ''){
+        if($request->password != ''){
             $validatedData = $request->validate([
                 'password' => 'required|string|min:6|confirmed',
             ]);

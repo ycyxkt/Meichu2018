@@ -51,10 +51,10 @@
                         @endswitch
                     </th>
                     <th>
-                        <a href="{{ route('games.edit', $game->id) }}" class="btn btn-warning" role="button">編輯</a>
+                        <a href="{{ url('games/'.$game->game) }}" class="btn btn-success" role="button">查看</a>
                     </th>
                     <th>
-                        <a href="{{ url('games/'.$game->game) }}" class="btn btn-success" role="button">查看</a>
+                        <a href="{{ route('games.edit', $game->id) }}" class="btn btn-warning" role="button">編輯</a>
                     </th>
                 </tr>
                 @endforeach
