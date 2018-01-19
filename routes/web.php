@@ -50,6 +50,11 @@ Route::group(['middleware' => ['auth', 'committee']], function(){
     Route::patch('/m/games/{id}', ['as' => 'games.update', 'uses' => 'GamesController@update']);
 
     Route::resource('/m/teams', 'TeamsController');
+    Route::resource('/m/events', 'EventsController', ['except' => [
+        'show'
+    ]]);
+    Route::get('/m/texts/{id}/edit', ['as' => 'texts.edit', 'uses' => 'TextsController@edit']);
+    Route::patch('/m/texts/{id}', ['as' => 'texts.update', 'uses' => 'TextsController@update']);
 });
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/m/changepassword', ['as' => 'changepassword', 'uses' => 'Auth\ChangePasswordController@show']);
@@ -57,6 +62,4 @@ Route::group(['middleware' => ['auth']], function(){
 
     Route::resource('/m/losts', 'LostsController');
     Route::resource('/m/news', 'NewsController');
-    Route::get('/m/texts/{id}/edit', ['as' => 'texts.edit', 'uses' => 'TextsController@edit']);
-    Route::patch('/m/texts/{id}', ['as' => 'texts.update', 'uses' => 'TextsController@update']);
 });
