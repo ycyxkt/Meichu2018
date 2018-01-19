@@ -176,10 +176,9 @@ class TeamsController extends Controller
     public function destroy($id)
     {
         $team = \App\Team::findOrFail($id);
-        if (Gate::denies('edit-team', $team)) {
-            return redirect()->route('teams.index');
+        if (Gate::allows('edit-team', $team)) {
+            $team->delete();
         }
-        $team->delete();
         return redirect()->route('teams.index');
     }
 }

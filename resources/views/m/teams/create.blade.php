@@ -22,7 +22,7 @@
                             <label for="name" class="col-md-4 control-label">隊伍中文名</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" required>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
                             </div>
                         </div>
 
@@ -30,12 +30,12 @@
                             <label for="name_en" class="col-md-4 control-label">隊伍英文名</label>
 
                             <div class="col-md-6">
-                                <input id="name_en" type="text" class="form-control" name="name_en">
+                                <input id="name_en" type="text" class="form-control" name="name_en" value="{{ old('name_en') }}">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="status" class="col-md-4 control-label">所屬學校</label>
+                            <label for="school" class="col-md-4 control-label">所屬學校</label>
 
                             <div class="col-md-6">
                                 <select id="school" class="form-control" name="school" required>
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="status" class="col-md-4 control-label">所屬比賽</label>
+                            <label for="game" class="col-md-4 control-label">所屬比賽</label>
 
                             <div class="col-md-6">
                                 <select id="game" class="form-control" name="game" required>
@@ -69,7 +69,7 @@
                             <label for="introduction" class="col-md-4 control-label">簡介</label>
 
                             <div class="col-md-6">
-                                <textarea id="introduction" class="form-control" name="introduction"></textarea>
+                                <textarea id="introduction" class="form-control" name="introduction">{{ old('introduction') }}</textarea>
                                 @if ($errors->has('introduction'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('introduction') }}</strong>
@@ -82,7 +82,7 @@
                             <label for="link_website" class="col-md-4 control-label">官網網址</label>
 
                             <div class="col-md-6">
-                                <input id="link_website" type="text" class="form-control" name="link_website">
+                                <input id="link_website" type="text" class="form-control" name="link_website" value="{{ old('link_website') }}">
                                 @if ($errors->has('link_website'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('link_website') }}</strong>
@@ -94,7 +94,7 @@
                             <label for="link_facebook" class="col-md-4 control-label">facebook粉絲頁網址</label>
 
                             <div class="col-md-6">
-                                <input id="link_facebook" type="text" class="form-control" name="link_facebook">
+                                <input id="link_facebook" type="text" class="form-control" name="link_facebook" value="{{ old('link_facebook') }}">
                                 @if ($errors->has('link_facebook'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('link_facebook') }}</strong>
@@ -106,7 +106,7 @@
                             <label for="link_instagram" class="col-md-4 control-label">instagram網址</label>
 
                             <div class="col-md-6">
-                                <input id="link_instagram" type="text" class="form-control" name="link_instagram">
+                                <input id="link_instagram" type="text" class="form-control" name="link_instagram" value="{{ old('link_instagram') }}">
                                 @if ($errors->has('link_instagram'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('link_instagram') }}</strong>

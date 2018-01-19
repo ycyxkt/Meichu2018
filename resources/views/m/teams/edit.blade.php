@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="status" class="col-md-4 control-label">所屬學校</label>
+                            <label for="school" class="col-md-4 control-label">所屬學校</label>
 
                             <div class="col-md-6">
                                 <select id="school" class="form-control" name="school" required>
@@ -58,7 +58,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="status" class="col-md-4 control-label">所屬比賽</label>
+                            <label for="game" class="col-md-4 control-label">所屬比賽</label>
 
                             <div class="col-md-6">
                                 <select id="game" class="form-control" name="game" required>
@@ -73,7 +73,7 @@
                             <label for="introduction" class="col-md-4 control-label">簡介</label>
 
                             <div class="col-md-6">
-                                <textarea id="introduction" class="form-control" name="introduction" value="{{ $team->introduction }}"></textarea>
+                                <textarea id="introduction" class="form-control" name="introduction">{{ $team->introduction }}</textarea>
                                 @if ($errors->has('introduction'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('introduction') }}</strong>

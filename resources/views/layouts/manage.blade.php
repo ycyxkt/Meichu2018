@@ -54,10 +54,8 @@
                                 <li><a href="{{ url('/m/games') }}">賽事</a></li>
                                 <li><a href="{{ url('/m/teams') }}">隊伍</a></li>
                                 <li><a href="{{ url('/m/tickets') }}">票務</a></li>
-                                <li><a href="{{ url('/m/news') }}">公告</a></li>
-                            @else
-                                <li><a href="{{ url('/m/news') }}">新聞</a></li>
                             @endif
+                                <li><a href="{{ url('/m/news') }}">消息</a></li>
                                 <li><a href="{{ url('/m/losts') }}">遺失物</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">

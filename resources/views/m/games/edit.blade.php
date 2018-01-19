@@ -125,14 +125,14 @@
                             <label for="info_entry" class="col-md-4 control-label">入場須知</label>
 
                             <div class="col-md-6">
-                                <textarea id="info_entry" class="form-control" name="info_entry" value="{{ $game->info_entry }}"></textarea>
+                                <textarea id="info_entry" class="form-control" name="info_entry">{{ $game->info_entry }}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="info_rule" class="col-md-4 control-label">簡易規則</label>
 
                             <div class="col-md-6">
-                                <textarea id="info_rule" class="form-control" name="info_rule" value="{{ $game->info_rule }}"></textarea>
+                                <textarea id="info_rule" class="form-control" name="info_rule">{{ $game->info_rule }}</textarea>
                             </div>
                         </div>
 
@@ -169,14 +169,14 @@
                             <label for="broadcast_org" class="col-md-4 control-label">轉播資訊</label>
 
                             <div class="col-md-6">
-                                <textarea id="broadcast_org" class="form-control" name="broadcast_org" value="{{ $game->broadcast_org }}"></textarea>
+                                <textarea id="broadcast_org" class="form-control" name="broadcast_org">{{ $game->broadcast_org }}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="broadcast_anchor" class="col-md-4 control-label">主播球評資訊</label>
 
                             <div class="col-md-6">
-                                <textarea id="broadcast_anchor" class="form-control" name="broadcast_anchor" value="{{ $game->broadcast_anchor }}"></textarea>
+                                <textarea id="broadcast_anchor" class="form-control" name="broadcast_anchor">{{ $game->broadcast_anchor }}</textarea>
                             </div>
                         </div>
 
