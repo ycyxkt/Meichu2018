@@ -43,6 +43,21 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->id == $news->user_id;
             }
         });
+        Gate::define('edit-losts', function ($user, $lost) {
+            if ($lost==NULL){
+                return false;
+            }
+            if ($user->group=='committee'){
+                $tmp = \App\User::find($lost->user_id);
+                return $tmp->group == 'committee';
+            }
+            elseif ($user->group=='admin'){
+                return true;
+            }
+            else {
+                return $user->id == $lost->user_id;
+            }
+        });
     }
 
 }
