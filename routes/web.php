@@ -48,12 +48,13 @@ Route::group(['middleware' => ['auth', 'committee']], function(){
     Route::get('/m/games', ['as' => 'games.index', 'uses' => 'GamesController@index']);
     Route::get('/m/games/{id}/edit', ['as' => 'games.edit', 'uses' => 'GamesController@edit']);
     Route::patch('/m/games/{id}', ['as' => 'games.update', 'uses' => 'GamesController@update']);
-    Route::prefix('m')->group(function () {
-        Route::resource('teams', 'TeamsController');
-    });
-    //Route::resource('/m/teams', 'TeamsController');
+
+    Route::resource('/m/teams', 'TeamsController');
 });
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/m/changepassword', ['as' => 'changepassword', 'uses' => 'Auth\ChangePasswordController@show']);
     Route::post('/m/changepassword', 'Auth\ChangePasswordController@change');
+
+    Route::resource('/m/losts', 'LostsController');
+    Route::resource('/m/news', 'NewsController');
 });
