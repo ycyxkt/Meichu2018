@@ -25,6 +25,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('edit-team', function ($user, $team) {
+            return $user->school == $team->school || $user->school == 'other';
+        });
     }
+
 }

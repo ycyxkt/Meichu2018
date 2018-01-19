@@ -74,6 +74,11 @@
 
                             <div class="col-md-6">
                                 <textarea id="introduction" class="form-control" name="introduction" value="{{ $team->introduction }}"></textarea>
+                                @if ($errors->has('introduction'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('introduction') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 

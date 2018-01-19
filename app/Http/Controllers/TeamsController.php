@@ -6,6 +6,8 @@ use Auth;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Storage;
+use Gate;
+
 class TeamsController extends Controller
 {
 
@@ -64,6 +66,7 @@ class TeamsController extends Controller
             'link_website' => 'nullable|url',
             'link_facebook' => 'nullable|url',
             'link_instagram' => 'nullable|url',
+            'introduction' => 'nullable|string|max:120',
         ]);
         if($request->hasFile('file_logo')){
             $image = $request->file('file_logo');
@@ -92,9 +95,7 @@ class TeamsController extends Controller
     public function show($id)
     {
         $team = \App\Team::findOrFail($id);
-        $game = \App\Game::where('games.game','=',$team->game)
-                ->select('name','game')
-                ->get();
+        $game = $team->game()->first();
         $data = compact('team','game');
 
         return view('m.teams.show', $data);
@@ -109,7 +110,7 @@ class TeamsController extends Controller
     public function edit($id)
     {
         $team = \App\Team::findOrFail($id);
-        if(Auth::user()->school != $team->school && Auth::user()->school != 'other'){
+        if (Gate::denies('edit-team', $team)) {
             return redirect()->route('teams.index');
         }
         $games = \App\Game::orderBy('date','asc')
@@ -131,12 +132,16 @@ class TeamsController extends Controller
     public function update(Request $request, $id)
     {
         $team = \App\Team::findOrFail($id);
+        if (Gate::denies('edit-team', $team)) {
+            return redirect()->route('teams.index');
+        }
         $validatedData = $request->validate([
             'file_logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
             'file_photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
             'link_website' => 'nullable|url',
             'link_facebook' => 'nullable|url',
             'link_instagram' => 'nullable|url',
+            'introduction' => 'nullable|string|max:120',
         ]);
         if($request->hasFile('file_logo')){
             if($team->logo != NULL && file_exists(public_path('').$team->logo)){
@@ -171,6 +176,9 @@ class TeamsController extends Controller
     public function destroy($id)
     {
         $team = \App\Team::findOrFail($id);
+        if (Gate::denies('edit-team', $team)) {
+            return redirect()->route('teams.index');
+        }
         $team->delete();
         return redirect()->route('teams.index');
     }
