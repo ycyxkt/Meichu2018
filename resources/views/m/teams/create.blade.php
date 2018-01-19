@@ -65,7 +65,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('introduction') ? ' has-error' : '' }}">
                             <label for="introduction" class="col-md-4 control-label">簡介</label>
 
                             <div class="col-md-6">
@@ -78,7 +78,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('link_website') ? ' has-error' : '' }}">
                             <label for="link_website" class="col-md-4 control-label">官網網址</label>
 
                             <div class="col-md-6">
@@ -90,7 +90,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('link_facebook') ? ' has-error' : '' }}">
                             <label for="link_facebook" class="col-md-4 control-label">facebook粉絲頁網址</label>
 
                             <div class="col-md-6">
@@ -102,7 +102,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('link_instagram') ? ' has-error' : '' }}">
                             <label for="link_instagram" class="col-md-4 control-label">instagram網址</label>
 
                             <div class="col-md-6">
@@ -115,7 +115,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('file_logo') ? ' has-error' : '' }}">
                             <label for="file_logo" class="col-md-4 control-label">隊伍Logo</label>
 
                             <div class="col-md-6">
@@ -127,7 +127,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('file_photo') ? ' has-error' : '' }}">
                             <label for="file_photo" class="col-md-4 control-label">隊伍照片</label>
 
                             <div class="col-md-6">
