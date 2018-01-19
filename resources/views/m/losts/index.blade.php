@@ -19,6 +19,7 @@
                     <th>拾獲日期</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </thead>
                 @foreach($losts as $data)
                 <tr style="@if($data->deleted_at!=NULL) color:red; @endif">

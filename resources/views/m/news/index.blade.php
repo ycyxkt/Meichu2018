@@ -19,6 +19,7 @@
                     <th>最後更新於</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </thead>
                 @foreach($news as $data)
                 <tr style="@if($data->deleted_at!=NULL) color:red; @endif">

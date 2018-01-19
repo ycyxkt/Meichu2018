@@ -18,8 +18,8 @@
                             <label for="name" class="col-md-4 control-label">編輯的文字為</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ $text->name }}" readonly required hidden>
-                                @switch({{ $text->name }})
+                                <input id="name" type="hidden" class="form-control" name="name" value="{{ $text->name }}" readonly required>
+                                @switch( $text->name )
                                     @case('ticket_nthu')
                                         清大索票規則
                                         @break
@@ -28,6 +28,7 @@
                                         @break
                                 @endswitch
                             </div>
+                    </div>
 
                         <div class="form-group">
                             <label for="content" class="col-md-4 control-label">敘述</label>
@@ -39,7 +40,7 @@
 
 
                         <div class="form-group">
-                            <div class="col-md-4">
+                            <div class="col-md-4 text-right">
                                 <button type="cancel" class="btn btn-danger">
                                     取消更新
                                 </button>

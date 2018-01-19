@@ -14,9 +14,9 @@ class TextsController extends Controller
     public function update($id, Request $request){
         $text = \App\Text::findOrFail($id);
         $validatedData = $request->validate([
-            'name' => 'required|string|unique:texts',
+            'name' => 'required|string',
         ]);
         $text->update($request->all());
-        return redirect()->back();
+        return redirect()->route('events.index');
     }
 }
