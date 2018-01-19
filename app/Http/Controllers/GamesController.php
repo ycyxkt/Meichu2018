@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator; 
 
 class GamesController extends Controller
 {
@@ -29,6 +30,14 @@ class GamesController extends Controller
     }
     public function update($id, Request $request){
         $game = \App\Game::findOrFail($id);
+        $validatedData = $request->validate([
+            'date' => 'date|before:"2018-03-05"|after:"2018-03-01"',
+            'score_nthu' => 'nullable|numeric',
+            'score_nctu' => 'nullable|numeric',
+            'score_draw' => 'nullable|numeric',
+            'boardcast_url' => 'nullable|url',
+            'location_url' => 'nullable|url',
+        ]);
         $game->update($request->all());
         return redirect()->route('games.index');
     }

@@ -26,11 +26,16 @@
                             {{ $game->name }} {{ $game->game }}
                         </h2>
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                             <label for="date" class="col-md-4 control-label">日期</label>
 
                             <div class="col-md-6">
                                 <input id="date" type="date" class="form-control" name="date" value="{{ $game->date }}" required>
+                                @if ($errors->has('date'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('date') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
@@ -42,7 +47,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('school') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <label for="status" class="col-md-4 control-label">狀態</label>
 
                             <div class="col-md-6">
@@ -59,25 +64,40 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('score_nthu') ? ' has-error' : '' }}">
                             <label for="score_nthu" class="col-md-4 control-label">清大比分</label>
 
                             <div class="col-md-6">
                                 <input id="score_nthu" type="number" class="form-control" name="score_nthu" value="{{ $game->score_nthu }}" step="any">
+                                @if ($errors->has('score_nthu'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('score_nthu') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('score_nctu') ? ' has-error' : '' }}">
                             <label for="score_nctu" class="col-md-4 control-label">交大比分</label>
 
                             <div class="col-md-6">
                                 <input id="score_nctu" type="number" class="form-control" name="score_nctu" value="{{ $game->score_nctu }}" step="any">
+                                @if ($errors->has('score_nctu'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('score_nctu') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('score_draw') ? ' has-error' : '' }}">
                             <label for="score_draw" class="col-md-4 control-label">平手比分</label>
 
                             <div class="col-md-6">
                                 <input id="score_draw" type="number" class="form-control" name="score_draw" value="{{ $game->score_draw }}" step="any">
+                                @if ($errors->has('score_draw'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('score_draw') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
@@ -88,11 +108,16 @@
                                 <input id="location" type="text" class="form-control" name="location" value="{{ $game->location }}" required>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('location_url') ? ' has-error' : '' }}">
                             <label for="location_url" class="col-md-4 control-label">地點URL</label>
 
                             <div class="col-md-6">
                                 <input id="location_url" type="text" class="form-control" name="location_url" value="{{ $game->location_url }}" required>
+                                @if ($errors->has('location_url'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('location_url') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
@@ -128,11 +153,16 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('broadcast_url') ? ' has-error' : '' }}">
                             <label for="broadcast_url" class="col-md-4 control-label">轉播網址</label>
 
                             <div class="col-md-6">
                                 <input id="broadcast_url" type="text" class="form-control" name="broadcast_url" value="{{ $game->broadcast_url }}">
+                                @if ($errors->has('broadcast_url'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('broadcast_url') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         <div class="form-group">
@@ -160,12 +190,15 @@
                             </div>
                         </div>
                     </form>
-                    <div class="col-md-4">相關隊伍</div>
+                    
+                    @if (!$game->teams->isEmpty())
+                    <div class="col-md-4 text-right">相關隊伍</div>
                     <div class="col-md-6">
                         @foreach($game->teams as $team)
                         <a href="{{ route('teams.show',$team->id) }}" class="btn btn-default" role="button">{{ $team->name }}</a>
                         @endforeach
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
