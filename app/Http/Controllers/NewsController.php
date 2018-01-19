@@ -60,7 +60,7 @@ class NewsController extends Controller
     {
         $validatedData = $request->validate([
             'link' => 'nullable|url',
-            'introduction' => 'nullable|string|max:600',
+            'content' => 'nullable|string|max:600',
         ]);
         $request['user_id']=Auth::user()->id;
         \App\News::create($request->all());
@@ -126,7 +126,7 @@ class NewsController extends Controller
         }
         $validatedData = $request->validate([
             'link' => 'nullable|url',
-            'introduction' => 'nullable|string|max:600',
+            'content' => 'nullable|string|max:600',
         ]);
         $news->update($request->all());
         return redirect()->route('news.show',$id);

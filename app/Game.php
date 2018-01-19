@@ -28,4 +28,7 @@ class Game extends Model
     public function teams(){
         return $this->hasMany('App\Team','game','game');
     }
+    public function news(){
+        return $this->hasMany('App\News','game','game');
+    }
 }

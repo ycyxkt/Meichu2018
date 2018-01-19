@@ -14,7 +14,7 @@
             <table class="table table-striped">
                 <thead>
                     <th>標題</th>
-                    <th>作者</th> 
+                    <th>擁有者</th> 
                     <th>分類</th>
                     <th>最後更新於</th>
                     <th></th>
