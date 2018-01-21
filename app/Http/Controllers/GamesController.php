@@ -12,9 +12,6 @@ class GamesController extends Controller
      *
      * @return void
      */
-    public function __construct(){
-        $this->middleware('committee');
-    }
 
     public function index(){
         $games = \App\Game::orderBy('date','asc')
@@ -36,9 +33,9 @@ class GamesController extends Controller
             'score_nctu' => 'nullable|numeric',
             'score_draw' => 'nullable|numeric',
             'boardcast_url' => 'nullable|url',
-            'location_url' => 'nullable|url',
+            'location_url' => 'url',
         ]);
         $game->update($request->all());
-        return redirect()->route('games.index');
+        return redirect()->route('games.index')->with('success','更新賽事資料成功');
     }
 }

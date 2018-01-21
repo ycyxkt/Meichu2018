@@ -20,10 +20,10 @@ class EventsController extends Controller
     {
         if(Auth::user()->group == 'committee'){
             $query = \App\Event::join('users', 'users.id', '=', 'events.user_id')
-                    ->where('group', '=', Auth::user()->group)
-                    ->select('users.name','events.*');
+                    ->where('users.group', '=', 'committee')
+                    ->select('events.*');
         }
-        if(Auth::user()->group == 'admin'){
+        elseif(Auth::user()->group == 'admin'){
             $query = \App\Event::where('id','>','0');
         }
         else {
@@ -31,10 +31,12 @@ class EventsController extends Controller
         }
         $events = $query->orderBy('id','asc')
                 ->get();
-        $ticket_nthu = \App\Text::where('name','=','ticket_nthu')->get();
-        $text_nthu = $ticket_nthu->first()->content;
-        $ticket_nctu = \App\Text::where('name','=','ticket_nctu')->get();
-        $text_nctu = $ticket_nctu->first()->content;
+
+        $text_nthu = \App\Text::where('name','=','ticket_nthu')
+                    ->get()->first()->content;
+        $text_nctu = \App\Text::where('name','=','ticket_nctu')
+                    ->get()->first()->content;
+
         $data = compact('events','text_nthu','text_nctu');
         return view('m.events.index', $data);
     }
@@ -61,8 +63,9 @@ class EventsController extends Controller
             'date' => 'date|before:"2018-03-31"|after:'.date('Y-m-d',strtotime(date('Y-m-d') . '-1 days')),
             'link' => 'nullable|url',
         ]);
+        $request['user_id']=Auth::user()->id;
         \App\Event::create($request->all());
-        return redirect()->route('events.index');
+        return redirect()->route('events.index')->with('success','建立活動成功');
     }
 
     /**
@@ -75,7 +78,7 @@ class EventsController extends Controller
     {
         $event = \App\Event::find($id);
         if (Gate::denies('edit-events', $event)) {
-            return redirect()->route('events.index');
+            return redirect()->route('events.index')->with('error','您沒有權限編輯');
         }
         $data = compact('event');
 
@@ -93,14 +96,14 @@ class EventsController extends Controller
     {
         $event = \App\Event::findOrFail($id);
         if (Gate::denies('edit-events', $event)) {
-            return redirect()->route('events.index');
+            return redirect()->route('events.index')->with('error','您沒有權限編輯');
         }
         $validatedData = $request->validate([
             'date' => 'date|before:"2018-03-31"|after:"2018-01-01"',
             'link' => 'nullable|url',
         ]);
         $event->update($request->all());
-        return redirect()->route('events.index');
+        return redirect()->route('events.index')->with('success','更新活動資訊成功');
     }
 
     /**
@@ -114,7 +117,8 @@ class EventsController extends Controller
         $events = \App\Event::findOrFail($id);
         if (Gate::allows('edit-events', $events)) {
             $events->delete();
+            return redirect()->route('events.index')->with('success','刪除活動成功');
         }
-        return redirect()->route('events.index');
+        return redirect()->route('events.index')->with('error','您沒有權限刪除');
     }
 }

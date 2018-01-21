@@ -3,63 +3,56 @@
 @section('title','賽事管理')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <table class="table table-striped">
-                <thead>
-                    <th>賽名</th>
-                    <th>時間</th> 
-                    <th>地點</th>
-                    <th>狀態</th>
-                    <th></th>
-                    <th></th>
-                </thead>
-                @foreach($games as $game)
-                <tr>
-                    <th>{{ $game->name }}</th>
-                    <th>{{ \Carbon\Carbon::parse( $game->date )->format('m/d')}} {{ \Carbon\Carbon::parse( $game->time )->format('H:i')}}</th> 
-                    <th>{{ $game->location }}</th>
-                    <th>
-                        @switch($game->status)
-                            @case('notyet')
-                                <span style='color:#232323'>尚未開始</span>
-                                @break
-                            @case('prepare')
-                                <span style='color:#232323'>準備中</span>
-                                @break
-                            @case('inprogress')
-                                <span style='color:#232323'>進行中</span>
-                                @break
-                            @case('nthuwin')
-                                <span style='color:#232323'>清大勝</span>
-                                @break
-                            @case('nctuwin')
-                                <span style='color:#232323'>交大勝</span>
-                                @break
-                            @case('draw')
-                                <span style='color:#232323'>平手</span>
-                                @break
-                            @case('break')
-                                <span style='color:#232323'>暫停中</span>
-                                @break
-                            @case('stop')
-                                <span style='color:#232323'>因故停賽</span>
-                                @break
-                            @default
-                                <span style='color:#232323'>狀態錯誤</span>
-                        @endswitch
-                    </th>
-                    <th>
-                        <a href="{{ url('games/'.$game->game) }}" class="btn btn-success" role="button">查看</a>
-                    </th>
-                    <th>
-                        <a href="{{ route('games.edit', $game->id) }}" class="btn btn-warning" role="button">編輯</a>
-                    </th>
-                </tr>
-                @endforeach
-            </table>
-        </div>
-    </div>
-</div>
+<table class="table table-striped table-hover table-responsive">
+    <thead>
+        <th>賽名</th>
+        <th>時間</th> 
+        <th>地點</th>
+        <th>狀態</th>
+        <th></th>
+        <th></th>
+    </thead>
+    @foreach($games as $data)
+    <tr>
+        <th>{{ $data->name }}</th>
+        <th>{{ \Carbon\Carbon::parse( $data->date )->format('m/d')}} {{ \Carbon\Carbon::parse( $data->time )->format('H:i')}}</th> 
+        <th>{{ $data->location }}</th>
+        @switch($data->status)
+            @case('notyet')
+                <th class="color_notyet">尚未開始</th>
+                @break
+            @case('prepare')
+                <th class="color_prepare">準備中</th>
+                @break
+            @case('inprogress')
+                <th class="color_inprogress">進行中</th>
+                @break
+            @case('nthuwin')
+                <th class="color_nthu">清大勝</th>
+                @break
+            @case('nctuwin')
+                <th class="color_nctu">交大勝</th>
+                @break
+            @case('draw')
+                <th class="color_draw">平手</th>
+                @break
+            @case('break')
+                <th class="color_break">暫停中</th>
+                @break
+            @case('stop')
+                <th class="color_stop">因故停賽</th>
+                @break
+            @default
+                <th class="color_other">{{ $data->status }}</th>
+                @break
+        @endswitch
+        <th>
+            <a href="{{ url('games/'.$data->game) }}" class="btn btn-success" role="button">查看</a>
+        </th>
+        <th>
+            <a href="{{ route('games.edit', $data->id) }}" class="btn btn-primary" role="button">編輯</a>
+        </th>
+    </tr>
+    @endforeach
+</table>
 @endsection

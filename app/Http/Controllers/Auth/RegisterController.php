@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/m';
+    protected $redirectTo = '/m/users';
 
     /**
      * Create a new controller instance.
@@ -53,8 +53,6 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'school' => 'required|string|max:255',
-            'group' => 'required|string|max:255',
         ]);
     }
 
@@ -80,6 +78,6 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
-        return $this->registered($request, $user) ?: redirect($this->redirectPath());
+        return $this->registered($request, $user) ? : redirect($this->redirectPath())->with("success","建立帳號成功");
     }
 }

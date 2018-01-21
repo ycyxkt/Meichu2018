@@ -23,11 +23,11 @@ class LostsController extends Controller
     public function index()
     {
         if(Auth::user()->group == 'committee'){
-            $query = \App\Losts::join('users', 'users.id', '=', 'losts.user_id')
-                    ->where('group', '=', Auth::user()->group)
+            $query = \App\Lost::join('users', 'users.id', '=', 'losts.user_id')
+                    ->where('users.group', '=', 'committee')
                     ->select('losts.*');
         }
-        if(Auth::user()->group == 'admin'){
+        elseif(Auth::user()->group == 'admin'){
             $query = \App\Lost::withTrashed();
         }
         else {
@@ -35,11 +35,7 @@ class LostsController extends Controller
         }
         $losts = $query->orderBy('id','asc')
                 ->get();
-        $games = \App\Game::orderBy('date','asc')
-                ->orderBy('time','asc')
-                ->select('name','game')
-                ->get();
-        $data = compact('losts','games');
+        $data = compact('losts');
         return view('m.losts.index', $data);
     }
 
@@ -52,7 +48,7 @@ class LostsController extends Controller
     {
         $games = \App\Game::orderBy('date','asc')
                 ->orderBy('time','asc')
-                ->select('name','game')
+                ->select('name')
                 ->get();
         $data = compact('games');
         return view('m.losts.create', $data);
@@ -74,24 +70,23 @@ class LostsController extends Controller
             $tmpid = 1;
         }
         $validatedData = $request->validate([
+            'title' => 'required|string|max:10',
             'date' => 'date|before:'.date('Y-m-d',strtotime(date('Y-m-d') . '+1 days')).'|after:"2018-01-01"',
             'file_photo' => 'image|mimes:jpeg,png,jpg|max:5000',
-            'content' => 'nullable|string|max:80',
+            'content' => 'nullable|string|max:100',
         ]);
         if($request->hasFile('file_photo')){
             $image = Image::make($request->file('file_photo'));
             $image->resize(400, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $input['imagename'] = 'lost-photo-'.$tmpid.'.'.$request->file('file_photo')->getClientOriginalExtension();
+            $request['photo'] = 'lost-photo-'.$tmpid.'.'.$request->file('file_photo')->getClientOriginalExtension();
             $destinationPath = public_path('images');
-            $image->save($destinationPath.'/'.$input['imagename']);
-            $request['photo'] = '/images/'.$input['imagename'];
-
+            $image->save($destinationPath.'/'.$request['photo']);
         }
         $request['user_id']=Auth::user()->id;
         \App\Lost::create($request->except('file_photo'));
-        return redirect()->route('losts.index');
+        return redirect()->route('losts.index')->with('success','新增遺失物成功');
     }
 
     /**
@@ -107,16 +102,12 @@ class LostsController extends Controller
                     ->find($id);
         }
         else{
-            $lost = \App\Losts::find($id);
+            $lost = \App\Lost::find($id);
         }
         if (Gate::denies('edit-losts', $lost)) {
-            return redirect()->route('losts.index');
+            return redirect()->route('losts.index')->with('error','您沒有權限查看');
         }
-        $games = \App\Game::orderBy('date','asc')
-                ->orderBy('time','asc')
-                ->select('name','game')
-                ->get();
-        $data = compact('lost','games');
+        $data = compact('lost');
 
         return view('m.losts.show', $data);
     }
@@ -131,11 +122,11 @@ class LostsController extends Controller
     {
         $lost = \App\Lost::find($id);
         if (Gate::denies('edit-losts', $lost)) {
-            return redirect()->route('losts.index');
+            return redirect()->route('losts.index')->with('error','您沒有權限編輯');
         }
         $games = \App\Game::orderBy('date','asc')
                 ->orderBy('time','asc')
-                ->select('name','game')
+                ->select('name')
                 ->get();
         $data = compact('lost','games');
 
@@ -153,29 +144,28 @@ class LostsController extends Controller
     {
         $lost = \App\Lost::findOrFail($id);
         if (Gate::denies('edit-losts', $lost)) {
-            return redirect()->route('losts.index');
+            return redirect()->route('losts.index')->with('error','您沒有權限編輯');
         }
         $validatedData = $request->validate([
+            'title' => 'required|string|max:10',
             'date' => 'date|before:'.date('Y-m-d',strtotime(date('Y-m-d') . '+1 days')).'|after:"2018-01-01"',
             'file_photo' => 'image|mimes:jpeg,png,jpg|max:5000',
-            'content' => 'nullable|string|max:80',
+            'content' => 'nullable|string|max:100',
         ]);
         if($request->hasFile('file_photo')){
-            if($lost->photo != NULL && file_exists(public_path('').$lost->photo)){
-                unlink(public_path('').$lost->photo);
+            if($lost->photo != NULL && file_exists(public_path('images/').$lost->photo)){
+                unlink(public_path('images/').$lost->photo);
             }
             $image = Image::make($request->file('file_photo'));
             $image->resize(400, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $input['imagename'] = 'lost-photo-'.$id.'.'.$request->file('file_photo')->getClientOriginalExtension();
+            $request['photo'] = 'lost-photo-'.$id.'.'.$request->file('file_photo')->getClientOriginalExtension();
             $destinationPath = public_path('images');
-            $image->save($destinationPath.'/'.$input['imagename']);
-            $request['photo'] = '/images/'.$input['imagename'];
+            $image->save($destinationPath.'/'.$request['photo']);
         }
-        $request['user_id']=Auth::user()->id;
         $lost->update($request->except('file_photo'));
-        return redirect()->route('losts.show',$id);
+        return redirect()->route('losts.show',$id)->with('success','更新遺失物資訊成功');
     }
 
     /**
@@ -189,7 +179,8 @@ class LostsController extends Controller
         $lost = \App\Lost::findOrFail($id);
         if (Gate::allows('edit-losts', $lost)) {
             $lost->delete();
+            return redirect()->route('losts.index')->with('success','刪除遺失物成功');
         }
-        return redirect()->route('losts.index');
+        return redirect()->route('losts.index')->with('error','您沒有權限刪除');
     }
 }

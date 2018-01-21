@@ -33,7 +33,7 @@ Route::group(['prefix' => 'm'], function() {
     Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'Auth\PasswordController@reset');
     */
-Route::get('/m', 'HomeController@index');
+Route::get('/m', 'ManageHomeController@index');
 
 Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::get('/m/register', 'Auth\RegisterController@showRegistrationForm');
@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::get('/m/users', ['as' => 'users.index', 'uses' => 'UsersController@index']);
     Route::get('/m/users/{id}/edit', ['as' => 'users.edit', 'uses' => 'UsersController@edit']);
     Route::patch('/m/users/{id}', ['as' => 'users.update', 'uses' => 'UsersController@update']);
-    Route::delete('/m/users/{id}', ['as' => 'users.delete', 'uses' => 'UsersController@delete']);
+    Route::delete('/m/users/{id}', ['as' => 'users.destory', 'uses' => 'UsersController@destory']);
 });
 Route::group(['middleware' => ['auth', 'committee']], function(){
     Route::get('/m/games', ['as' => 'games.index', 'uses' => 'GamesController@index']);
@@ -50,9 +50,7 @@ Route::group(['middleware' => ['auth', 'committee']], function(){
     Route::patch('/m/games/{id}', ['as' => 'games.update', 'uses' => 'GamesController@update']);
 
     Route::resource('/m/teams', 'TeamsController');
-    Route::resource('/m/events', 'EventsController', ['except' => [
-        'show'
-    ]]);
+    
     Route::get('/m/texts/{id}/edit', ['as' => 'texts.edit', 'uses' => 'TextsController@edit']);
     Route::patch('/m/texts/{id}', ['as' => 'texts.update', 'uses' => 'TextsController@update']);
 });
@@ -60,6 +58,9 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/m/changepassword', ['as' => 'changepassword', 'uses' => 'Auth\ChangePasswordController@show']);
     Route::post('/m/changepassword', 'Auth\ChangePasswordController@change');
 
+    Route::resource('/m/events', 'EventsController', ['except' => [
+        'show'
+    ]]);
+
     Route::resource('/m/losts', 'LostsController');
     Route::resource('/m/news', 'NewsController');
-});

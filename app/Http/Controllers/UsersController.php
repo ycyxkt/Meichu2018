@@ -12,7 +12,7 @@ class UsersController extends Controller
      * @return void
      */
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     public function index(){
@@ -29,12 +29,18 @@ class UsersController extends Controller
 
     public function update($id, Request $request){
         $user = \App\User::findOrFail($id);
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
-            'school' => 'required|string|max:255',
-            'group' => 'required|string|max:255',
-        ]);
+        if($user->email != $request['email']){
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|max:255|unique:users',
+            ]);
+        }
+        else{
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|max:255',
+            ]);
+        }
         if($request->password != ''){
             $validatedData = $request->validate([
                 'password' => 'required|string|min:6|confirmed',
@@ -50,11 +56,25 @@ class UsersController extends Controller
             'group' => $request['group'],
             'note' => $request['note'],
         ]);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success','更新使用者資料成功');
     }
-    public function delete($id){
+    public function destory($id){
         $user = \App\User::findOrFail($id);
+        $events = \App\Event::where('user_id','=',$id)->get();
+        foreach($events as $event){
+            $event->delete();
+        }
+        $news = \App\News::withTrashed()
+                ->where('user_id','=',$id)->get();
+        foreach($news as $newstmp){
+            $newstmp->forceDelete();
+        }
+        $losts = \App\Lost::withTrashed()
+                ->where('user_id','=',$id)->get();
+        foreach($losts as $lost){
+            $lost->forceDelete();
+        }
         $user->delete();
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success','刪除使用者成功');
     }
 }

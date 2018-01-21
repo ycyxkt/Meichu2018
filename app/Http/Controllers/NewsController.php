@@ -20,10 +20,10 @@ class NewsController extends Controller
     {
         if(Auth::user()->group == 'committee'){
             $query = \App\News::join('users', 'users.id', '=', 'news.user_id')
-                    ->where('group', '=', Auth::user()->group)
-                    ->select('users.name','news.*');
+                    ->where('users.group', '=', 'committee')
+                    ->select('news.*');
         }
-        if(Auth::user()->group == 'admin'){
+        elseif(Auth::user()->group == 'admin'){
             $query = \App\News::withTrashed();
         }
         else {
@@ -59,12 +59,13 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'title' => 'required||string|max:20',
             'link' => 'nullable|url',
-            'content' => 'nullable|string|max:600',
+            'content' => 'nullable|string|max:300',
         ]);
         $request['user_id']=Auth::user()->id;
         \App\News::create($request->all());
-        return redirect()->route('news.index');
+        return redirect()->route('news.index')->with('success','建立消息成功');
     }
 
     /**
@@ -83,7 +84,7 @@ class NewsController extends Controller
             $news = \App\News::find($id);
         }
         if (Gate::denies('edit-news', $news)) {
-            return redirect()->route('news.index');
+            return redirect()->route('news.index')->with('error','您沒有權限查看');
         }
         $data = compact('news');
 
@@ -100,7 +101,7 @@ class NewsController extends Controller
     {
         $news = \App\News::find($id);
         if (Gate::denies('edit-news', $news)) {
-            return redirect()->route('news.index');
+            return redirect()->route('news.index')->with('error','您沒有權限編輯');
         }
         $games = \App\Game::orderBy('date','asc')
                 ->orderBy('time','asc')
@@ -122,14 +123,15 @@ class NewsController extends Controller
     {
         $news = \App\News::findOrFail($id);
         if (Gate::denies('edit-news', $news)) {
-            return redirect()->route('news.index');
+            return redirect()->route('news.index')->with('error','您沒有權限編輯');
         }
         $validatedData = $request->validate([
+            'title' => 'required||string|max:20',
             'link' => 'nullable|url',
-            'content' => 'nullable|string|max:600',
+            'content' => 'nullable|string|max:300',
         ]);
         $news->update($request->all());
-        return redirect()->route('news.show',$id);
+        return redirect()->route('news.show',$id)->with('success','更新消息成功');
     }
 
     /**
@@ -143,7 +145,8 @@ class NewsController extends Controller
         $news = \App\News::findOrFail($id);
         if (Gate::allows('edit-news', $news)) {
             $news->delete();
+            return redirect()->route('news.index')->with('success','刪除消息成功');
         }
-        return redirect()->route('news.index');
+        return redirect()->route('news.index')->with('error','您沒有權限刪除');
     }
 }

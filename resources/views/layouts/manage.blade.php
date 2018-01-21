@@ -16,7 +16,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top navbar-fix-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -44,26 +44,41 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">登入</a></li>
+                            <li class="{{ Request::segment(2) === 'login' ? 'active' : null }}">
+                                <a href="{{ route('login') }}">登入</a>
+                            </li>
                         @else
                             @if(Auth::user()->group  == 'admin')
-                                <li><a href="{{ url('/m/register') }}">建立帳號</a></li>
-                                <li><a href="{{ url('/m/users') }}">使用者</a></li>
+                                <li class="{{ Request::segment(2) === 'users' ? 'active' : null }}">
+                                    <a href="{{ url('/m/users') }}">使用者</a>
+                                </li>
                             @endif
                             @if(Auth::user()->group  == 'committee' ||  Auth::user()->group  == 'admin')
-                                <li><a href="{{ url('/m/games') }}">賽事</a></li>
-                                <li><a href="{{ url('/m/teams') }}">隊伍</a></li>
-                                <li><a href="{{ url('/m/events') }}">活動</a></li>
+                                <li class="{{ Request::segment(2) === 'games' ? 'active' : null }}">
+                                    <a href="{{ url('/m/games') }}">賽事</a>
+                                </li>
+                                <li class="{{ Request::segment(2) === 'teams' ? 'active' : null }}">
+                                    <a href="{{ url('/m/teams') }}">隊伍</a>
+                                </li>
                             @endif
-                                <li><a href="{{ url('/m/news') }}">消息</a></li>
-                                <li><a href="{{ url('/m/losts') }}">遺失物</a></li>
+                                <li class="{{ Request::segment(2) === 'events' ? 'active' : null }}">
+                                    <a href="{{ url('/m/events') }}">活動</a>
+                                </li>
+                                <li class="{{ Request::segment(2) === 'news' ? 'active' : null }}">
+                                    <a href="{{ url('/m/news') }}">消息</a>
+                                </li>
+                                <li class="{{ Request::segment(2) === 'losts' ? 'active' : null }}">
+                                    <a href="{{ url('/m/losts') }}">遺失物</a>
+                                </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{ url('/m/changepassword') }}">變更密碼</a></li>
+                                    <li class="{{ Request::segment(2) === 'changepassword' ? 'active' : null }}">
+                                        <a href="{{ url('/m/changepassword') }}">變更密碼</a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -83,7 +98,23 @@
             </div>
         </nav>
 
-        @yield('content')
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    @if (session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+
+                    @yield('content')
+                    
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->

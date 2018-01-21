@@ -59,25 +59,18 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
         Gate::define('edit-events', function ($user, $event) {
-            switch($user->group){
-                case('committee'):
-                    return $event->group == "梅竹賽籌備委員會";
-                    break;
-                case('cheer'):
-                    if($user->school == 'NCTU')
-                        return $event->group == "交大梅竹後援會";
-                    elseif($user->school == 'NTHU')
-                        return $event->group == "清大梅竹工作會";
-                    break;
-                case('media'):
-                    if($user->school == 'NCTU')
-                        return $event->group == "交大喀報";
-                    elseif($user->school == 'NTHU')
-                        return $event->group == "清華電台";;
-                    break;
-                case('admin'):
-                    return true;
-                    break;
+            if ($event==NULL){
+                return false;
+            }
+            if ($user->group=='committee'){
+                $tmp = \App\User::find($event->user_id);
+                return $tmp->group == 'committee';
+            }
+            elseif ($user->group=='admin'){
+                return true;
+            }
+            else {
+                return $user->id == $event->user_id;
             }
         });
     }

@@ -17,6 +17,6 @@ class TextsController extends Controller
             'name' => 'required|string',
         ]);
         $text->update($request->all());
-        return redirect()->route('events.index');
+        return redirect()->route('events.index')->with('success','更新資訊成功');
     }
 }
