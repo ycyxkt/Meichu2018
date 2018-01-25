@@ -12,7 +12,6 @@ class GamesTableSeeder extends Seeder
     public function run()
     {
         //
-        \App\Game::truncate();
         \App\Game::create([
             'game' => 'opening',
             'name' => '開幕',
@@ -24,6 +23,7 @@ class GamesTableSeeder extends Seeder
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
+            'photo' => 'game-opening.jpg',
         ]);
         \App\Game::create([
             'game' => 'closing',
@@ -36,30 +36,33 @@ class GamesTableSeeder extends Seeder
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
+            'photo' => 'game-closing.jpg',
         ]);
         \App\Game::create([
             'game' => 'football-general',
             'name' => '足球表演賽（一般組）',
             'type' => 'exhibition',
             'date' => '2018/03/02',
-            'time' => '14:30',
-            'location' => '清大田徑場',
+            'time' => '16:00',
+            'location' => '清大足球場',
             'location_url' => '123',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
+            'photo' => 'game-football.jpg',
         ]);
         \App\Game::create([
             'game' => 'football-open',
             'name' => '足球友誼賽（公開組）',
             'type' => 'friendly',
             'date' => '2018/03/04',
-            'time' => '14:30',
-            'location' => '交大田徑場',
+            'time' => '10:00',
+            'location' => '交大足球場',
             'location_url' => '123',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
+            'photo' => 'game-football.jpg',
         ]);
         \App\Game::create([
             'game' => 'kendo',
@@ -72,54 +75,59 @@ class GamesTableSeeder extends Seeder
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
+            'photo' => 'game-kendo.jpg',
         ]);
         \App\Game::create([
             'game' => 'billiards',
             'name' => '撞球表演賽',
             'type' => 'exhibition',
             'date' => '2018/03/02',
-            'time' => '16:30',
+            'time' => '14:30',
             'location' => '交大活動中心B1',
             'location_url' => '123',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
+            'photo' => 'game-billiards.jpg',
         ]);
         \App\Game::create([
             'game' => 'women-tabletennis',
             'name' => '女子桌球表演賽',
             'type' => 'exhibition',
             'date' => '2018/03/02',
-            'time' => '15:30',
+            'time' => '15:00',
             'location' => '清大體育館',
             'location_url' => '123',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
+            'photo' => 'game-tabletennis.jpg',
         ]);
         \App\Game::create([
             'game' => 'tabletennis',
             'name' => '桌球正式賽',
             'type' => 'official',
             'date' => '2018/03/02',
-            'time' => '18:30',
+            'time' => '18:00',
             'location' => '清大體育館',
             'location_url' => '123',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
+            'photo' => 'game-tabletennis.jpg',
         ]);
         \App\Game::create([
             'game' => 'badminton',
             'name' => '羽球正式賽',
             'type' => 'official',
             'date' => '2018/03/02',
-            'time' => '19:30',
+            'time' => '19:00',
             'location' => '清大校友體育館',
             'location_url' => '123',
             'status' => 'notyet',
             'is_ticket' => true,
             'is_broadcast' => true,
+            'photo' => 'game-badminton.jpg',
         ]);
         \App\Game::create([
             'game' => 'men-badminton',
@@ -132,6 +140,7 @@ class GamesTableSeeder extends Seeder
             'status' => 'notyet',
             'is_ticket' => true,
             'is_broadcast' => true,
+            'photo' => 'game-badminton.jpg',
         ]);
         \App\Game::create([
             'game' => 'bridge',
@@ -144,18 +153,20 @@ class GamesTableSeeder extends Seeder
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
+            'photo' => 'game-bridge.jpg',
         ]);
         \App\Game::create([
             'game' => 'chess',
             'name' => '棋藝正式賽（象棋）',
             'type' => 'official',
-            'date' => '2018/03/03',
+            'date' => '2018/03/04',
             'time' => '09:30',
             'location' => '交大活動中心2F聯誼廳',
             'location_url' => '123',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
+            'photo' => 'game-chess.jpg',
         ]);
         \App\Game::create([
             'game' => 'go',
@@ -168,6 +179,7 @@ class GamesTableSeeder extends Seeder
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
+            'photo' => 'game-go.jpg',
         ]);
 
         \App\Game::create([
@@ -181,6 +193,7 @@ class GamesTableSeeder extends Seeder
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
+            'photo' => 'game-baseball.jpg',
         ]);
         \App\Game::create([
             'game' => 'tennis',
@@ -193,6 +206,7 @@ class GamesTableSeeder extends Seeder
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
+            'photo' => 'game-tennis.jpg',
         ]);
         \App\Game::create([
             'game' => 'women-tennis',
@@ -205,6 +219,7 @@ class GamesTableSeeder extends Seeder
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
+            'photo' => 'game-womentennis.jpg',
         ]);
         \App\Game::create([
             'game' => 'women-basketball',
@@ -217,6 +232,7 @@ class GamesTableSeeder extends Seeder
             'status' => 'notyet',
             'is_ticket' => true,
             'is_broadcast' => true,
+            'photo' => 'game-womenbasketball.jpg',
         ]);
         \App\Game::create([
             'game' => 'men-basketball',
@@ -229,43 +245,47 @@ class GamesTableSeeder extends Seeder
             'status' => 'notyet',
             'is_ticket' => true,
             'is_broadcast' => true,
+            'photo' => 'game-menbasketball.jpg',
         ]);
 
         \App\Game::create([
             'game' => 'softball-general',
-            'name' => '壘球表演賽',
+            'name' => '壘球表演賽（一般組）',
             'type' => 'exhibition',
             'date' => '2018/03/04',
             'time' => '10:00',
-            'location' => '清大棒球場',
+            'location' => '交大棒球場',
             'location_url' => '123',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
+            'photo' => 'game-softball.jpg',
         ]);
         \App\Game::create([
             'game' => 'softball-open',
-            'name' => '壘球表演賽',
-            'type' => 'exhibition',
+            'name' => '壘球友誼賽（公開組）',
+            'type' => 'friendly',
             'date' => '2018/03/04',
-            'time' => '13:00',
-            'location' => '清大棒球場',
+            'time' => '13:30',
+            'location' => '交大棒球場',
             'location_url' => '123',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
+            'photo' => 'game-softball.jpg',
         ]);
         \App\Game::create([
             'game' => 'darts',
             'name' => '飛鏢表演賽',
             'type' => 'exhibition',
             'date' => '2018/03/04',
-            'time' => '10:30',
-            'location' => '清大風雲樓3F',
+            'time' => '10:00',
+            'location' => '清大風三國際活動中心',
             'location_url' => '123',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
+            'photo' => 'game-darts.jpg',
         ]);
         \App\Game::create([
             'game' => 'men-volleyball',
@@ -278,6 +298,7 @@ class GamesTableSeeder extends Seeder
             'status' => 'notyet',
             'is_ticket' => true,
             'is_broadcast' => true,
+            'photo' => 'game-menvolleyball.jpg',
         ]);
         \App\Game::create([
             'game' => 'women-volleyball',
@@ -290,6 +311,7 @@ class GamesTableSeeder extends Seeder
             'status' => 'notyet',
             'is_ticket' => true,
             'is_broadcast' => true,
+            'photo' => 'game-womenvolleyball.jpg',
         ]);
     }
 }

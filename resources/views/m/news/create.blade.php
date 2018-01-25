@@ -111,7 +111,7 @@
 
             <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                 <label for="content" class="col-md-4 control-label">
-                    <span class="label label-default">300字內</span>
+                    <span class="label label-default">600字內</span>
                     內文
                 </label>
 
