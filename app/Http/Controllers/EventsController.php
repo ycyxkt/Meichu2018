@@ -8,9 +8,6 @@ use Gate;
 
 class EventsController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -120,5 +117,34 @@ class EventsController extends Controller
             return redirect()->route('events.index')->with('success','刪除活動成功');
         }
         return redirect()->route('events.index')->with('error','您沒有權限刪除');
+    }
+
+    public function ticket_front(){
+        $tickets_nthu = \App\Event::where('tag','=','清大索票活動')
+                ->orderBy('title','asc')
+                ->orderBy('date','asc')
+                ->get();
+        $tickets_nctu = \App\Event::where('tag','=','交大索票活動')
+                ->orderBy('title','asc')
+                ->orderBy('date','asc')
+                ->get();
+
+        $text_nthu = \App\Text::where('name','=','ticket_nthu')
+                    ->get()->first()->content;
+        $text_nthu = explode("\n", $text_nthu);
+        $text_nthu = array_filter($text_nthu, 'trim');
+
+        $text_nctu = \App\Text::where('name','=','ticket_nctu')
+                    ->get()->first()->content;
+        $text_nctu = explode("\n", $text_nctu);
+        $text_nctu = array_filter($text_nctu, 'trim');
+
+        $games = \App\Game::where('is_ticket','=','1')
+                ->orderBy('date','asc')
+                ->orderBy('time','asc')
+                ->select('name','game')
+                ->get();
+        $data = compact('tickets_nthu','tickets_nctu','text_nthu','text_nctu','games');
+        return view('tickets', $data);
     }
 }

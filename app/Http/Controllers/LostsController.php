@@ -12,9 +12,6 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class LostsController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -182,5 +179,13 @@ class LostsController extends Controller
             return redirect()->route('losts.index')->with('success','刪除遺失物成功');
         }
         return redirect()->route('losts.index')->with('error','您沒有權限刪除');
+    }
+
+    public function index_front()
+    {
+        $losts = \App\Lost::orderBy('date','asc')->get();
+        $data = compact('losts');
+        $config['global.is_losts'] = false;
+        return view('losts', $data);
     }
 }

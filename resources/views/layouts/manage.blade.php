@@ -10,9 +10,19 @@
 
     <title>@yield('title') - 戊戌梅竹後台</title>
 
+    <link rel="Shortcut Icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quantico" rel="stylesheet">
+
+    <meta name="description" content="戊戌梅竹官方網站，提供賽程、票務、戰況、轉播等相關賽事即時資訊。">
+    <meta name="og:title" content="@yield('title') - 戊戌梅竹 | 2018 Meichu Games">
+    <meta name="og:description" content="戊戌梅竹官方網站，提供賽程、票務、戰況、轉播等相關賽事即時資訊。">
+    <meta name="og:site_name" content="戊戌梅竹 | 2018 Meichu Games">
+    <meta name="og:type" content="website">
+    <meta property="og:url" content=" http://meichu.games">
+    <meta property='og:image' content="{{ asset('image/screenshot.png') }}">
 </head>
 <body>
     <div id="app">
@@ -116,6 +126,16 @@
         </div>
 
     </div>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112938427-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-112938427-1');
+    </script>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

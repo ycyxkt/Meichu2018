@@ -8,9 +8,6 @@ use Gate;
 
 class NewsController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -148,5 +145,29 @@ class NewsController extends Controller
             return redirect()->route('news.index')->with('success','刪除消息成功');
         }
         return redirect()->route('news.index')->with('error','您沒有權限刪除');
+    }
+
+    public function index_front(){
+        $news = \App\News::orderBy('id','desc')
+                ->get();
+        $data = compact('news');
+        return view('news.index', $data);
+    }
+
+    public function show_front($id){
+        $news = \App\News::where('tag', '!=', 'news')
+                    ->findOrFail($id);
+
+        $news_prev = \App\News::where('id', '<', $id)
+                    ->where('tag', '!=', 'news')
+                    ->orderBy('id','desc')
+                    ->first();
+        $news_next = \App\News::where('id', '>', $id)
+                    ->where('tag', '!=', 'news')
+                    ->orderBy('id','asc')
+                    ->first();
+
+        $data = compact('news','news_prev','news_next');
+        return view('news.show', $data);
     }
 }
