@@ -20,11 +20,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/02',
             'time' => '13:00',
             'location' => '清大田徑場',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/UJ1gmswe2br',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
-            'photo' => 'game-opening.jpg',
+            'photo' => 'https://i.imgur.com/uvGXXDY.jpg',
+            'photosmall' => 'https://i.imgur.com/uvGXXDYl.jpg',
         ]);
         \App\Game::create([
             'game' => 'closing',
@@ -33,11 +34,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/04',
             'time' => '22:30',
             'location' => '清大體育館',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/BSCQJwDAnQp',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
-            'photo' => 'game-closing.jpg',
+            'photo' => 'https://i.imgur.com/nQPCDtL.jpg',
+            'photosmall' => 'https://i.imgur.com/nQPCDtLl.jpg',
         ]);
         \App\Game::create([
             'game' => 'football-general',
@@ -46,11 +48,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/02',
             'time' => '16:00',
             'location' => '清大足球場',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/UJ1gmswe2br',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
-            'photo' => 'game-football.jpg',
+            'photo' => 'https://i.imgur.com/uvGXXDY.jpg',
+            'photosmall' => 'https://i.imgur.com/uvGXXDYl.jpg',
         ]);
         \App\Game::create([
             'game' => 'football-open',
@@ -59,11 +62,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/04',
             'time' => '10:00',
             'location' => '交大足球場',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/Ks6epJmrTcF2',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
-            'photo' => 'game-football.jpg',
+            'photo' => 'https://i.imgur.com/uvGXXDY.jpg',
+            'photosmall' => 'https://i.imgur.com/uvGXXDYl.jpg',
         ]);
         \App\Game::create([
             'game' => 'kendo',
@@ -72,11 +76,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/02',
             'time' => '16:30',
             'location' => '交大體育館',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/ZDD5R7BqCxC2',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
-            'photo' => 'game-kendo.jpg',
+            'photo' => 'https://i.imgur.com/ewdSRX8.jpg',
+            'photosmall' => 'https://i.imgur.com/ewdSRX8l.jpg',
         ]);
         \App\Game::create([
             'game' => 'billiards',
@@ -85,11 +90,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/02',
             'time' => '14:30',
             'location' => '交大活動中心B1',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/zC3NeZh1Gmz',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
-            'photo' => 'game-billiards.jpg',
+            'photo' => 'https://i.imgur.com/uvGXXDY.jpg',
+            'photosmall' => 'https://i.imgur.com/uvGXXDYl.jpg',
         ]);
         \App\Game::create([
             'game' => 'women-tabletennis',
@@ -98,11 +104,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/02',
             'time' => '15:00',
             'location' => '清大體育館',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/BSCQJwDAnQp',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
-            'photo' => 'game-tabletennis.jpg',
+            'photo' => 'https://i.imgur.com/Uvg8rmS.jpg',
+            'photosmall' => 'https://i.imgur.com/Uvg8rmSl.jpg',
         ]);
         \App\Game::create([
             'game' => 'tabletennis',
@@ -111,11 +118,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/02',
             'time' => '18:00',
             'location' => '清大體育館',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/BSCQJwDAnQp',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
-            'photo' => 'game-tabletennis.jpg',
+            'photo' => 'https://i.imgur.com/Uvg8rmS.jpg',
+            'photosmall' => 'https://i.imgur.com/Uvg8rmSl.jpg',
         ]);
         \App\Game::create([
             'game' => 'badminton',
@@ -124,11 +132,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/02',
             'time' => '19:00',
             'location' => '清大校友體育館',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/3YeZQoM3uVr',
             'status' => 'notyet',
             'is_ticket' => true,
             'is_broadcast' => true,
-            'photo' => 'game-badminton.jpg',
+            'photo' => 'https://i.imgur.com/bDufRd1.jpg',
+            'photosmall' => 'https://i.imgur.com/bDufRd1l.jpg',
         ]);
         \App\Game::create([
             'game' => 'men-badminton',
@@ -137,11 +146,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/02',
             'time' => '22:30',
             'location' => '清大校友體育館',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/3YeZQoM3uVr',
             'status' => 'notyet',
             'is_ticket' => true,
             'is_broadcast' => true,
-            'photo' => 'game-badminton.jpg',
+            'photo' => 'https://i.imgur.com/bDufRd1.jpg',
+            'photosmall' => 'https://i.imgur.com/bDufRd1l.jpg',
         ]);
         \App\Game::create([
             'game' => 'bridge',
@@ -150,11 +160,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/03',
             'time' => '09:00',
             'location' => '清大蒙民偉樓101',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/EZwkXbz6LCR2',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
-            'photo' => 'game-bridge.jpg',
+            'photo' => 'https://i.imgur.com/3A6NABw.jpg',
+            'photosmall' => 'https://i.imgur.com/3A6NABwl.jpg',
         ]);
         \App\Game::create([
             'game' => 'chess',
@@ -163,11 +174,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/04',
             'time' => '09:30',
             'location' => '交大活動中心2F聯誼廳',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/zC3NeZh1Gmz',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
-            'photo' => 'game-chess.jpg',
+            'photo' => 'https://i.imgur.com/dZcUqbD.jpg',
+            'photosmall' => 'https://i.imgur.com/dZcUqbDl.jpg',
         ]);
         \App\Game::create([
             'game' => 'go',
@@ -176,11 +188,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/03',
             'time' => '09:30',
             'location' => '交大活動中心4F聯誼廳',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/zC3NeZh1Gmz',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
-            'photo' => 'game-go.jpg',
+            'photo' => 'https://i.imgur.com/caFwgx8.jpg',
+            'photosmall' => 'https://i.imgur.com/caFwgx8l.jpg',
         ]);
 
         \App\Game::create([
@@ -190,11 +203,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/03',
             'time' => '13:00',
             'location' => '清大棒球場',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/yVf6X85bBbp',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
-            'photo' => 'game-baseball.jpg',
+            'photo' => 'https://i.imgur.com/ZhzXtpb.jpg',
+            'photosmall' => 'https://i.imgur.com/ZhzXtpbl.jpg',
         ]);
         \App\Game::create([
             'game' => 'tennis',
@@ -203,11 +217,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/03',
             'time' => '13:00',
             'location' => '交大綜合球館2F',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/iPcCduUqmbw',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
-            'photo' => 'game-tennis.jpg',
+            'photo' => 'https://i.imgur.com/uvGXXDY.jpg',
+            'photosmall' => 'https://i.imgur.com/uvGXXDYl.jpg',
         ]);
         \App\Game::create([
             'game' => 'women-tennis',
@@ -216,11 +231,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/03',
             'time' => '10:00',
             'location' => '交大綜合球館2F',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/iPcCduUqmbw',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
-            'photo' => 'game-womentennis.jpg',
+            'photo' => 'https://i.imgur.com/DYZEVXM.jpg',
+            'photosmall' => 'https://i.imgur.com/DYZEVXMl.jpg',
         ]);
         \App\Game::create([
             'game' => 'women-basketball',
@@ -229,11 +245,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/03',
             'time' => '18:00',
             'location' => '交大體育館',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/ZDD5R7BqCxC2',
             'status' => 'notyet',
             'is_ticket' => true,
             'is_broadcast' => true,
-            'photo' => 'game-womenbasketball.jpg',
+            'photo' => 'https://i.imgur.com/aXRYOeA.jpg',
+            'photosmall' => 'https://i.imgur.com/aXRYOeAl.jpg',
         ]);
         \App\Game::create([
             'game' => 'men-basketball',
@@ -242,11 +259,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/03',
             'time' => '20:30',
             'location' => '交大體育館',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/ZDD5R7BqCxC2',
             'status' => 'notyet',
             'is_ticket' => true,
             'is_broadcast' => true,
-            'photo' => 'game-menbasketball.jpg',
+            'photo' => 'https://i.imgur.com/5Jw3tli.jpg',
+            'photosmall' => 'https://i.imgur.com/5Jw3tlil.jpg',
         ]);
 
         \App\Game::create([
@@ -256,11 +274,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/04',
             'time' => '10:00',
             'location' => '交大棒球場',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/upFJQVUfaHC2',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
-            'photo' => 'game-softball.jpg',
+            'photo' => 'https://i.imgur.com/fC4Mys4.jpg',
+            'photosmall' => 'https://i.imgur.com/fC4Mys4l.jpg',
         ]);
         \App\Game::create([
             'game' => 'softball-open',
@@ -269,11 +288,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/04',
             'time' => '13:30',
             'location' => '交大棒球場',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/upFJQVUfaHC2',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => true,
-            'photo' => 'game-softball.jpg',
+            'photo' => 'https://i.imgur.com/fC4Mys4.jpg',
+            'photosmall' => 'https://i.imgur.com/fC4Mys4l.jpg',
         ]);
         \App\Game::create([
             'game' => 'darts',
@@ -282,11 +302,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/04',
             'time' => '10:00',
             'location' => '清大風三國際活動中心',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/zXudrtbQTyp',
             'status' => 'notyet',
             'is_ticket' => false,
             'is_broadcast' => false,
-            'photo' => 'game-darts.jpg',
+            'photo' => 'https://i.imgur.com/uvGXXDY.jpg',
+            'photosmall' => 'https://i.imgur.com/uvGXXDYl.jpg',
         ]);
         \App\Game::create([
             'game' => 'men-volleyball',
@@ -295,11 +316,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/04',
             'time' => '18:00',
             'location' => '清大體育館',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/BSCQJwDAnQp',
             'status' => 'notyet',
             'is_ticket' => true,
             'is_broadcast' => true,
-            'photo' => 'game-menvolleyball.jpg',
+            'photo' => 'https://i.imgur.com/Xa0uCdb.jpg',
+            'photosmall' => 'https://i.imgur.com/Xa0uCdbl.jpg',
         ]);
         \App\Game::create([
             'game' => 'women-volleyball',
@@ -308,11 +330,12 @@ class GamesTableSeeder extends Seeder
             'date' => '2018/03/04',
             'time' => '20:20',
             'location' => '清大體育館',
-            'location_url' => '123',
+            'location_url' => 'https://goo.gl/maps/BSCQJwDAnQp',
             'status' => 'notyet',
             'is_ticket' => true,
             'is_broadcast' => true,
-            'photo' => 'game-womenvolleyball.jpg',
+            'photo' => 'https://i.imgur.com/ZnoItDA.jpg',
+            'photosmall' => 'https://i.imgur.com/ZnoItDAl.jpg',
         ]);
     }
 }

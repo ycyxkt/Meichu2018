@@ -22,7 +22,7 @@
             @foreach($games_top as $data)
             <div class="gameinfo-flex">
                 <a class="gameinfo" href="{{ url('games/'.$data->game) }} ">
-                    <div class="gameboard-background"  style="background-image:url({{ asset('images/'.$data->photo) }});"></div>
+                    <div class="gameboard-background"  style="background-image:url({{ $data->photosmall }});"></div>
                     @if($data->status=='inprogress')
                         <div class="game-status inprogress">進行中</div>
                     @elseif($data->status=='prepare')
@@ -125,7 +125,7 @@
                 <div class="game-date">03/02 （五）</div>
                 @foreach($games_day1 as $data)
                 <a class="gameinfo @if($data->status=='nthuwin') nthu @elseif($data->status=='nctuwin') nctu @elseif($data->status=='draw') draw @elseif($data->status=='stop') stop @endif" href="{{ url('games/'.$data->game) }} ">
-                    <div class="gameboard-background"  style="background-image:url({{ asset('images/'.$data->photo) }});"></div>
+                    <div class="gameboard-background"  style="background-image:url({{ $data->photosmall }});"></div>
                     @if($data->status=='inprogress')
                     <div class="game-status inprogress">進行中</div>
                     @elseif($data->status=='prepare')
@@ -163,7 +163,7 @@
                 
                 @foreach($games_day2 as $data)
                 <a class="gameinfo" href="{{ url('games/'.$data->game) }} ">
-                    <div class="gameboard-background"  style="background-image:url({{ asset('images/'.$data->photo) }});"></div>
+                    <div class="gameboard-background"  style="background-image:url({{ $data->photosmall }});"></div>
                     @if($data->status=='inprogress')
                         <div class="game-status inprogress">進行中</div>
                     @elseif($data->status=='prepare')
@@ -205,7 +205,7 @@
                 
                 @foreach($games_day3 as $data)
                 <a class="gameinfo" href="{{ url('games/'.$data->game) }} ">
-                    <div class="gameboard-background"  style="background-image:url({{ asset('images/'.$data->photo) }});"></div>
+                    <div class="gameboard-background"  style="background-image:url({{ $data->photosmall }});"></div>
                     @if($data->status=='inprogress')
                         <div class="game-status inprogress">進行中</div>
                     @elseif($data->status=='prepare')

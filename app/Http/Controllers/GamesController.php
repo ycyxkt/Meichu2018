@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Validator; 
+use Validator;
+
+use Imgur;
+use Illuminate\Http\File;
+use \Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class GamesController extends Controller
 {
@@ -34,8 +39,14 @@ class GamesController extends Controller
             'score_draw' => 'nullable|numeric',
             'boardcast_url' => 'nullable|url',
             'location_url' => 'url',
+            'file_photo' => 'image|mimes:jpeg,png,jpg|max:5000',
         ]);
-        $game->update($request->all());
+        if($request->hasFile('file_photo')){
+                $image = Imgur::upload($request->file('file_photo'));
+                $request['photo'] = $image->link();
+                $request['photosmall'] = Imgur::size($image->link(), 'l');
+        }
+        $game->update($request->except('file_photo'));
         return redirect()->route('games.index')->with('success','更新賽事資料成功');
     }
 

@@ -15,7 +15,7 @@
     <div class="panel-heading">編輯賽事</div>
 
     <div class="panel-body">
-        <form class="form-horizontal" method="POST" action="{{ url('/m/games/'.$game->id) }}">
+        <form class="form-horizontal" method="POST" action="{{ url('/m/games/'.$game->id) }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
 
@@ -224,6 +224,34 @@
                 <div class="col-md-6">
                     <textarea id="broadcast_anchor" class="form-control" name="broadcast_anchor" rows="3">{{ $game->broadcast_anchor }}
                     </textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">賽事目前照片</label>
+
+                <div class="col-md-6 form-control-static">
+                    @if($game->photo != NULL)
+                        <img src="{{ $game->photo }}" width="400px">
+                    @else
+                        目前無照片
+                    @endif
+                </div>
+            </div>
+            <div class="form-group{{ $errors->has('file_photo') ? ' has-error' : '' }}">
+                <label for="file_photo" class="col-md-4 control-label">
+                    <span class="label label-default">圖像格式</span>
+                    <span class="label label-default">不大於5MB</span>
+                    更換賽事照片
+                </label>
+
+                <div class="col-md-6">
+                    <input id="file_photo" type="file" class="form-control" name="file_photo">
+                    @if ($errors->has('file_photo'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('file_photo') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
 

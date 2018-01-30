@@ -4,7 +4,7 @@
 
 @section('content')
 <section class="gameboard">
-    <div class="gameboard-background" style="background-image:url({{ asset('images/'.$game->photo) }});"></div>
+    <div class="gameboard-background" style="background-image:url({{ $game->photo }});"></div>
     <div class="container">
         <div class="gameboard-title">
             <div class="game-name">{{ $game->name }}</div>
@@ -173,17 +173,20 @@
                 <div class="card-link">
                     @if ($team->link_facebook!=NULL)
                     <a href="{{ $team->link_facebook }}" target="_blank">
-                        <i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook
+                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                        Facebook
                     </a>
                     @endif
                     @if ($team->link_instagram!=NULL)
                     <a href="{{ $team->link_instagram }}" target="_blank">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>Instagram
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                        Instagram
                     </a>
                     @endif
                     @if ($team->link_website!=NULL)
                     <a href="{{ $team->link_website }}" target="_blank">
-                        <i class="fa fa-globe" aria-hidden="true"></i>官網
+                        <i class="fa fa-globe" aria-hidden="true"></i>
+                        官網
                     </a>
                     @endif
                 </div>
