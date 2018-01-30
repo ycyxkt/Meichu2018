@@ -11,6 +11,7 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5",
+        "predis/predis": "^1.1",
         "yish/imgur": "^1.0"
     },
     "require-dev": {
