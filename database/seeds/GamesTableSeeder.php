@@ -12,6 +12,7 @@ class GamesTableSeeder extends Seeder
     public function run()
     {
         //
+        \App\Game::truncate();
         \App\Game::create([
             'game' => 'opening',
             'name' => '開幕',

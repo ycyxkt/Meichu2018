@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Yun-Chin Yang',
             'email' => 'ycyxkt',
             'password' => bcrypt('ycyycy'),
-            'school' => 'NCTU',
+            'school' => 'other',
             'group' => 'admin',
         ]);
     }
