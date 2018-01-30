@@ -1,6 +1,6 @@
 
 <div class="brand">
-    <a href="/"><img src="{{ asset('images/brand-logo.png') }}" alt="戊戌梅竹"></a>
+    <a href="/index"><img src="{{ asset('images/brand-logo.png') }}" alt="戊戌梅竹"></a>
 </div>
 <button type="button" class="navbar-toggle">
     <i class="fa fa-chevron-left"></i>
