@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Gate;
 
+use Imgur;
 use Illuminate\Http\File;
 use \Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -71,7 +72,7 @@ class TeamsController extends Controller
             'link_instagram' => 'nullable|url',
             'introduction' => 'nullable|string|max:120',
         ]);
-        if($request->hasFile('file_logo')){
+        /*if($request->hasFile('file_logo')){
             $image = Image::make($request->file('file_logo'));
             $image->resize(200, null, function ($constraint) {
                 $constraint->aspectRatio();
@@ -79,8 +80,9 @@ class TeamsController extends Controller
             $request['logo'] = 'team-logo-'.$tmpid.'.'.$request->file('file_logo')->getClientOriginalExtension();
             $destinationPath = public_path('images');
             $image->save($destinationPath.'/'.$request['logo']);
-        }
+        }*/
         if($request->hasFile('file_photo')){
+            /*
             $image = Image::make($request->file('file_photo'));
             $image->resize(600, null, function ($constraint) {
                 $constraint->aspectRatio();
@@ -88,6 +90,9 @@ class TeamsController extends Controller
             $request['photo'] = 'team-photo-'.$tmpid.'.'.$request->file('file_photo')->getClientOriginalExtension();
             $destinationPath = public_path('images');
             $image->save($destinationPath.'/'.$request['photo']);
+            */
+            $image = Imgur::upload($request->file('file_photo'));
+            $request['photo'] = Imgur::size($image->link(), 'l');
         }
         \App\Team::create($request->except('file_logo','file_photo'));
         return redirect()->route('teams.index')->with('success','建立隊伍成功');
@@ -149,7 +154,7 @@ class TeamsController extends Controller
             'link_instagram' => 'nullable|url',
             'introduction' => 'nullable|string|max:120',
         ]);
-        if($request->hasFile('file_logo')){
+        /*if($request->hasFile('file_logo')){
             if($team->logo != NULL && file_exists(public_path('images/').$team->logo)){
                 unlink(public_path('images/').$team->logo);
             }
@@ -160,8 +165,9 @@ class TeamsController extends Controller
             $request['logo'] = 'team-logo-'.$id.'.'.$request->file('file_logo')->getClientOriginalExtension();
             $destinationPath = public_path('images');
             $image->save($destinationPath.'/'.$request['logo']);
-        }
+        }*/
         if($request->hasFile('file_photo')){
+            /*
             if($team->photo != NULL && file_exists(public_path('images/').$team->photo)){
                 unlink(public_path('images/').$team->photo);
             }
@@ -172,6 +178,9 @@ class TeamsController extends Controller
             $request['photo'] = 'team-photo-'.$id.'.'.$request->file('file_photo')->getClientOriginalExtension();
             $destinationPath = public_path('images');
             $image->save($destinationPath.'/'.$request['photo']);
+            */
+            $image = Imgur::upload($request->file('file_photo'));
+            $request['photo'] = Imgur::size($image->link(), 'l');
         }
         $team->update($request->except('file_logo','file_photo'));
         return redirect()->route('teams.show',$team->id)->with('success','更新隊伍資訊成功');

@@ -20,7 +20,7 @@
             <div class="card-block card-losts">
                 @if($data->photo!=NULL)
                 <div class="card-image">
-                    <img src="{{ asset('images/'.$data->photo) }}">
+                    <img src="{{ $data->photo }}">
                 </div>
                 @endif
                 <div class="card-inner">

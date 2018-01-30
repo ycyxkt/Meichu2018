@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Gate;
 
+use Imgur;
 use Illuminate\Http\File;
 use \Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -72,7 +73,9 @@ class LostsController extends Controller
             'file_photo' => 'image|mimes:jpeg,png,jpg|max:5000',
             'content' => 'nullable|string|max:100',
         ]);
+        
         if($request->hasFile('file_photo')){
+            /*
             $image = Image::make($request->file('file_photo'));
             $image->resize(400, null, function ($constraint) {
                 $constraint->aspectRatio();
@@ -80,6 +83,9 @@ class LostsController extends Controller
             $request['photo'] = 'lost-photo-'.$tmpid.'.'.$request->file('file_photo')->getClientOriginalExtension();
             $destinationPath = public_path('images');
             $image->save($destinationPath.'/'.$request['photo']);
+            */
+            $image = Imgur::upload($request->file('file_photo'));
+            $request['photo'] = Imgur::size($image->link(), 'm');
         }
         $request['user_id']=Auth::user()->id;
         \App\Lost::create($request->except('file_photo'));
@@ -150,6 +156,7 @@ class LostsController extends Controller
             'content' => 'nullable|string|max:100',
         ]);
         if($request->hasFile('file_photo')){
+            /*
             if($lost->photo != NULL && file_exists(public_path('images/').$lost->photo)){
                 unlink(public_path('images/').$lost->photo);
             }
@@ -160,6 +167,9 @@ class LostsController extends Controller
             $request['photo'] = 'lost-photo-'.$id.'.'.$request->file('file_photo')->getClientOriginalExtension();
             $destinationPath = public_path('images');
             $image->save($destinationPath.'/'.$request['photo']);
+            */
+            $image = Imgur::upload($request->file('file_photo'));
+            $request['photo'] = Imgur::size($image->link(), 'm');
         }
         $lost->update($request->except('file_photo'));
         return redirect()->route('losts.show',$id)->with('success','更新遺失物資訊成功');

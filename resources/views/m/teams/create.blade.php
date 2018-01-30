@@ -142,7 +142,7 @@
                 </div>
             </div>
 
-            <div class="form-group{{ $errors->has('file_logo') ? ' has-error' : '' }}">
+            <!--<div class="form-group{{ $errors->has('file_logo') ? ' has-error' : '' }}">
                 <label for="file_logo" class="col-md-4 control-label">
                     <span class="label label-default">圖像格式</span>
                     <span class="label label-default">不大於5MB</span>
@@ -157,7 +157,7 @@
                         </span>
                     @endif
                 </div>
-            </div>
+            </div>-->
             <div class="form-group{{ $errors->has('file_photo') ? ' has-error' : '' }}">
                 <label for="file_photo" class="col-md-4 control-label">
                     <span class="label label-default">圖像格式</span>

@@ -144,7 +144,7 @@
             <div class="flex-50 card-block infoblock">
                 @if($team->photo!=NULL)       
                 <div class="card-image">
-                    <img src="{{ asset('images/'.$team->photo) }}">
+                    <img src="{{ $team->photo }}">
                 </div>
                 @endif
                 <div class="card-inner">

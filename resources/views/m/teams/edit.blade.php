@@ -145,7 +145,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <label class="col-md-4 control-label">隊伍目前Logo</label>
 
                 <div class="col-md-6 form-control-static">
@@ -171,14 +171,14 @@
                         </span>
                     @endif
                 </div>
-            </div>
+            </div>-->
 
             <div class="form-group">
                 <label class="col-md-4 control-label">隊伍目前照片</label>
 
                 <div class="col-md-6 form-control-static">
                     @if($team->photo != NULL)
-                        <img src="{{ asset('images/'.$team->photo) }}" width="400px">
+                        <img src="{{ $team->photo }}" width="400px">
                     @else
                         目前無照片
                     @endif

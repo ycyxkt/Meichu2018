@@ -71,7 +71,7 @@
             </a>
         </th>
     </tr>
-    <tr>
+    <!--<tr>
         <th>隊伍Logo</th>
         <th>
             @if($team->logo != NULL)
@@ -80,12 +80,12 @@
                 目前無Logo
             @endif
         </th>
-    </tr>
+    </tr>-->
     <tr>
         <th>隊伍照片</th>
         <th>
             @if($team->photo != NULL)
-                <img src="{{ asset('images/'.$team->photo) }}" width="400px">
+                <img src="{{ $team->photo }}" width="400px">
             @else
                 目前無照片
             @endif
