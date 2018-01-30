@@ -31,13 +31,22 @@
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112938427-1"></script>
         <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-        gtag('config', 'UA-112938427-1');
+            gtag('config', 'UA-112938427-1');
         </script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-        <script type="text/javascript" src="{{ asset('js/navbar.js') }}"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".navbar-toggle").click(function(e){
+                    $("i", this).toggleClass("fa-chevron-left fa-times");
+                    $(this).toggleClass("open");
+                    $(".navbar").toggleClass("open");
+                    e.preventDefault();
+                });
+            });
+        </script>
     </body>
 </html>
