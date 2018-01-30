@@ -1,6 +1,6 @@
 /* Base structure */
 body{
-    font-family: "Signika Negative", "Noto Sans TC", Roboto, "Noto Sans TC", 微軟正黑體, 繁黑體, "Microsoft JhengHei", "Microsoft YaHei", "Heiti TC", "LiHei Pro", sans-serif, 新細明體, PMingLiU;
+    font-family: "Signika Negative", "Noto Sans CJK TC", "Noto Sans TC", Roboto, 微軟正黑體, 繁黑體, "Microsoft JhengHei", "Microsoft YaHei", "Heiti TC", "LiHei Pro", sans-serif, 新細明體, PMingLiU;
     font-size: 1rem;
     color: #222;
     display: block;

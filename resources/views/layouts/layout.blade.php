@@ -12,7 +12,6 @@
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
         <link href="https://fonts.googleapis.com/css?family=Signika+Negative" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/earlyaccess/notosanstc.css" rel="stylesheet" type="text/css">
 
         <meta name="description" content="戊戌梅竹官方網站，提供賽程、票務、戰況、轉播等相關賽事即時資訊。">
         <meta name="og:title" content="@yield('title') - 戊戌梅竹 | 2018 Meichu Games">
