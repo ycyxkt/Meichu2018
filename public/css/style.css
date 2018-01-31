@@ -617,33 +617,35 @@ a:focus{
     box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.2);
     border-radius: 6px;
 }
-.news-nav{
+
+/* Pagination in News show & Losts Page*/
+.pagination-nav{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.news-nav a{
+.pagination-nav a{
     color: #333;
     display: block;
 }
-.news-nav a:hover,
-.news-nav a:focus{
+.pagination-nav a:hover,
+.pagination-nav a:focus{
     color: #007085;
 }
-.news-nav-prev,
-.news-nav-next{
+.pagination-nav-prev,
+.pagination-nav-next{
     width:30%;
     font-size: 0.8rem;
 }
-.news-nav-index{
+.pagination-nav-index{
     width:40%;
     text-align: center;
 }
-.news-nav-next{
+.pagination-nav-next{
     text-align: right;
 }
 @media (max-width: 800px){
-    .news-nav-hidden{  
+    .pagination-nav-hidden{  
         display:none;
     }
 }

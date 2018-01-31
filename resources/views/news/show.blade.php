@@ -49,33 +49,36 @@
             @endif
             </div>
         </div>
-        <div class="news-nav infoblock">
-            <div class="news-nav-prev">
+
+        <div class="pagination-nav infoblock">
+            <div class="pagination-nav-prev">
                 @if($news_prev!=NULL)
                 <a href="{{ url('news/'.$news_prev->id) }}">
                     <i class="fa fa-chevron-left" aria-hidden="true"></i>
                     前一篇<br/>
-                    <span class="news-nav-hidden">{{ $news_prev->title }}</span>
+                    <span class="pagination-nav-hidden">{{ $news_prev->title }}</span>
                 </a>
                 @endif
             </div>
             
-            <div class="news-nav-index">
+            <div class="pagination-nav-index">
                 <a href="/news">
                     <i class="fa fa-th" aria-hidden="true"></i>
                     所有消息
                 </a>
             </div>
-            <div class="news-nav-next">
+
+            <div class="pagination-nav-next">
                 @if($news_next!=NULL)
                 <a href="{{ url('news/'.$news_next->id) }}">
                     後一篇
                     <i class="fa fa-chevron-right" aria-hidden="true"></i><br/>
-                    <span class="news-nav-hidden">{{ $news_next->title }}</span>
+                    <span class="pagination-nav-hidden">{{ $news_next->title }}</span>
                 </a>
                 @endif
             </div>
         </div>
+
     </section>
 </div>
 @endsection

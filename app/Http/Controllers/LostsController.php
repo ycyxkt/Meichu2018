@@ -193,9 +193,8 @@ class LostsController extends Controller
 
     public function index_front()
     {
-        $losts = \App\Lost::orderBy('date','asc')->get();
+        $losts = \App\Lost::orderBy('date','asc')->simplePaginate(20);
         $data = compact('losts');
-        $config['global.is_losts'] = false;
         return view('losts', $data);
     }
 }

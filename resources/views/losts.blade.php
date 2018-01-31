@@ -62,5 +62,31 @@
             
         @endforeach
     </div>
+
+    @if($losts->nextPageUrl()!=NULL || $losts->previousPageUrl()!=NULL)
+    <div class="pagination-nav infoblock">
+        <div class="pagination-nav-prev">
+            @if($losts->previousPageUrl()!=NULL)
+            <a href="{{ $losts->previousPageUrl() }}">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                上一頁
+            </a>
+            @endif
+        </div>
+
+        <div class="pagination-nav-index"></div>
+        
+        <div class="pagination-nav-next">
+            @if($losts->nextPageUrl()!=NULL)
+            <a href="{{ $losts->nextPageUrl() }}">
+                下一頁
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
+            @endif
+        </div>
+    
+    </div>
+    @endif
+
 </div>
 @endsection
