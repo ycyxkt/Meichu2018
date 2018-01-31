@@ -193,7 +193,7 @@
 
             <div class="form-group{{ $errors->has('broadcast_url') ? ' has-error' : '' }}">
                 <label for="broadcast_url" class="col-md-4 control-label">
-                    <span class="label label-default">網址</span>
+                    <span class="label label-default">youtube網址</span>
                     轉播網址
                 </label>
 

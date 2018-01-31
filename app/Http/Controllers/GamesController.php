@@ -37,7 +37,7 @@ class GamesController extends Controller
             'score_nthu' => 'nullable|numeric',
             'score_nctu' => 'nullable|numeric',
             'score_draw' => 'nullable|numeric',
-            'boardcast_url' => 'nullable|url',
+            'broadcast_url' => 'nullable|url',
             'location_url' => 'url',
             'file_photo' => 'image|mimes:jpeg,png,jpg|max:5000',
         ]);
@@ -46,6 +46,11 @@ class GamesController extends Controller
                 $request['photo'] = $image->link();
                 $request['photosmall'] = Imgur::size($image->link(), 'l');
         }
+        $tmp = explode('/watch?v=',$request['broadcast_url']);
+        if(!isset($tmp[1])){
+                $tmp = explode('youtu.be/',$request['broadcast_url']);
+        }
+        $request['broadcast_url'] = "https://www.youtube.com/embed/".$tmp[1]."?rel=0&amp;showinfo=0";
         $game->update($request->except('file_photo'));
         return redirect()->route('games.index')->with('success','更新賽事資料成功');
     }
