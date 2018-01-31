@@ -58,7 +58,6 @@
 
             <div class="form-group">
                 <label for="name_en" class="col-md-4 control-label">
-                    <span class="label label-primary">必填</span>
                     <span class="label label-default">不用校名</span>
                     隊伍英文名
                 </label>
