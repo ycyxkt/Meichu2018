@@ -568,7 +568,7 @@ a:focus{
 }
 @media (max-width: 800px){
     .news li a{
-        display: block;
+        display: inline-block;
     }
     .news .news-right{
         display: none;
@@ -807,6 +807,8 @@ a.gameinfo:hover .game-name{
     margin-top: 0.5rem;
     font-size: 0.9rem;
     color: #333;
+    word-wrap:break-word;
+    word-break:normal;
 }
 .card-block .card-link{
     border-top: 1px solid rgba(218, 165, 32, 0.2);

@@ -229,17 +229,19 @@
         </h2>
         <div class="flex-layer">
             @foreach($game->news as $news)
-                <a class="card-block card-news" href="{{ $news->link }}" target="_blank">
+                <div class="card-block card-news">
                     <div class="card-inner">
-                        <div class="card-header">{{ $news->title }}</div>
+                        <a class="card-header" href="{{ $news->link }}" target="_blank">
+                            {{ $news->title }}
+                        </a>
                         <div class="card-subtitle">
-                        {{ $news->group }} / {{ $news->author }}
+                            {{ $news->group }} / {{ $news->author }}
                         </div>
                         <div class="card-info">
-                        {{ $news->content }}
+                            {{ $news->content }}
                         </div>
                     </div>
-                </a>
+                </div>
             @endforeach
         </div>
     </section>
