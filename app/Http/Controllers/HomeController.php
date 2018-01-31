@@ -49,6 +49,20 @@ class HomeController extends Controller
     }
     public function prehome()
     {
-        return view('prehome');
+        $games = \App\Game::select([
+                'name', 'game', 'date', 'time', 'location',
+        ])->whereIn('date', [
+                '2018/03/02', '2018/03/03', '2018/03/04'
+        ])
+        ->orderBy('date','asc')
+        ->orderBy('time','asc')->get()->groupBy('date');
+
+        $gamestmp = \App\Game::where('game','=','bridge')
+                ->get()->first();
+        $gamestmp['date']='2018/03/04';
+        $games['2018-03-04']->prepend($gamestmp);
+
+        $data = compact('games');
+        return view('prehome',$data);
     }
 }
