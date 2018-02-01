@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Cache;
+
 use Illuminate\Http\Request;
 
 use App\Game;
@@ -62,11 +64,15 @@ class HomeController extends Controller
 
     /**
      * 進來到首頁前的「預首頁」
+     *
+     * 從快取中取得資料，如果快取中沒有，就查詢後放到快取中，時間 5 分鐘
      */
     public function prehome()
     {
 
-        $games = $this->gameRepository->getGameSchedule();
+        $games = Cache::remember('GAME:SCHEDULE', 5, function() {
+            return $this->gameRepository->getGameSchedule();
+        });
 
         return view('prehome', compact('games'));
 
