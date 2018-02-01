@@ -23,7 +23,7 @@ class NewsRepository
      */
     public function getNews()
     {
-        return $this->news->orderBy('id','desc')->take(6)->get();
+        return $this->news->orderBy('id', 'desc')->take(6)->get();
     }
 
 }

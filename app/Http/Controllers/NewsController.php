@@ -3,11 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\News;
+use App\Repositories\NewsRepository;
+
 use Auth;
 use Gate;
+use Cache;
 
 class NewsController extends Controller
 {
+
+    /**
+     * Construct
+     */
+    public function __construct()
+    {
+        $this->newsRepository = new NewsRepository(new News);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -147,11 +161,23 @@ class NewsController extends Controller
         return redirect()->route('news.index')->with('error','您沒有權限刪除');
     }
 
-    public function index_front(){
-        $news = \App\News::orderBy('id','desc')
-                ->get();
-        $data = compact('news');
-        return view('news.index', $data);
+    /**
+     * 前端的新聞列表
+     *
+     * @return void
+     */
+    public function index_front()
+    {
+
+        /**
+         * 取得所有新聞
+         */
+       $news = Cache::remember('NEWS:NEWS', 10, function() {
+           return $this->newsRepository->getNews();
+       });
+
+        return view('news.index', compact('news'));
+
     }
 
     public function show_front($id){
