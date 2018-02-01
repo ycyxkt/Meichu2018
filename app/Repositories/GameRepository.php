@@ -70,4 +70,18 @@ class GameRepository
 
     }
 
+    /**
+     * 取得正在進行中的賽稱
+     *
+     * @return Collection
+     */
+    public function getInProgress()
+    {
+        return $this->game->whereIn('status', ['prepare', 'inprogress'])
+            ->orderBy('status','asc')
+            ->orderBy('date','asc')
+            ->orderBy('time','asc')
+            ->get();
+    }
+
 }

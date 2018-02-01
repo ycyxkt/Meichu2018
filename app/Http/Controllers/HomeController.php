@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use App\Game;
 use App\Repositories\GameRepository;
 
+use App\News;
+use App\Repositories\NewsRepository;
+
 class HomeController extends Controller
 {
 
@@ -18,6 +21,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->gameRepository = new GameRepository(new Game);
+        $this->newsRepository = new NewsRepository(new News);
     }
 
     /**
@@ -29,37 +33,35 @@ class HomeController extends Controller
     {
         return view('about');
     }
+
+    /**
+     * 首頁的主畫面
+     */
     public function home()
     {
-        $games_day1 = \App\Game::where('date','=','2018/03/02')
-                ->orderBy('date','asc')
-                ->orderBy('time','asc')
-                ->get();
-        $games_day2 = \App\Game::where('date','=','2018/03/03')
-                ->orderBy('date','asc')
-                ->orderBy('time','asc')
-                ->get();
 
-        $games_day3 = \App\Game::where('date','=','2018/03/04')
-                ->orderBy('date','asc')
-                ->orderBy('time','asc')
-                ->get();
-        $gamestmp = \App\Game::where('game','=','bridge')
-                ->get()->first();
-        $gamestmp['date']='2018/03/04';
-        $games_day3->prepend($gamestmp);
-        $games_top = \App\Game::where(function ($query) {
-                $query->where('status', '=', 'prepare')
-                ->orWhere('status', '=', 'inprogress');})
-                ->orderBy('status','asc')
-                ->orderBy('date','asc')
-                ->orderBy('time','asc')
-                ->get();
-        $news = \App\News::orderBy('id','desc')
-                ->take(6)
-                ->get();
-        $data = compact('games_day1','games_day2','games_day3','games_top','news');
-        return view('home',$data);
+        /**
+         * 取得所有賽程
+         */
+        $games = Cache::remember('GAME:SCHEDULE', 5, function() {
+            return $this->gameRepository->getGameSchedule();
+        });
+
+        /**
+         * 取得正在進行中的賽程
+         */
+        $games_top = Cache::remember('GAME:INPROGRESS', 3, function() {
+            return $this->gameRepository->getInProgress();
+        });
+
+        /**
+         * 取得所有新聞
+         */
+        $news = Cache::remember('NEWS:NEWS', 10, function() {
+            return $this->newsRepository->getNews();
+        });
+
+        return view('home', compact('games', 'games_top', 'news'));
     }
 
     /**
