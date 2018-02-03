@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use DB;
 use Carbon\Carbon;
 use App\Game;
 
@@ -82,13 +83,60 @@ class GameRepository
     }
 
     /**
-     * 取得正在進行中的賽稱
+     * 取得分數
+     *
+     * @return array
+     */
+    public function getScore()
+    {
+        return $this->game->groupBy('status')
+            ->select('status', DB::raw('count(*) as count'))
+            ->where('type', 'official')->pluck('count', 'status');
+    }
+
+    /**
+     * 取得正在進行中的賽程
      *
      * @return Collection
      */
     public function getInProgress()
     {
-        return $this->game->whereIn('status', ['prepare', 'inprogress'])
+        return $this->getByStatus('inprogress');
+    }
+
+    /**
+     * 取得準備中的賽程
+     *
+     * @return Collection
+     */
+    public function getPrepare()
+    {
+        return $this->getByStatus('prepare');
+
+    }
+
+    /**
+     * 取得首頁中，正在 準備中 與 進行中 的賽程
+     *
+     * @return Collection
+     */
+    public function getTrending()
+    {
+        return $this->getByStatus(['prepare', 'inprogress']);
+    }
+
+    /**
+     * 依照給定條件，查詢「狀態」
+     *
+     * @param string|array $status
+     * @return Collection
+     */
+    public function getByStatus($status = null)
+    {
+
+        $builder = (is_array($status)) ? 'whereIn' : 'where';
+
+        return $this->game->$builder('status', $status)
             ->orderBy('status','asc')
             ->orderBy('date','asc')
             ->orderBy('time','asc')

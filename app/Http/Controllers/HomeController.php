@@ -48,10 +48,10 @@ class HomeController extends Controller
         });
 
         /**
-         * 取得正在進行中的賽程
+         * 取得 準備中 & 進行中 的比賽
          */
-        $games_top = Cache::remember('GAME:INPROGRESS', 3, function() {
-            return $this->gameRepository->getInProgress();
+        $games_top = Cache::remember('GAME:TRENDING', 3, function() {
+            return $this->gameRepository->getTrending();
         });
 
         /**
