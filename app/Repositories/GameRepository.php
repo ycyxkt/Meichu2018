@@ -71,6 +71,17 @@ class GameRepository
     }
 
     /**
+     * 依照給予的賽程名稱，取得該賽程列表
+     *
+     * @param string $gamename
+     * @return Game
+     */
+    public function getGame($gamename)
+    {
+        return Game::where('game', $gamename)->first();
+    }
+
+    /**
      * 取得正在進行中的賽稱
      *
      * @return Collection

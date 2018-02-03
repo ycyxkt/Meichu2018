@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Helpers\RenderHelper;
+
 class Game extends Model
 {
     //
@@ -32,4 +34,29 @@ class Game extends Model
     public function news(){
         return $this->hasMany('App\News','game','game');
     }
+
+    /**
+     * {Accessor} 取得該比賽交大的隊伍
+     */
+    public function getTeamNctuAttribute()
+    {
+        return $this->teams()->where('school', 'nctu')->first();
+    }
+
+    /**
+     * {Accessor} 取得該比賽清大的隊伍
+     */
+    public function getTeamNthuAttribute()
+    {
+        return $this->teams()->where('school', 'nthu')->first();
+    }
+
+    /**
+     * {Accessor} 將 info_entry (入場須知) 切割成一個陣列
+     */
+    public function getInfoEntryAttribute($value)
+    {
+        return RenderHelper::lineToArray($value);
+    }
+
 }

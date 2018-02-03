@@ -10,8 +10,20 @@ use Illuminate\Http\File;
 use \Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
 
+use App\Game;
+use App\Repositories\GameRepository;
+
 class GamesController extends Controller
 {
+
+    /**
+     * Construct
+     */
+    public function __construct()
+    {
+        $this->gameRepository = new GameRepository(new Game);
+    }
+
     /**
      * Create a new controller instance.
      *
@@ -64,7 +76,7 @@ class GamesController extends Controller
                 ->orderBy('date','asc')
                 ->orderBy('time','asc')
                 ->get();
-                
+
         $games_day3 = \App\Game::where('date','=','2018/03/04')
                 ->orderBy('date','asc')
                 ->orderBy('time','asc')
@@ -90,8 +102,8 @@ class GamesController extends Controller
         $score_nctu = \App\Game::where('status','=','nctuwin')
                 ->where('type','=','official')
                 ->count();
-        $score_nthu = $score_nthu +($score_draw / 2);       
-        $score_nctu = $score_nctu +($score_draw / 2); 
+        $score_nthu = $score_nthu +($score_draw / 2);
+        $score_nctu = $score_nctu +($score_draw / 2);
         if(now() < '2018-03-02 12:00'){
                 $status = '尚未開始';
         }
@@ -113,14 +125,19 @@ class GamesController extends Controller
         return view('games.index', $data);
     }
 
-    public function show_front($gamename){
-        $game = \App\Game::where('game','=',$gamename)->get()->first();
-        $team_nthu = $game->teams()->where('school','=','NTHU')->get()->first();
-        $team_nctu = $game->teams()->where('school','=','NCTU')->get()->first();
-        $info_entry = trim($game['info_entry']); 
-        $info_entry = explode("\n", $info_entry);
-        $info_entry = array_filter($info_entry, 'trim');
-        $data = compact('game','team_nthu','team_nctu','info_entry');
-        return view('games.show', $data);
+    /**
+     * 前端的賽程列表
+     *
+     * @param string $gamename
+     * @return view
+     */
+    public function show_front($gamename)
+    {
+
+        if ( !$game = $this->gameRepository->getGame($gamename) ) {
+            abort(404);
+        }
+
+        return view('games.show', compact('game') );
     }
 }
