@@ -62,7 +62,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('/m/losts', 'LostsController');
     Route::resource('/m/news', 'NewsController');
     Route::get('/games', 'GamesController@index_front');
-    Route::get('/games/{gamename}', 'GamesController@show_front')->where('gamename', '[a-z]+');
+    Route::get('/games/{gamename}', 'GamesController@show_front')->where('gamename', '[a-z\-]+');
 
     Route::get('/news', 'NewsController@index_front');
     Route::get('/news/{id}', 'NewsController@show_front');
