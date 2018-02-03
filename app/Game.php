@@ -54,9 +54,9 @@ class Game extends Model
     /**
      * {Accessor} 將 info_entry (入場須知) 切割成一個陣列
      */
-    public function getInfoEntryAttribute($value)
+    public function getInfoEntryListAttribute()
     {
-        return RenderHelper::lineToArray($value);
+        return RenderHelper::lineToArray($this->info_entry);
     }
 
 }

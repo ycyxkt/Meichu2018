@@ -114,7 +114,7 @@
                 @if($game->is_ticket=='1')
                     <li>本賽事需憑票入場，<a href="/tickets">點此了解索票方式</a></li>
                 @endif
-                @foreach($game->info_entry as $line)
+                @foreach($game->info_entry_list as $line)
                     <li>{{$line}}</li>
                 @endforeach
             </ul>

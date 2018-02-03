@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 
+use Cache;
 use Imgur;
 use Illuminate\Http\File;
 use \Illuminate\Support\Facades\Storage;
@@ -64,6 +65,12 @@ class GamesController extends Controller
         }
         $request['broadcast_url'] = "https://www.youtube.com/embed/".$tmp[1]."?rel=0&amp;showinfo=0";
         $game->update($request->except('file_photo'));
+
+        /**
+         * 如果內容有更新，刪除快取，強迫重新取得新內容
+         */
+        Cache::forget("GAME:{$game->game}");
+
         return redirect()->route('games.index')->with('success','更新賽事資料成功');
     }
 
@@ -134,9 +141,15 @@ class GamesController extends Controller
     public function show_front($gamename)
     {
 
-        if ( !$game = $this->gameRepository->getGame($gamename) ) {
-            abort(404);
-        }
+        $game = Cache::remember("GAME:{$gamename}", 5, function() use ($gamename) {
+
+            if ( !$game = $this->gameRepository->getGame($gamename) ) {
+                abort(404);
+            }
+
+            return $game;
+
+        });
 
         return view('games.show', compact('game') );
     }
