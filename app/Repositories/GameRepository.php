@@ -52,7 +52,7 @@ class GameRepository
     public function getGameSchedule()
     {
         $games = $this->game->select([
-            'name', 'game', 'date', 'time', 'location',
+            'name', 'game', 'date', 'time', 'location', 'photo', 'photosmall'
         ])->whereIn('date', static::$gameDates)
         ->orderBy('date','asc')->orderBy('time','asc')
         ->get();
