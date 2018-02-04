@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Validator;
+use App\Http\Requests\GameEditRequest;
 
 use Cache;
 use Imgur;
@@ -13,6 +13,7 @@ use \Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
 
 use App\Game;
+use App\Helpers\UrlHelper;
 use App\Repositories\GameRepository;
 
 class GamesController extends Controller
@@ -53,27 +54,38 @@ class GamesController extends Controller
         $data = compact('game');
         return view('m.games.edit', $data);
     }
-    public function update($id, Request $request){
-        $game = \App\Game::findOrFail($id);
-        $validatedData = $request->validate([
-            'date' => 'date|before:"2018-03-05"|after:"2018-03-01"',
-            'score_nthu' => 'nullable|numeric',
-            'score_nctu' => 'nullable|numeric',
-            'score_draw' => 'nullable|numeric',
-            'broadcast_url' => 'nullable|url',
-            'location_url' => 'url',
-            'file_photo' => 'image|mimes:jpeg,png,jpg|max:5000',
-        ]);
-        if($request->hasFile('file_photo')){
-                $image = Imgur::upload($request->file('file_photo'));
-                $request['photo'] = $image->link();
-                $request['photosmall'] = Imgur::size($image->link(), 'l');
+
+    /**
+     * 編輯賽事資訊的頁面
+     *
+     * @param int $id
+     * @param GameEditRequest $request
+     * @return view
+     */
+    public function update($id, GameEditRequest $request)
+    {
+        if ( ! $game = $this->gameRepository->getGameById($id) ) {
+            abort(404);
         }
-        $tmp = explode('/watch?v=',$request['broadcast_url']);
-        if(!isset($tmp[1])){
-                $tmp = explode('youtu.be/',$request['broadcast_url']);
+
+        if ($request->hasFile('file_photo')) {
+            $image = Imgur::upload($request->file('file_photo'));
+            $request['photo'] = $image->link();
+            $request['photosmall'] = Imgur::size($image->link(), 'l');
         }
-        $request['broadcast_url'] = "https://www.youtube.com/embed/".$tmp[1]."?rel=0&amp;showinfo=0";
+
+        /**
+         * 如果有直播網址，檢查是否為 Youtube 格式
+         */
+        if ($request['broadcast_url']) {
+
+            if ( ! $broadcast_url = UrlHelper::getYoutubeEmbed($request['broadcast_url']) )  {
+                return back()->withErrors(['broadcast_url'=> '必須是 Youtube 格式的網址'])->withInput();
+            }
+
+            $request['broadcast_url'] = $broadcast_url;
+        }
+
         $game->update($request->except('file_photo'));
 
         /**
