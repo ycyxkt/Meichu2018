@@ -38,8 +38,18 @@ class GamesController extends Controller
         $data = compact('games');
         return view('m.games.index', $data);
     }
-    public function edit($id){
-        $game = \App\Game::findOrFail($id);
+
+
+    /**
+     * 顯示編輯的頁面
+     *
+     * @param int $id
+     * @return view
+     */
+    public function edit($id)
+    {
+        $game = $this->gameRepository->getGameById($id);
+
         $data = compact('game');
         return view('m.games.edit', $data);
     }

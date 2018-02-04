@@ -93,6 +93,17 @@ class GameRepository
     }
 
     /**
+     * 依照給予的賽程名稱，取得該賽程列表
+     *
+     * @param string $gamename
+     * @return Game
+     */
+    public function getGameById($id)
+    {
+        return $this->game->findOrFail($id);
+    }
+
+    /**
      * 取得分數
      *
      * @return array
