@@ -78,7 +78,7 @@ class GameRepository
      */
     public function getGames()
     {
-        return Game::orderBy('date','asc')->orderBy('time','asc')->get();
+        return $this->game->orderBy('date','asc')->orderBy('time','asc')->get();
     }
 
     /**
@@ -89,7 +89,7 @@ class GameRepository
      */
     public function getGame($gamename)
     {
-        return Game::where('game', $gamename)->first();
+        return $this->game->where('game', $gamename)->first();
     }
 
     /**
