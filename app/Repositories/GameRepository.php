@@ -72,6 +72,16 @@ class GameRepository
     }
 
     /**
+     * 取得所有賽程列表
+     *
+     * @return Collection
+     */
+    public function getGames()
+    {
+        return Game::orderBy('date','asc')->orderBy('time','asc')->get();
+    }
+
+    /**
      * 依照給予的賽程名稱，取得該賽程列表
      *
      * @param string $gamename

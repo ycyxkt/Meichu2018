@@ -27,15 +27,14 @@ class GamesController extends Controller
     }
 
     /**
-     * Create a new controller instance.
+     * 後台的管理首頁，顯示所有賽程
      *
-     * @return void
+     * @return view
      */
+    public function index()
+    {
+        $games = $this->gameRepository->getGames();
 
-    public function index(){
-        $games = \App\Game::orderBy('date','asc')
-                ->orderBy('time','asc')
-                ->get();
         $data = compact('games');
         return view('m.games.index', $data);
     }
