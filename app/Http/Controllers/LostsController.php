@@ -5,14 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Gate;
+use Cache;
 
 use Imgur;
 use Illuminate\Http\File;
 use \Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
 
+use App\Lost;
+use App\Repositories\LostRepository;
+
 class LostsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->lostRepository = new LostRepository(new Lost);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -73,7 +83,7 @@ class LostsController extends Controller
             'file_photo' => 'image|mimes:jpeg,png,jpg|max:5000',
             'content' => 'nullable|string|max:100',
         ]);
-        
+
         if($request->hasFile('file_photo')){
             /*
             $image = Image::make($request->file('file_photo'));
@@ -191,9 +201,18 @@ class LostsController extends Controller
         return redirect()->route('losts.index')->with('error','您沒有權限刪除');
     }
 
+
+    /**
+     * 前台的遺失物列表
+     *
+     * @return view
+     */
     public function index_front()
     {
-        $losts = \App\Lost::orderBy('date','asc')->simplePaginate(20);
+        $losts = Cache::remember('LOST:LOST', 10, function() {
+            return $this->lostRepository->getLosts();
+        });
+
         $data = compact('losts');
         return view('losts', $data);
     }
