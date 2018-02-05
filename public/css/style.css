@@ -772,12 +772,13 @@ a.gameinfo:hover .game-name{
 .card-block .card-image{
     display: block;
     width: 100%;
-    height: auto;
     position: relative;
     overflow: hidden;
     padding: 75% 0 0 0;
     background: rgba(0, 0, 0, 0.05);
     border-radius: 0.3rem 0.3rem 0rem 0rem;
+    background-size: cover;
+    background-position: center;
 }
 .card-block img{
     display: block;
