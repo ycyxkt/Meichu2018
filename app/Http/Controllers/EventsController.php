@@ -120,31 +120,20 @@ class EventsController extends Controller
     }
 
     public function ticket_front(){
-        $tickets_nthu = \App\Event::where('tag','=','清大索票活動')
-                ->orderBy('title','asc')
-                ->orderBy('date','asc')
-                ->get();
-        $tickets_nctu = \App\Event::where('tag','=','交大索票活動')
-                ->orderBy('title','asc')
-                ->orderBy('date','asc')
-                ->get();
+        $tickets = \App\Event::whereIn('tag', array('清大索票活動','交大索票活動'))
+                ->orderBy('date','asc')->orderBy('time','asc')
+                ->get()->groupBy('tag');
 
-        $text_nthu = \App\Text::where('name','=','ticket_nthu')
-                    ->get()->first()->content;
-        $text_nthu = explode("\n", $text_nthu);
-        $text_nthu = array_filter($text_nthu, 'trim');
+        $text = \App\Text::whereIn('name', array('ticket_nthu','ticket_nctu'))
+                ->get()->groupBy('name');
 
-        $text_nctu = \App\Text::where('name','=','ticket_nctu')
-                    ->get()->first()->content;
-        $text_nctu = explode("\n", $text_nctu);
-        $text_nctu = array_filter($text_nctu, 'trim');
-
-        $games = \App\Game::where('is_ticket','=','1')
+        $games_is_ticket = \App\Game::where('is_ticket','=','1')
                 ->orderBy('date','asc')
                 ->orderBy('time','asc')
                 ->select('name','game')
                 ->get();
-        $data = compact('tickets_nthu','tickets_nctu','text_nthu','text_nctu','games');
+                
+        $data = compact('tickets','text','games_is_ticket');
         return view('tickets', $data);
     }
 }
