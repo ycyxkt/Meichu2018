@@ -180,20 +180,23 @@ class NewsController extends Controller
 
     }
 
+    /**
+     * 前端的顯示新聞列表
+     *
+     * @param int $id
+     * @return view
+     */
     public function show_front($id){
-        $news = \App\News::where('tag', '!=', 'news')
-                    ->findOrFail($id);
 
-        $news_prev = \App\News::where('id', '<', $id)
-                    ->where('tag', '!=', 'news')
-                    ->orderBy('id','desc')
-                    ->first();
-        $news_next = \App\News::where('id', '>', $id)
-                    ->where('tag', '!=', 'news')
-                    ->orderBy('id','asc')
-                    ->first();
+        $news = Cache::remember("NEWS:NEWS:{$id}", 5, function() use ($id) {
+            return [
+                'news' => $this->newsRepository->getNewsById($id),
+                'previous' => $this->newsRepository->getPrevious($id),
+                'next' => $this->newsRepository->getNext($id)
+            ];
+        });
 
-        $data = compact('news','news_prev','news_next');
+        $data = compact('news');
         return view('news.show', $data);
     }
 }

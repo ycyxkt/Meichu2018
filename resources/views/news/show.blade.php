@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title',$news->title)
+@section('title',$news['news']->title)
 
 @section('content')
 <section class="introboard">
@@ -10,9 +10,9 @@
 <div class="container">
     <section>
         <div class="infoblock">
-            <div class="news-title">{{ $news->title }}</div>
+            <div class="news-title">{{ $news['news']->title }}</div>
             <div class="news-info">
-                @switch($news->tag)
+                @switch($news['news']->tag)
                     @case('news')
                         <span class="news-tag news-news"><i class="fa fa-tag" aria-hidden="true"></i>
                         新聞</span>
@@ -33,34 +33,34 @@
             </div>
             <div class="news-info">
                 <span class="news-tag news-other"><i class="fa fa-calendar-o" aria-hidden="true"></i>
-                {{ \Carbon\Carbon::parse( $news->created_at )->format('m/d')}}</span>
+                {{ \Carbon\Carbon::parse( $news['news']->created_at )->format('m/d')}}</span>
                 </div>
                 <div class="news-info">
                 <span class="news-tag news-other"><i class="fa fa-users" aria-hidden="true"></i>
-                {{ $news->group }}{{ $news->author!=NULL ? ' / '.$news->author : ''}}</span>
+                {{ $news['news']->group }}{{ $news['news']->author!=NULL ? ' / '.$news['news']->author : ''}}</span>
             </div>
             <div class="news-content">
-                {!! nl2br(e($news->content)) !!}
+                {!! nl2br(e($news['news']->content)) !!}
             </div>
-            
+
             <div class="news-link">
-            @if($news->link != NULL)
-                <a href="{{ $news->link }}" target="_BLANK">相關連結</a>
+            @if($news['news']->link)
+                <a href="{{ $news['news']->link }}" target="_BLANK">相關連結</a>
             @endif
             </div>
         </div>
 
         <div class="pagination-nav infoblock">
             <div class="pagination-nav-prev">
-                @if($news_prev!=NULL)
-                <a href="{{ url('news/'.$news_prev->id) }}">
+                @if($news['previous'])
+                <a href="{{ url('news/'.$news['previous']->id) }}">
                     <i class="fa fa-chevron-left" aria-hidden="true"></i>
                     前一篇<br/>
-                    <span class="pagination-nav-hidden">{{ $news_prev->title }}</span>
+                    <span class="pagination-nav-hidden">{{ $news['previous']->title }}</span>
                 </a>
                 @endif
             </div>
-            
+
             <div class="pagination-nav-index">
                 <a href="/news">
                     <i class="fa fa-th" aria-hidden="true"></i>
@@ -69,11 +69,11 @@
             </div>
 
             <div class="pagination-nav-next">
-                @if($news_next!=NULL)
-                <a href="{{ url('news/'.$news_next->id) }}">
-                    後一篇
+                @if($news['next'])
+                <a href="{{ url('news/'.$news['next']->id) }}">
+                    下一篇
                     <i class="fa fa-chevron-right" aria-hidden="true"></i><br/>
-                    <span class="pagination-nav-hidden">{{ $news_next->title }}</span>
+                    <span class="pagination-nav-hidden">{{ $news['next']->title }}</span>
                 </a>
                 @endif
             </div>
