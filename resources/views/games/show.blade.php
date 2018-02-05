@@ -134,6 +134,7 @@
         </section>
     </div>
 
+    @if($game->type!='notgame')
     <section>
         <h2 class="sec-header">
             <i class="fa fa-users" aria-hidden="true"></i>
@@ -193,8 +194,7 @@
             @endforeach
         </div>
     </section>
-
-
+    @endif
 
     <section>
         <h2 class="sec-header">
@@ -202,9 +202,11 @@
             <span>轉播資訊</span>
         </h2>
         @if($game->is_broadcast=='1')
-        <div class="broadcast-frame">
-            <iframe src="{{ $game->broadcast_url }}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-        </div>
+            @if($game->broadcast_url!=NULL)
+            <div class="broadcast-frame">
+                <iframe src="{{ $game->broadcast_url }}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            </div>
+            @endif
         <div class="broadcast-info">
             <div class="broadcast-group">
                 {!! nl2br(e($game->broadcast_org)) !!}
@@ -214,7 +216,7 @@
             </div>
         </div>
         @else
-            本場賽事不提供轉播服務，歡迎至現場為選手加油！
+            本場賽事不提供線上轉播服務，歡迎至現場為選手加油！
         @endif
     </section>
 
