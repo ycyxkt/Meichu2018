@@ -9,10 +9,11 @@
 </section>
 <div class="container">
     <div class="infoblock">
-        除@foreach($games_is_ticket as $data)<a href="{{ url('games/'.$data->game) }}">{{ $data->name }}</a>@if(!$loop->last)、@endif @endforeach外，<br/>
-        其餘賽事皆為免門票入場，惟詳細入場時間與規則請見各賽事頁面！<br/>
-        請統一於規定入場時間前入場，逾期或離開則票券作廢。<br/>
-        詳細規定請參閱票券背面。
+        除@foreach($games_is_ticket as $data)<a href="{{ url('games/'.$data->game) }}">{{ $data->name }}</a>@if(!$loop->last)、@endif @endforeach
+        <strong>需憑票（賽前免費索票）入場</strong>外，<br/>
+        其餘賽事皆為<strong>免門票入場</strong>，惟詳細入場時間與規則請見各賽事頁面！<br/>
+        請注意，<strong>持某校之票券只能從該校一般觀眾入口進入其座位區，恕無法更換至另一校座位區。</strong><br/>
+        詳細票券使用規則請參閱票券背面。
     </div>
     <div class="flex-layer">
         <section class="flex-50">
