@@ -168,7 +168,7 @@
                 $games['2018-03-02'], $games['2018-03-03'], $games['2018-03-04']
             ] as $game)
             <div class="gameinfo-flex">
-                <div class="game-date">03/02 （五）</div>
+                <div class="game-date">{{ $game[0]->date }}</div>
                 @foreach($game as $data)
                 <a class="gameinfo @if($data->status=='nthuwin') nthu @elseif($data->status=='nctuwin') nctu @elseif($data->status=='draw') draw @elseif($data->status=='stop') stop @endif" href="{{ url('games/'.$data->game) }} ">
                     <div class="gameboard-background"  style="background-image:url({{ $data->photosmall }});"></div>
@@ -192,6 +192,10 @@
                                 <div>
                                     <i class="fa fa-video-camera" aria-hidden="true"></i>
                                     轉播
+                                    @if($data->game=='men-basketball' || $data->game=='women-basketball')
+                                    <i class="fa fa-eercast" aria-hidden="true"></i>
+                                    VR 360
+                                    @endif
                                     @if($data->is_ticket=='1')
                                     <i class="fa fa-ticket" aria-hidden="true"></i>
                                     索票

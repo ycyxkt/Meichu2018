@@ -150,6 +150,10 @@
                                 <div>
                                     <i class="fa fa-video-camera" aria-hidden="true"></i>
                                     轉播
+                                    @if($data->game=='men-basketball' || $data->game=='women-basketball')
+                                    <i class="fa fa-eercast" aria-hidden="true"></i>
+                                    VR 360
+                                    @endif
                                     @if($data->is_ticket=='1')
                                     <i class="fa fa-ticket" aria-hidden="true"></i>
                                     索票
