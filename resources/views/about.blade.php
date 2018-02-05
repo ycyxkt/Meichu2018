@@ -26,8 +26,12 @@
                 戊戌梅竹賽除了10項正式賽外，許多年未舉辦的<a href="games/football-general">足球表演賽（一般組）</a>、<a href="games/football-open">足球友誼賽（公開組）</a>及<a href="games/billiards">撞球表演賽</a>都將再次在戊戌梅竹一較高下，除此之外，<a href="games/football-darts">飛鏢表演賽</a>及<a href="games/softball-open">壘球友誼賽（公開組）</a>則是首次登場，也是不容錯過！
             </p>
             <p>
-                <strong>50周年慶祝活動</strong><br/>
-                適逢梅竹50周年，相關慶祝活動當然少不得，
+                <strong>50周年限量紀念品</strong><br/>
+                適逢梅竹50周年，梅竹籌委會特別推出了限量「吉祥物立體紙雕」，讓大家可以簡單幾個步驟做出屬於自己的熊貓、狐狸！只要在梅竹賽期間至現場觀看任三場比賽並集點，即可一次帶走兩款紙雕！
+            </p>
+            <p>
+                <strong>轉播服務再升級</strong><br/>
+                這次梅竹賽特別和MOD頻道「智林體育台」合作，除了將在羽球、棒球、籃球、排球等賽事導入業界品質的轉播服務，也會將直播畫面導入梅籌粉專、網站，讓你不用再花時間找轉播連結，精采畫面不漏接！
             </p>
         </div>
         
@@ -134,7 +138,7 @@
                 </div>
                 <div class="orginfo-right">
                     <div class="orginfo-info">
-                    協辦學校為網球、棋藝、男籃、女籃等賽事之主場。
+                        協辦學校為網球、棋藝、男籃、女籃等賽事之主場。
                     </div>
                     <div class="orginfo-link">
                         <a href="http://www.nctu.edu.tw/" target="_blank">
@@ -166,7 +170,7 @@
                 </div>
                 <div class="orginfo-right">
                     <div class="orginfo-info">
-                        負責
+                        賽前造勢活動、電競賽、兩校各自賽事紀念品等皆由後援組織所負責。
                     </div>
                     <div class="orginfo-link">
                         <a href="https://www.facebook.com/meichuwin/" target="_blank">
@@ -190,7 +194,7 @@
                 </div>
                 <div class="orginfo-right">
                     <div class="orginfo-info">
-                        現場帶動觀眾，一起為選手為學校加油。
+                        在比賽現場帶動觀眾，一起為選手及學校加油。
                     </div>
                     <div class="orginfo-link">
                         <a href="https://www.facebook.com/%E6%88%8A%E6%88%8C%E6%A2%85%E7%AB%B9%E7%81%AB%E5%8A%9B%E7%8F%AD-1571693219711454/" target="_blank">
