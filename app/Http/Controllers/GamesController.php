@@ -92,6 +92,11 @@ class GamesController extends Controller
          * 如果內容有更新，刪除快取，強迫重新取得新內容
          */
         Cache::forget("GAME:{$game->game}");
+        Cache::forget("GAME:SCHEDULE");
+        Cache::forget("GAME:INPROGRESS");
+        Cache::forget("GAME:PREPARE");
+        Cache::forget("GAME:TRENDING");
+        Cache::forget("GAME:SCORE");
 
         return redirect()->route('games.index')->with('success','更新賽事資料成功');
     }
