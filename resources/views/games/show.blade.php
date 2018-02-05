@@ -142,7 +142,7 @@
         <div class="flex-layer">
             @foreach($game->teams as $team)
             <div class="flex-50 card-block infoblock">
-                @if($team->photo!=NULL)
+                @if($team->photo)
                 <div class="card-image" style="background-image:url({{ $team->photo }});"></div>
                 @endif
                 <div class="card-inner">
