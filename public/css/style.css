@@ -268,10 +268,24 @@ a:focus{
 .intro-fox{
     top: 0px;
     left: 0px;
+    -webkit-transform: translate(-350px, -100px);
+    transform: translate(-350px, -100px);
 }
 .intro-panda{
     right: 0px;
     bottom: 0px;
+    -webkit-transform: translate(350px, 100px);
+    transform: translate(350px, 100px);
+}
+.intro-fox,
+.intro-panda{   
+    -webkit-transition: -webkit-transform 0.5s ease-in;
+    transition: transform 0.5s ease-in;
+}
+.intro-fox.move,
+.intro-panda.move {
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
 }
 @media (max-width: 650px){
     .intro-fox,
