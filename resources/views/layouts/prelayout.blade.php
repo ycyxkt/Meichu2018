@@ -36,5 +36,13 @@
         gtag('config', 'UA-112938427-1');
         </script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                setTimeout(function(){
+                    $(".intro-fox").toggleClass('move');
+                    $(".intro-panda").toggleClass('move');
+                },300);
+            });
+        </script>
     </body>
 </html>

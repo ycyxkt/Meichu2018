@@ -268,24 +268,28 @@ a:focus{
 .intro-fox{
     top: 0px;
     left: 0px;
+    -moz-transform: translate(-350px, -100px);
     -webkit-transform: translate(-350px, -100px);
     transform: translate(-350px, -100px);
 }
 .intro-panda{
     right: 0px;
     bottom: 0px;
+    -moz-transform: translate(350px, 100px);
     -webkit-transform: translate(350px, 100px);
     transform: translate(350px, 100px);
 }
 .intro-fox,
 .intro-panda{   
+    -moz-transition: -moz-transform 0.5s ease-in;
     -webkit-transition: -webkit-transform 0.5s ease-in;
     transition: transform 0.5s ease-in;
 }
 .intro-fox.move,
 .intro-panda.move {
-    -webkit-transform: translate(0px, 0px);
-    transform: translate(0px, 0px);
+    -moz-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
 }
 @media (max-width: 650px){
     .intro-fox,
