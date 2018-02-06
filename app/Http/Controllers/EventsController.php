@@ -8,6 +8,8 @@ use Gate;
 
 use App\Event;
 use App\Repositories\EventRepository;
+use App\Game;
+use App\Repositories\GameRepository;
 
 class EventsController extends Controller
 {
@@ -18,6 +20,7 @@ class EventsController extends Controller
     public function __construct()
     {
         $this->eventRepository = new EventRepository(new Event);
+        $this->gameRepository = new GameRepository(new Game);
     }
 
     /**
@@ -131,6 +134,11 @@ class EventsController extends Controller
         return redirect()->route('events.index')->with('error','您沒有權限刪除');
     }
 
+    /**
+     * 前端的「票務」網頁
+     *
+     * @return view
+     */
     public function ticket_front()
     {
         $tickets = $this->eventRepository->getAskForTickets();
@@ -138,11 +146,7 @@ class EventsController extends Controller
         $text = \App\Text::whereIn('name', array('ticket_nthu','ticket_nctu'))
                 ->get()->groupBy('name');
 
-        $games_is_ticket = \App\Game::where('is_ticket','=','1')
-                ->orderBy('date','asc')
-                ->orderBy('time','asc')
-                ->select('name','game')
-                ->get();
+        $games_is_ticket = $this->gameRepository->getRequiresTicket(1);
 
         $data = compact('tickets','text','games_is_ticket');
         return view('tickets', $data);
