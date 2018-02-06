@@ -76,8 +76,10 @@ class NewsController extends Controller
         ]);
         $request['user_id']=Auth::user()->id;
         \App\News::create($request->all());
-        Cache::forget("NEWS:NEWS");
-        Cache::forget("NEWS:LATESTNEWS");
+
+        /** 更新快取 */
+        Cache::tags("NEWS")->flush();
+
         return redirect()->route('news.index')->with('success','建立消息成功');
     }
 
@@ -144,9 +146,10 @@ class NewsController extends Controller
             'content' => 'nullable|string|max:600',
         ]);
         $news->update($request->all());
-        Cache::forget("NEWS:NEWS");
-        Cache::forget("NEWS:LATESTNEWS");
-        Cache::forget("NEWS:NEWS:{$id}");
+
+        /** 更新快取 */
+        Cache::tags("NEWS")->flush();
+
         return redirect()->route('news.show',$id)->with('success','更新消息成功');
     }
 
@@ -192,7 +195,7 @@ class NewsController extends Controller
 
             /** 如果「有」該頁數的內容，則寫入快取中 (防止亂 try 快取建立很多 key) */
             if ( !!count($news) ) {
-                Cache::put($key, $news, 10);
+                Cache::tags('NEWS')->put($key, $news, 10);
             }
 
         }
@@ -212,7 +215,7 @@ class NewsController extends Controller
      */
     public function show_front($id){
 
-        $news = Cache::remember("NEWS:VIEW:{$id}", 5, function() use ($id) {
+        $news = Cache::tags("NEWS")->remember("NEWS:VIEW:{$id}", 5, function() use ($id) {
             return [
                 'news' => $this->newsRepository->getNewsById($id),
                 'previous' => $this->newsRepository->getPrevious($id),
