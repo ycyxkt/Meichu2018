@@ -70,13 +70,7 @@ class LostsController extends Controller
      */
     public function store(Request $request)
     {
-        $lastid = \App\Lost::latest()->first();
-        if($lastid != NULL){
-            $tmpid = $lastid->id+1;
-        }
-        else{
-            $tmpid = 1;
-        }
+
         $validatedData = $request->validate([
             'title' => 'required|string|max:10',
             'date' => 'date|before:'.date('Y-m-d',strtotime(date('Y-m-d') . '+1 days')).'|after:"2018-01-01"',
@@ -84,21 +78,20 @@ class LostsController extends Controller
             'content' => 'nullable|string|max:100',
         ]);
 
-        if($request->hasFile('file_photo')){
-            /*
-            $image = Image::make($request->file('file_photo'));
-            $image->resize(400, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-            $request['photo'] = 'lost-photo-'.$tmpid.'.'.$request->file('file_photo')->getClientOriginalExtension();
-            $destinationPath = public_path('images');
-            $image->save($destinationPath.'/'.$request['photo']);
-            */
+        /** 如果有上傳圖片的話 */
+        if($request->hasFile('file_photo'))
+        {
             $image = Imgur::upload($request->file('file_photo'));
             $request['photo'] = Imgur::size($image->link(), 'm');
         }
-        $request['user_id']=Auth::user()->id;
-        \App\Lost::create($request->except('file_photo'));
+
+        $request['user_id'] = Auth::user()->id;
+
+        Lost::create($request->except('file_photo'));
+
+        /** 更新快取 */
+        Cache::tags('LOST')->flush();
+
         return redirect()->route('losts.index')->with('success','新增遺失物成功');
     }
 
@@ -155,33 +148,32 @@ class LostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $lost = \App\Lost::findOrFail($id);
-        if (Gate::denies('edit-losts', $lost)) {
+
+        $lost = Lost::findOrFail($id);
+
+        if ( Gate::denies('edit-losts', $lost) ) {
             return redirect()->route('losts.index')->with('error','您沒有權限編輯');
         }
+
         $validatedData = $request->validate([
             'title' => 'required|string|max:10',
             'date' => 'date|before:'.date('Y-m-d',strtotime(date('Y-m-d') . '+1 days')).'|after:"2018-01-01"',
             'file_photo' => 'image|mimes:jpeg,png,jpg|max:5000',
             'content' => 'nullable|string|max:100',
         ]);
-        if($request->hasFile('file_photo')){
-            /*
-            if($lost->photo != NULL && file_exists(public_path('images/').$lost->photo)){
-                unlink(public_path('images/').$lost->photo);
-            }
-            $image = Image::make($request->file('file_photo'));
-            $image->resize(400, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-            $request['photo'] = 'lost-photo-'.$id.'.'.$request->file('file_photo')->getClientOriginalExtension();
-            $destinationPath = public_path('images');
-            $image->save($destinationPath.'/'.$request['photo']);
-            */
+
+        /** 如果有上傳檔案 */
+        if($request->hasFile('file_photo'))
+        {
             $image = Imgur::upload($request->file('file_photo'));
             $request['photo'] = Imgur::size($image->link(), 'm');
         }
+
         $lost->update($request->except('file_photo'));
+
+        /** 更新快取 */
+        Cache::tags('LOST')->flush();
+
         return redirect()->route('losts.show',$id)->with('success','更新遺失物資訊成功');
     }
 
@@ -228,7 +220,7 @@ class LostsController extends Controller
 
             /** 如果「有」該頁數的內容，則寫入快取中 (防止亂 try 快取建立很多 key) */
             if ( !!count($losts) ) {
-                Cache::put($key, $losts, 10);
+                Cache::tags('LOST')->put($key, $losts, 10);
             }
 
         }
