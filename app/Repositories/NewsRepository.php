@@ -23,7 +23,8 @@ class NewsRepository
      */
     public function getLatestNews()
     {
-        return $this->news->orderBy('id', 'desc')->take(6)->get();
+        return $this->news->orderBy('is_sticky', 'desc')
+                ->orderBy('id', 'desc')->take(6)->get();
     }
 
     /**
@@ -33,7 +34,8 @@ class NewsRepository
      */
     public function getNews()
     {
-        return $this->news->orderBy('id', 'desc')->simplePaginate(20);
+        return $this->news->orderBy('is_sticky', 'desc')
+                ->orderBy('id', 'desc')->simplePaginate(20);
     }
 
     /**
