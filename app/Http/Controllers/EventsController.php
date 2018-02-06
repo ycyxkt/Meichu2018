@@ -6,8 +6,20 @@ use Illuminate\Http\Request;
 use Auth;
 use Gate;
 
+use App\Event;
+use App\Repositories\EventRepository;
+
 class EventsController extends Controller
 {
+
+    /**
+     * Construct
+     */
+    public function __construct()
+    {
+        $this->eventRepository = new EventRepository(new Event);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -119,10 +131,9 @@ class EventsController extends Controller
         return redirect()->route('events.index')->with('error','您沒有權限刪除');
     }
 
-    public function ticket_front(){
-        $tickets = \App\Event::whereIn('tag', array('清大索票活動','交大索票活動'))
-                ->orderBy('date','asc')->orderBy('time','asc')
-                ->get()->groupBy('tag');
+    public function ticket_front()
+    {
+        $tickets = $this->eventRepository->getAskForTickets();
 
         $text = \App\Text::whereIn('name', array('ticket_nthu','ticket_nctu'))
                 ->get()->groupBy('name');
@@ -132,7 +143,7 @@ class EventsController extends Controller
                 ->orderBy('time','asc')
                 ->select('name','game')
                 ->get();
-                
+
         $data = compact('tickets','text','games_is_ticket');
         return view('tickets', $data);
     }
