@@ -119,8 +119,9 @@
                         @endif
                     </li>
                 @endforeach
+                
             </ul>
-
+            <a class="news-more" href="/news">查看更多最新消息 >></a>
 
         </section>
         <section class="flex-50">
