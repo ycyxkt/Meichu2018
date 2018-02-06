@@ -20,7 +20,11 @@
     </thead>
     @foreach($news as $data)
     <tr style="@if($data->deleted_at!=NULL) color:#B80; @endif">
-        <th>{{ $data->title }}</th>
+        <th>
+            @if($data->is_sticky == '1')
+                <span class="label label-danger">置頂</span>
+            @endif
+            {{ $data->title }}</th>
         <th>{{ $data->user()->first()->name }}</th>
         <th>
             @switch($data->tag)

@@ -90,6 +90,20 @@
                 </div>
             </div>
 
+            @if(Auth::user()->group == 'admin' || Auth::user()->group == 'committee')
+            <div class="form-group">
+                <label for="is_sticky" class="col-md-4 control-label">
+                    <span class="label label-primary">必填</span>
+                    是否置頂
+                </label>
+
+                <div class="col-md-6"> 
+                    <input id="is_sticky" type="radio" name="is_sticky" value="1" @if($news->is_sticky==true) checked @endif>是
+                    <input id="is_sticky" type="radio" name="is_sticky" value="0" @if($news->is_sticky==false) checked @endif>否
+                </div>
+            </div>
+            @endif
+
             <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                 <label for="content" class="col-md-4 control-label">
                     <span class="label label-default">600字內</span>

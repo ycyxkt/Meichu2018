@@ -16,7 +16,12 @@
 <table class="table table-striped table-hover table-responsive">
     <tr>
         <th>標題</th>
-        <th>{{ $news->title }}</th>
+        <th>
+            @if($news->is_sticky == '1')
+                <span class="label label-danger">置頂</span>
+            @endif
+            {{ $news->title }}
+        </th>
     </tr>
     <tr>
         <th>組織{{ $news->author!=NULL ? ' / 作者' : ''}}</th>
