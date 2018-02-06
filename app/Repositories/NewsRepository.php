@@ -21,9 +21,19 @@ class NewsRepository
      *
      * @return Collection
      */
-    public function getNews()
+    public function getLatestNews()
     {
         return $this->news->orderBy('id', 'desc')->take(6)->get();
+    }
+
+    /**
+     * 取得所有
+     *
+     * @return void
+     */
+    public function getNews()
+    {
+        return $this->news->orderBy('id', 'desc')->simplePaginate(20);
     }
 
     /**

@@ -50,6 +50,32 @@
             </li>
         @endforeach
     </ul>
+
+    @if($news->nextPageUrl()!=NULL || $news->previousPageUrl()!=NULL)
+    <div class="pagination-nav infoblock">
+        <div class="pagination-nav-prev">
+            @if($news->previousPageUrl()!=NULL)
+            <a href="{{ $news->previousPageUrl() }}">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                上一頁
+            </a>
+            @endif
+        </div>
+
+        <div class="pagination-nav-index"></div>
+        
+        <div class="pagination-nav-next">
+            @if($news->nextPageUrl()!=NULL)
+            <a href="{{ $news->nextPageUrl() }}">
+                下一頁
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
+            @endif
+        </div>
+    
+    </div>
+    @endif
+
 </section>
 </div>
 @endsection

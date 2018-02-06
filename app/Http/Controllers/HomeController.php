@@ -57,8 +57,8 @@ class HomeController extends Controller
         /**
          * 取得所有新聞
          */
-        $news = Cache::remember('NEWS:NEWS', 10, function() {
-            return $this->newsRepository->getNews();
+        $news = Cache::remember('NEWS:LATESTNEWS', 10, function() {
+            return $this->newsRepository->getLatestNews();
         });
 
         return view('home', compact('games', 'games_top', 'news'));
