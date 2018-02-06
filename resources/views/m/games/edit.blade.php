@@ -19,9 +19,16 @@
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
 
-            <h2 class="text-center">
-                {{ $game->name }} {{ $game->game }}
-            </h2>
+            <div class="form-group">
+                <h2 class="col-xs-8 col-md-4 col-md-offset-4">
+                    {{ $game->name }} {{ $game->game }}
+                </h2>
+                <div class="col-xs-4 col-md-2" style="margin-top:22px;">
+                    <button type="submit" class="btn btn-primary">
+                        更新資訊
+                    </button>
+                </div>
+            </div>
 
             <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                 <label for="date" class="col-md-4 control-label">
