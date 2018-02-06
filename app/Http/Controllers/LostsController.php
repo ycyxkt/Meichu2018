@@ -207,11 +207,34 @@ class LostsController extends Controller
      *
      * @return view
      */
-    public function index_front()
+    public function index_front(Request $request)
     {
-        $losts = Cache::remember('LOST:LOST', 10, function() {
-            return $this->lostRepository->getLosts();
-        });
+
+        /**
+         * 判斷傳進來的 ?page={num} 是否為數字，若不為數字或為0，則一律顯示第1頁
+         */
+        $page = ( is_numeric($request->page) && ($request->page > 0) )
+            ? $request->page
+            : "1";
+
+        $key = "LOST:PAGE:{$page}";
+
+        /**
+         * 如果「沒有」這個 key，到資料庫中抓取
+         */
+        if ( false === Cache::has($key) ) {
+
+            $losts = $this->lostRepository->getLosts();
+
+            /** 如果「有」該頁數的內容，則寫入快取中 (防止亂 try 快取建立很多 key) */
+            if ( !!count($losts) ) {
+                Cache::put($key, $losts, 10);
+            }
+
+        }
+        else {
+            $losts = Cache::get($key);
+        }
 
         $data = compact('losts');
         return view('losts', $data);
