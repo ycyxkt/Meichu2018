@@ -129,7 +129,7 @@
                 <div class="game-date">{{ $game[0]->date }}</div>
                 @foreach($game as $data)
                 <a class="gameinfo @if($data->status=='nthuwin') nthu @elseif($data->status=='nctuwin') nctu @elseif($data->status=='draw') draw @elseif($data->status=='stop') stop @endif" href="{{ url('games/'.$data->game) }} ">
-                    <div class="gameboard-background"  style="background-image:url({{ $data->photosmall }});"></div>
+                    <div class="gameboard-background"  style="background-image:url({{ $data->photosmall }}); @if($data->game=='football-general' || $data->game=='football-open') background-position:top;@endif"></div>
                     @if($data->status=='inprogress')
                     <div class="game-status inprogress">進行中</div>
                     @elseif($data->status=='prepare')
