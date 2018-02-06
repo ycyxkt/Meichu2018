@@ -76,6 +76,8 @@ class NewsController extends Controller
         ]);
         $request['user_id']=Auth::user()->id;
         \App\News::create($request->all());
+        Cache::forget("NEWS:NEWS");
+        Cache::forget("NEWS:LATESTNEWS");
         return redirect()->route('news.index')->with('success','建立消息成功');
     }
 
@@ -142,6 +144,9 @@ class NewsController extends Controller
             'content' => 'nullable|string|max:600',
         ]);
         $news->update($request->all());
+        Cache::forget("NEWS:NEWS");
+        Cache::forget("NEWS:LATESTNEWS");
+        Cache::forget("NEWS:NEWS:{$id}");
         return redirect()->route('news.show',$id)->with('success','更新消息成功');
     }
 
