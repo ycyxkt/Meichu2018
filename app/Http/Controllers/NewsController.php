@@ -40,7 +40,7 @@ class NewsController extends Controller
         else {
             $query = \App\News::where('user_id', '=', Auth::user()->id);
         }
-        $news = $query->orderBy('id','asc')
+        $news = $query->orderBy('is_sticky','desc')->orderBy('id','asc')
                 ->get();
         $data = compact('news');
         return view('m.news.index', $data);
