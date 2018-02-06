@@ -171,15 +171,34 @@ class NewsController extends Controller
      *
      * @return void
      */
-    public function index_front()
+    public function index_front(Request $request)
     {
 
         /**
-         * 取得所有新聞
+         * 判斷傳進來的 ?page={num} 是否為數字，若不為數字或為0，則一律顯示第1頁
          */
-       $news = Cache::remember('NEWS:NEWS', 10, function() {
-           return $this->newsRepository->getNews();
-       });
+        $page = ( is_numeric($request->page) && ($request->page > 0) )
+            ? $request->page
+            : "1";
+
+        $key = "NEWS:PAGE:{$page}";
+
+        /**
+         * 如果「沒有」這個 key，到資料庫中抓取
+         */
+        if ( false === Cache::has($key) ) {
+
+            $news = $this->newsRepository->getNews();
+
+            /** 如果「有」該頁數的內容，則寫入快取中 (防止亂 try 快取建立很多 key) */
+            if ( !!count($news) ) {
+                Cache::put($key, $news, 10);
+            }
+
+        }
+        else {
+            $news = Cache::get($key);
+        }
 
         return view('news.index', compact('news'));
 
@@ -193,7 +212,7 @@ class NewsController extends Controller
      */
     public function show_front($id){
 
-        $news = Cache::remember("NEWS:NEWS:{$id}", 5, function() use ($id) {
+        $news = Cache::remember("NEWS:VIEW:{$id}", 5, function() use ($id) {
             return [
                 'news' => $this->newsRepository->getNewsById($id),
                 'previous' => $this->newsRepository->getPrevious($id),
