@@ -11,6 +11,16 @@
     <section>
         <div class="infoblock">
             <div class="news-title">{{ $news['news']->title }}</div>
+            
+            @if($news['news']->is_sticky == '1')
+            <div class="news-info">
+                <span class="news-tag news-games">
+                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                    置頂
+                </span>
+            </div>
+            @endif
+            
             <div class="news-info">
                 @switch($news['news']->tag)
                     @case('news')

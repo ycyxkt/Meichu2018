@@ -74,21 +74,40 @@
                 @endif
                 @foreach($news as $data)
                     <li>
+                    
                         {{ \Carbon\Carbon::parse( $data->created_at )->format('m/d')}}
+                        
                         @switch($data->tag)
                             @case('news')
-                                <span class="news-tag news-news">新聞</span>
+                                <span class="news-tag news-news">
+                                @if($data->is_sticky == '1')
+                                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                                @endif
+                                新聞</span>
                             @break
                             @case('ann_events')
-                                <span class="news-tag news-events">活動公告</span>
+                                <span class="news-tag news-events">
+                                @if($data->is_sticky == '1')
+                                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                                @endif
+                                活動公告</span>
                             @break
                             @case('ann_games')
-                                <span class="news-tag news-games">賽事公告</span>
+                                <span class="news-tag news-games">
+                                @if($data->is_sticky == '1')
+                                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                                @endif
+                                賽事公告</span>
                             @break
                             @case('other')
-                                <span class="news-tag news-other">其他</span>
+                                <span class="news-tag news-other">
+                                @if($data->is_sticky == '1')
+                                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                                @endif
+                                其他</span>
                             @break
                         @endswitch
+                        
                         @if($data->tag != 'news')
                             <a href="{{ url('news/'.$data->id) }}" class="newstitle">
                             {{ $data->title }}</a>
