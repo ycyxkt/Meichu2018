@@ -23,7 +23,7 @@
 
             <p>
                 <strong>梅竹賽場新面孔</strong><br/>
-                戊戌梅竹賽除了10項正式賽外，許多年未舉辦的<a href="games/football-general">足球表演賽（一般組）</a>、<a href="games/football-open">足球友誼賽（公開組）</a>及<a href="games/billiards">撞球表演賽</a>都將再次在戊戌梅竹一較高下，除此之外，<a href="games/football-darts">飛鏢表演賽</a>及<a href="games/softball-open">壘球友誼賽（公開組）</a>則是首次登場，也是不容錯過！
+                戊戌梅竹賽除了10項正式賽外，許多年未舉辦的<a href="games/football-general">足球表演賽（一般組）</a>、<a href="games/football-open">足球友誼賽（公開組）</a>及<a href="games/billiards">撞球表演賽</a>都將再次在戊戌梅竹一較高下，除此之外，<a href="games/darts">飛鏢表演賽</a>及<a href="games/softball-open">壘球友誼賽（公開組）</a>則是首次登場，也是不容錯過！
             </p>
             <p>
                 <strong>50周年限量紀念品</strong><br/>
@@ -81,7 +81,7 @@
                         由兩校學生所組成，負責梅竹賽事之籌辦。
                     </div>
                     <div class="orginfo-link">
-                        <a href="https://www.facebook.com/%E6%A2%85%E7%AB%B9%E7%B1%8C%E5%82%99%E5%A7%94%E5%93%A1%E6%9C%83-158800937594805/" target="_blank">
+                        <a href="https://www.facebook.com/MeiChuGamePreparatoryCommittee/" target="_blank">
                             <i class="fa fa-facebook-official"></i>
                             Facebook
                         </a>

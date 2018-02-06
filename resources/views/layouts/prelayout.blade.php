@@ -13,9 +13,9 @@
 
         <link href="https://fonts.googleapis.com/css?family=Signika+Negative" rel="stylesheet">
         
-        <meta name="description" content="戊戌梅竹官方網站，提供賽程、票務、戰況、轉播等相關賽事即時資訊。">
+        <meta name="description" content="戊戌梅竹官方網站，提供賽程、票務、戰況、轉播等梅竹賽之即時資訊。">
         <meta name="og:title" content="@yield('title') - 戊戌梅竹 | 2018 Meichu Games">
-        <meta name="og:description" content="戊戌梅竹官方網站，提供賽程、票務、戰況、轉播等相關賽事即時資訊。">
+        <meta name="og:description" content="戊戌梅竹官方網站，提供賽程、票務、戰況、轉播等梅竹賽之即時資訊。">
         <meta name="og:site_name" content="戊戌梅竹 | 2018 Meichu Games">
         <meta name="og:type" content="website">
         <meta property="og:url" content=" https://meichu.games">

@@ -46,7 +46,7 @@
                 <div class="card-link">
                     
                     @if($data->group == '梅竹賽籌備委員會')
-                        <a href="https://www.facebook.com/%E6%A2%85%E7%AB%B9%E7%B1%8C%E5%82%99%E5%A7%94%E5%93%A1%E6%9C%83-158800937594805/" target="_blank">
+                        <a href="https://www.facebook.com/MeiChuGamePreparatoryCommittee/" target="_blank">
                     @elseif($data->group == '清大梅竹工作會')
                         <a href="https://www.facebook.com/meichuwin/" target="_blank">
                     @elseif($data->group == '交大梅竹後援會')
