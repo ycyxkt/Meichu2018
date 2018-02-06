@@ -70,11 +70,8 @@
                         <option value=""></option>
                         @switch(Auth::user()->group)
                             @case('committee')
-                                @if(Auth::user()->school == 'NCTU')
-                                    <option value="交大索票活動">交大索票活動</option>
-                                @elseif(Auth::user()->school == 'NTHU')
-                                    <option value="清大索票活動">清大索票活動</option>
-                                @endif
+                                <option value="清大索票活動">清大索票活動</option>
+                                <option value="交大索票活動">交大索票活動</option>
                                 <option value="賽事相關活動">賽事相關活動</option>
                                 @break
                             @case('admin')
