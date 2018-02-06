@@ -165,4 +165,20 @@ class GameRepository
             ->get();
     }
 
+
+    /**
+     * 是否需要票
+     *
+     * @param integer $requires 是否需要票入場 0不需要/1需要
+     * @return Collection
+     */
+    public function getRequiresTicket($requires = 1)
+    {
+
+        return $this->game->where('is_ticket', $requires)
+            ->orderBy('date','asc')->orderBy('time','asc')
+            ->select('name','game')
+            ->get();
+    }
+
 }

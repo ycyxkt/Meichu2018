@@ -21,20 +21,22 @@
                 <i class="fa fa-ticket" aria-hidden="true"></i>
                 <span>清華大學 NTHU</span>
             </h2>
-            @foreach($tickets['清大索票活動'] as $data)
-            <div class="ticketinfo">
-                <div class="ticketinfo-left">
-                    {{ \Carbon\Carbon::parse( $data->date )->format('m/d')}} {{ \Carbon\Carbon::parse( $data->time )->format('H:i')}}
-                </div>
-                <div class="ticketinfo-right">
-                    <div class="title">
-                        {{ $data->title }}
+            @isset($tickets['清大索票活動'])
+                @foreach($tickets['清大索票活動'] as $data)
+                <div class="ticketinfo">
+                    <div class="ticketinfo-left">
+                        {{ \Carbon\Carbon::parse( $data->date )->format('m/d')}} {{ \Carbon\Carbon::parse( $data->time )->format('H:i')}}
                     </div>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    {{ $data->location }}
+                    <div class="ticketinfo-right">
+                        <div class="title">
+                            {{ $data->title }}
+                        </div>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        {{ $data->location }}
+                    </div>
                 </div>
-            </div>
-            @endforeach
+                @endforeach
+            @endisset
             <div class="infoblock">
                 <h4 class="infoblock-title">
                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
@@ -52,20 +54,22 @@
                 <i class="fa fa-ticket" aria-hidden="true"></i>
                 <span>交通大學 NCTU</span>
             </h2>
-            @foreach($tickets['交大索票活動'] as $data)
-            <div class="ticketinfo">
-                <div class="ticketinfo-left">
-                    {{ \Carbon\Carbon::parse( $data->date )->format('m/d')}} {{ \Carbon\Carbon::parse( $data->time )->format('H:i')}}
-                </div>
-                <div class="ticketinfo-right">
-                    <div class="title">
-                        {{ $data->title }}
+            @isset($tickets['交大索票活動'])
+                @foreach($tickets['交大索票活動'] as $data)
+                <div class="ticketinfo">
+                    <div class="ticketinfo-left">
+                        {{ \Carbon\Carbon::parse( $data->date )->format('m/d')}} {{ \Carbon\Carbon::parse( $data->time )->format('H:i')}}
                     </div>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    {{ $data->location }}
+                    <div class="ticketinfo-right">
+                        <div class="title">
+                            {{ $data->title }}
+                        </div>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        {{ $data->location }}
+                    </div>
                 </div>
-            </div>
-            @endforeach
+                @endforeach
+            @endisset
             <div class="infoblock">
                 <h4 class="infoblock-title">
                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
