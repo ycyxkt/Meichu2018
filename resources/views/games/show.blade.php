@@ -246,5 +246,23 @@
         </div>
     </section>
     @endif
+
+        <div class="pagination-nav infoblock">
+            <div class="pagination-nav-prev">
+
+            </div>
+
+            <div class="pagination-nav-index">
+                <a href="/games">
+                    <i class="fa fa-th" aria-hidden="true"></i>
+                    所有賽事
+                </a>
+            </div>
+
+            <div class="pagination-nav-next">
+
+            </div>
+        </div>
+
 </div>
 @endsection
