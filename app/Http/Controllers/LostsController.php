@@ -103,16 +103,16 @@ class LostsController extends Controller
      */
     public function show($id)
     {
-        if(Auth::user()->group == 'admin'){
-            $lost = \App\Lost::withTrashed()
-                    ->find($id);
-        }
-        else{
-            $lost = \App\Lost::find($id);
-        }
+
+        $lost = ( 'admin' === Auth::user()->group )
+            ? $this->lostRepository->getLostWithTrashed($id)
+            : $this->lostRepository->getLost($id);
+
+
         if (Gate::denies('edit-losts', $lost)) {
             return redirect()->route('losts.index')->with('error','您沒有權限查看');
         }
+
         $data = compact('lost');
 
         return view('m.losts.show', $data);
