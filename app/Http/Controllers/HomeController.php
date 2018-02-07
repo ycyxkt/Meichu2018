@@ -33,6 +33,10 @@ class HomeController extends Controller
     {
         return view('about');
     }
+    public function song()
+    {
+        return view('song');
+    }
 
     /**
      * 首頁的主畫面
