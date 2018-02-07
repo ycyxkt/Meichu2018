@@ -13,7 +13,7 @@ class AddIsStickyInNewsTable extends Migration
      */
     public function up()
     {
-        Schema::table('News', function (Blueprint $table) {
+        Schema::table('news', function (Blueprint $table) {
             //
             $table->boolean('is_sticky')->default(false);
         });
@@ -26,7 +26,7 @@ class AddIsStickyInNewsTable extends Migration
      */
     public function down()
     {
-        Schema::table('News', function (Blueprint $table) {
+        Schema::table('news', function (Blueprint $table) {
             //
             $table->dropColumn('is_sticky');
         });
