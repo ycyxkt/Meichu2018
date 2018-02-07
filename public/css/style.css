@@ -891,6 +891,98 @@ a.gameinfo:hover .game-name{
         border-bottom: 1px solid rgba(34, 34, 34, 0.4);
     }
 }
+
+/* Event Info in Events Page*/
+.event-layer{
+    margin: 0.7rem 0;
+}
+.event-left{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.event-layer .event-right{
+    display: flex;
+    flex-direction: column;
+    padding-left: 0.5rem;
+    margin-left: 0.5rem;
+    border-left: 1.5px solid rgba(34, 34, 34, 0.4);
+}
+@media (min-width: 800px){
+    .event-layer{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .event-layer .event-left{
+        min-width: 15%;
+        text-align: right;
+    }
+}
+@media (min-width: 1000px){
+    .event-layer .event-left{
+        min-width: 25%;
+    }
+}
+@media (max-width: 800px){
+    .event-layer{
+        display: block;
+    }
+}
+
+.event-info{
+    margin: 0.5rem 0;
+}
+@media (min-width: 650px){
+    .event-info{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.event-tag{
+    color: #333;
+    font-size: 0.7rem;
+    padding: 3px 6px;
+    margin-right: 0.3rem;
+    border-radius: 4px;
+    font-weight: normal;
+    min-width: 63px;
+    text-align: center;
+}
+.event-tag.event-nctu{
+    background-color: rgba(128, 128, 255, 0.7);
+}
+.event-tag.event-nthu{
+    background-color: rgba(223, 128, 255, 0.7);
+}
+.event-tag.event-both{
+    background-color: rgba(255, 191, 128, 0.7);
+}
+.event-tag.event-games{
+    background-color: rgba(255, 128, 128, 0.7);
+}
+
+.event-info .event-title{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.event-info .event-title > a{
+    color: #222;
+}
+.event-info .event-title > a:hover{
+    color: #007085;
+}
+.event-info .event-detail{
+    font-size: 0.9rem;
+    color: #666;
+}
+.event-info .event-detail > span{
+    padding-right:0.5rem;
+}
+
+
+
 /* Game History *//*
 .game-history{
     height: 100px;

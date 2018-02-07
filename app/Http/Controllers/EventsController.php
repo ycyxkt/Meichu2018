@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Cache;
 use Illuminate\Http\Request;
 use Auth;
 use Gate;
@@ -77,6 +78,8 @@ class EventsController extends Controller
         ]);
         $request['user_id']=Auth::user()->id;
         \App\Event::create($request->all());
+
+        Cache::forget("EVENT:ALL");
         return redirect()->route('events.index')->with('success','建立活動成功');
     }
 
@@ -115,6 +118,8 @@ class EventsController extends Controller
             'link' => 'nullable|url',
         ]);
         $event->update($request->all());
+
+        Cache::forget("EVENT:ALL");
         return redirect()->route('events.index')->with('success','更新活動資訊成功');
     }
 
@@ -129,6 +134,8 @@ class EventsController extends Controller
         $events = \App\Event::findOrFail($id);
         if (Gate::allows('edit-events', $events)) {
             $events->delete();
+            
+            Cache::forget("EVENT:ALL");
             return redirect()->route('events.index')->with('success','刪除活動成功');
         }
         return redirect()->route('events.index')->with('error','您沒有權限刪除');
@@ -150,5 +157,19 @@ class EventsController extends Controller
 
         $data = compact('tickets','text','games_is_ticket');
         return view('tickets', $data);
+    }
+
+    /**
+     * 前端的「系列活動」網頁
+     *
+     * @return view
+     */
+    public function event_front()
+    {
+        $events = Cache::remember('EVENT:ALL', 10, function() {
+            return $this->eventRepository->getEvents();
+        });
+
+        return view('events', compact('events'));
     }
 }
