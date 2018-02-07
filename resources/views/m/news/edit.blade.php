@@ -22,7 +22,7 @@
             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                 <label for="title" class="col-md-4 control-label">
                     <span class="label label-primary">必填</span>
-                    <span class="label label-default">20字內</span>
+                    <span class="label label-default">80字內</span>
                     標題
                 </label>
 

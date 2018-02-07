@@ -70,7 +70,7 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required||string|max:20',
+            'title' => 'required||string|max:80',
             'link' => 'nullable|url',
             'content' => 'nullable|string|max:600',
         ]);
@@ -141,7 +141,7 @@ class NewsController extends Controller
             return redirect()->route('news.index')->with('error','您沒有權限編輯');
         }
         $validatedData = $request->validate([
-            'title' => 'required||string|max:20',
+            'title' => 'required||string|max:80',
             'link' => 'nullable|url',
             'content' => 'nullable|string|max:600',
         ]);
