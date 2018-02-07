@@ -13,7 +13,7 @@ class AddIsVr360AndVr360UrlAndVr360InfoInGamesTable extends Migration
      */
     public function up()
     {
-        Schema::table('Games', function (Blueprint $table) {
+        Schema::table('games', function (Blueprint $table) {
             //
             $table->boolean('is_vr360')->default(false);
             $table->string('vr360_url')->nullable();
@@ -28,7 +28,7 @@ class AddIsVr360AndVr360UrlAndVr360InfoInGamesTable extends Migration
      */
     public function down()
     {
-        Schema::table('Games', function (Blueprint $table) {
+        Schema::table('games', function (Blueprint $table) {
             //
             $table->dropColumn('is_vr360');
             $table->dropColumn('vr360_url');
