@@ -89,6 +89,14 @@ class GamesController extends Controller
 
             $request['broadcast_url'] = $broadcast_url;
         }
+        if ($request['vr360_url']) {
+
+            if ( ! $vr360_url = UrlHelper::getYoutubeEmbed($request['vr360_url']) )  {
+                return back()->withErrors(['vr360_url'=> '必須是 Youtube 格式的網址'])->withInput();
+            }
+
+            $request['vr360_url'] = $vr360_url;
+        }
 
         $game->update($request->except('file_photo'));
 

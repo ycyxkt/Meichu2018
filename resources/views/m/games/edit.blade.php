@@ -235,6 +235,44 @@
             </div>
 
             <div class="form-group">
+                <label for="is_vr360" class="col-md-4 control-label">
+                    <span class="label label-primary">必填</span>
+                    是否有VR 360轉播
+                </label>
+
+                <div class="col-md-6">
+                    <input id="is_vr360" type="radio" name="is_vr360" value="1" @if($game->is_vr360==true) checked @endif>是
+                    <input id="is_vr360" type="radio" name="is_vr360" value="0" @if($game->is_vr360==false) checked @endif>否
+                </div>
+            </div>
+
+            <div class="form-group{{ $errors->has('vr360_url') ? ' has-error' : '' }}">
+                <label for="vr360_url" class="col-md-4 control-label">
+                    <span class="label label-default">youtube網址</span>
+                    VR 360轉播網址
+                </label>
+
+                <div class="col-md-6">
+                    <input id="vr360_url" type="url" class="form-control" name="vr360_url" value="{{ $game->vr360_url }}">
+                    @if ($errors->has('vr360_url'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('vr360_url') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="vr360_info" class="col-md-4 control-label">
+                    VR 360轉播資訊
+                </label>
+
+                <div class="col-md-6">
+                    <textarea id="vr360_info" class="form-control" name="vr360_info" rows="3">{{ $game->vr360_info }}
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label class="col-md-4 control-label">賽事目前照片</label>
 
                 <div class="col-md-6 form-control-static">
