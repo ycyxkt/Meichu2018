@@ -146,7 +146,7 @@
             ] as $game)
 
             <div class="gameinfo-flex">
-                <div class="game-date">{{ $game[0]->date }}</div>
+                <div class="game-date">{{ \Carbon\Carbon::parse( $game[0]->date )->format('m/d')}}</div>
                 @foreach($game as $data)
                 <a class="gameinfo @if($data->status=='nthuwin') nthu @elseif($data->status=='nctuwin') nctu @elseif($data->status=='draw') draw @elseif($data->status=='stop') stop @endif" href="{{ url('games/'.$data->game) }} ">
                     <div class="gameboard-background"  style="background-image:url({{ $data->photosmall }}); @if($data->game=='football-general' || $data->game=='football-open') background-position:top;@endif"></div>
