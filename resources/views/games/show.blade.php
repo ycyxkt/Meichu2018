@@ -144,7 +144,9 @@
             @foreach($game->teams as $team)
             <div class="flex-50 card-block infoblock">
                 @if($team->photo)
-                <div class="card-image" style="background-image:url({{ $team->photo }});"></div>
+                <div class="card-image">
+                    <img src="{{ $team->photo }}">
+                </div>
                 @endif
                 <div class="card-inner">
                     <div class="card-header">
