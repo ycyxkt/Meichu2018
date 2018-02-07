@@ -27,6 +27,9 @@ class Game extends Model
         'broadcast_url',
         'broadcast_org',
         'broadcast_anchor',
+        'is_vr360',
+        'vr360_url',
+        'vr360_info',
     ];
     public function teams(){
         return $this->hasMany('App\Team','game','game');

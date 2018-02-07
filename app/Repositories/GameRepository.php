@@ -53,7 +53,7 @@ class GameRepository
     {
         $games = $this->game->select([
             'name', 'game', 'date', 'time', 'location', 'photosmall',
-            'is_ticket', 'is_broadcast', 'status', 'score_nthu', 'score_nctu'
+            'is_ticket', 'is_broadcast', 'is_vr360', 'status', 'score_nthu', 'score_nctu'
         ])->whereIn('date', static::$gameDates)
         ->orderBy('date','asc')->orderBy('time','asc')
         ->get();

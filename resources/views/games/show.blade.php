@@ -220,6 +220,28 @@
         @endif
     </section>
 
+    @if($game->is_vr360 == '1')
+    <section>
+        <h2 class="sec-header">
+            <i class="fa fa-eercast" aria-hidden="true"></i>
+            <span>VR 360資訊</span>
+        </h2>
+        
+        @if($game->vr360_url!=NULL)
+        <div class="broadcast-frame">
+            <iframe src="{{ $game->vr360_url }}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+        </div>
+        @endif
+        <div class="broadcast-info">
+            <div class="broadcast-group">
+                {!! nl2br(e($game->vr360_info)) !!}
+            </div>
+            <div class="broadcast-anchor">
+                本轉播為VR 360環景轉播，無主播球評播報。
+            </div>
+        </div>
+    </section>
+    @endif
 
     @if(!$game->news->isEmpty())
     <section>

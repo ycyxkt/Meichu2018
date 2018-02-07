@@ -30,6 +30,7 @@ class GameEditRequest extends FormRequest
             'score_nctu' => 'nullable|numeric',
             'score_draw' => 'nullable|numeric',
             'broadcast_url' => 'nullable|url',
+            'vr360_url' => 'nullable|url',
             'location_url' => 'url',
             'file_photo' => 'image|mimes:jpeg,png,jpg|max:5000',
         ];
