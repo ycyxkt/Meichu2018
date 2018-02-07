@@ -67,6 +67,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/news', 'NewsController@index_front');
     Route::get('/news/{id}', 'NewsController@show_front');
     Route::get('/tickets', 'EventsController@ticket_front');
+    Route::get('/events', 'EventsController@event_front');
     Route::get('/about', 'HomeController@about');
 
     Route::get('/losts', 'LostsController@index_front');

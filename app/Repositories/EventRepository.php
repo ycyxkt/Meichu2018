@@ -32,4 +32,15 @@ class EventRepository
         ->get()->groupBy('tag');
     }
 
+    /**
+     * 取得所有活動
+     *
+     * @return Collection
+     */
+    public function getEvents()
+    {
+        return $this->event->orderBy('date','asc')->orderBy('time','asc')
+                ->get()->groupBy('date');
+    }
+
 }
