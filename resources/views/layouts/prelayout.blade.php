@@ -19,6 +19,7 @@
         <meta name="og:site_name" content="戊戌梅竹 | 2018 Meichu Games">
         <meta name="og:type" content="website">
         <meta property="og:url" content=" https://meichu.games">
+        <meta property='og:image' content="{{ asset('image/screenshot.png') }}">
     </head>
     <body>
         @yield('content')
