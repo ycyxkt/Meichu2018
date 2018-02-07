@@ -534,6 +534,9 @@ a:focus{
     font-size: 0.7em;
     color: #666;
 }
+.orginfo .orginfo-link > a{
+    padding-right: 0.5rem;
+}
 
 /* Ticket Info in Tickets Page*/
 .ticketinfo{
