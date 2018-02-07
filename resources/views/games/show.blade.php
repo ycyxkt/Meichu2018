@@ -221,24 +221,34 @@
     </section>
 
 
-    @if(!$game->news->isEmpty())
+    @if(!$gamenews->isEmpty())
     <section>
         <h2 class="sec-header">
             <i class="fa fa-camera" aria-hidden="true"></i>
-            <span>媒體報導</span>
+            <span>相關公告 / 媒體報導</span>
         </h2>
-        <div class="flex-layer">
-            @foreach($game->news as $news)
+        <div class="flex-layer news-flex">
+            @foreach($gamenews as $news)
                 <div class="card-block card-news">
                     <div class="card-inner">
-                        <a class="card-header" href="{{ $news->link }}" target="_blank">
-                            {{ $news->title }}
-                        </a>
+                        @if( 'news' != $news->tag)
+                            <a class="card-header" href="{{ url('news/'.$news->id) }}">
+                                {{ $news->title }}
+                            </a>
+                        @elseif( $news->link != NULL)
+                            <a class="card-header" href="{{ $news->link }}" target="_blank">
+                                {{ $news->title }}
+                            </a>
+                        @else
+                            <div class="card-header">
+                                {{ $news->title }}
+                            </div>
+                        @endif
                         <div class="card-subtitle">
                             {{ $news->group }} / {{ $news->author }}
                         </div>
                         <div class="card-info">
-                            {{ $news->content }}
+                            {!! nl2br(e($news->content)) !!}
                         </div>
                     </div>
                 </div>

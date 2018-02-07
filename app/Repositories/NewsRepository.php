@@ -77,6 +77,16 @@ class NewsRepository
             ->first();
     }
 
-
+    /**
+     * 依照給予的賽程名稱，取得該賽程新聞
+     *
+     * @param string $gamename
+     * @return void
+     */
+    public function getGameNews($gamename)
+    {
+        return $this->news->where('game','=',$gamename)
+                ->orderBy('is_sticky', 'desc')->orderBy('id', 'desc')->get();
+    }
 
 }

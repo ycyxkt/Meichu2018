@@ -776,6 +776,9 @@ a.gameinfo:hover .game-name{
 
 /* Cards in Games Show & Losts Page*/
 @media (min-width: 650px){
+    .news-flex{
+        justify-content: flex-start;
+    }
     .card-news{
         width: 30%;
         max-height: 230px;
@@ -783,6 +786,12 @@ a.gameinfo:hover .game-name{
     }
     .card-losts{
         width: 30%;
+    }
+}
+@media (max-width: 650px){
+    .card-news{
+        max-height: 150px;
+        overflow: hidden;
     }
 }
 .card-block{
@@ -793,7 +802,7 @@ a.gameinfo:hover .game-name{
     border: none;
     border-radius: 6px;
     box-shadow: 3px 3px 6px 0px rgba(218, 165, 32, 0.2), 0px 0px 0px 1px #DAA520;
-    margin: 12px 10px;
+    margin: 8px;
 }
 .card-block .card-image{
     display: block;
