@@ -55,6 +55,38 @@ class Game extends Model
     }
 
     /**
+     * {Accessor} 取得該比賽歷史總場次
+     */
+    public function getHistoryAllAttribute()
+    {
+        return $this->history_nctu + $this->history_nthu + $this->history_draw;
+    }
+
+    /**
+     * {Accessor} 取得該比賽交大勝率
+     */
+    public function getHistoryPrecentageNctuAttribute()
+    {
+        return round($this->history_nctu / $this->history_all * 100);
+    }
+
+    /**
+     * {Accessor} 取得該比賽清大勝率
+     */
+    public function getHistoryPrecentageNthuAttribute()
+    {
+        return round($this->history_nthu / $this->history_all * 100);
+    }
+
+    /**
+     * {Accessor} 取得該比賽平手機率
+     */
+    public function getHistoryPrecentageDrawAttribute()
+    {
+        return 100 - $this->history_precentage_nctu - $this->history_precentage_nthu;
+    }
+
+    /**
      * {Accessor} 將 info_entry (入場須知) 切割成一個陣列
      */
     public function getInfoEntryListAttribute()

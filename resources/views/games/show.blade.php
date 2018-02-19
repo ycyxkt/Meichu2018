@@ -281,7 +281,7 @@
     </section>
     @endif
 
-    @if($game->history_nctu != 0 || $game->history_draw != 0 || $game->history_nthu != 0)
+    @if($game->history_all != 0)
     <section>
         <h2 class="sec-header">
             <i class="fa fa-percent" aria-hidden="true"></i>
@@ -291,48 +291,56 @@
             </span>
         </h2>
         <div class="history-bar history-bar-top">
-            @if($history['nctu'] != 0)
-            <div class="bar-nctu" style="width: {{ $history['nctu'] }}%"></div>
+            @if($game->history_precentage_nctu != 0)
+            <div class="bar-nctu" style="width: {{ $game->history_precentage_nctu }}%"></div>
             @endif
-            @if($history['draw'] != 0)
-            <div class="bar-draw" style="width: {{ $history['draw'] }}%"></div>
+            @if($game->history_precentage_draw != 0)
+            <div class="bar-draw" style="width: {{ $game->history_precentage_draw }}%"></div>
             @endif
-            @if($history['nthu'] != 0)
-            <div class="bar-nthu" style="width: {{ $history['nthu'] }}%"></div>
+            @if($game->history_precentage_nthu != 0)
+            <div class="bar-nthu" style="width: {{ $game->history_precentage_nthu }}%"></div>
             @endif
         </div>
         <div class="game-history">
             <div class="team team-nctu">
                 <div class="team-percent">
-                    {{ $history['nctu'] }}<span class="team-wdl">%</span>
+                    {{ $game->history_precentage_nctu }}<span class="team-wdl">%</span>
                 </div>
                 <div>
                     交通大學
                 </div>
                 <div class="team-wdl">
-                    {{ $game->history_nctu }}勝 - {{ $game->history_draw }}平 - {{ $game->history_nthu }}敗
+                    {{ $game->history_nctu }}勝
+                    @if($game->history_draw != 0)
+                        - {{ $game->history_draw }}平
+                    @endif
+                    - {{ $game->history_nthu }}敗
                 </div>
             </div>
             <div class="history-bar history-bar-inline">
-                @if($history['nctu'] != 0)
-                <div class="bar-nctu" style="width: {{ $history['nctu'] }}%"></div>
+                @if($game->history_precentage_nctu != 0)
+                <div class="bar-nctu" style="width: {{ $game->history_precentage_nctu }}%"></div>
                 @endif
-                @if($history['draw'] != 0)
-                <div class="bar-draw" style="width: {{ $history['draw'] }}%"></div>
+                @if($game->history_precentage_draw != 0)
+                <div class="bar-draw" style="width: {{ $game->history_precentage_draw }}%"></div>
                 @endif
-                @if($history['nthu'] != 0)
-                <div class="bar-nthu" style="width: {{ $history['nthu'] }}%"></div>
+                @if($game->history_precentage_nthu != 0)
+                <div class="bar-nthu" style="width: {{ $game->history_precentage_nthu }}%"></div>
                 @endif
             </div>
             <div class="team team-nthu">
                 <div class="team-percent">
-                    {{ $history['nthu'] }}<span class="team-wdl">%</span>
+                    {{ $game->history_precentage_nthu }}<span class="team-wdl">%</span>
                 </div>
                 <div>
                     清華大學
                 </div>
                 <div class="team-wdl">
-                    {{ $game->history_nthu }}勝 - {{ $game->history_draw }}平 - {{ $game->history_nctu }}敗
+                    {{ $game->history_nthu }}勝
+                    @if($game->history_draw != 0)
+                        - {{ $game->history_draw }}平
+                    @endif
+                     - {{ $game->history_nctu }}敗
                 </div>
             </div>
         </div>

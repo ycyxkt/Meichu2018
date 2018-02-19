@@ -215,22 +215,6 @@ class GamesController extends Controller
 
         });
         $gamenews = $this->newsRepository->getGameNews($gamename);
-        
-        $history_all = $game->history_nctu + $game->history_nthu + $game->history_draw;
-        if($history_all != 0){
-            $history = array(
-                'nctu' => round($game->history_nctu / $history_all * 100),
-                'nthu' => round($game->history_nthu / $history_all * 100)
-            );
-            $history = array_add($history, 'draw', 100-$history['nthu']-$history['nctu']);
-        }
-        else{
-            $history = array(
-                'nctu' => 0,
-                'draw' => 0,
-                'nthu' => 0
-            );
-        }
 
         return view('games.show', compact('game','gamenews','history') );
     }
