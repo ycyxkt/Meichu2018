@@ -702,17 +702,24 @@ a:focus{
     background-color: rgba(255,255,255, 0.4);
 }
 .gameinfo.nctu{
-    background-color: rgba(128, 128, 255, 0.4);
+    border: 3px solid rgba(0, 51, 204, 0.8);
 }
 .gameinfo.nthu{
-    background-color: rgba(223, 128, 255, 0.4);
+    border: 3px solid rgba(153, 0, 204, 0.8);
 }
 .gameinfo.draw{
-    background-color: rgba(255, 191, 128, 0.4);
+    border: 3px solid rgba(204, 102, 0, 0.8);
 }
 .gameinfo.stop{
-    background-color: rgba(255, 128, 128, 0.4);
+    border: 3px solid rgba(204, 0, 51, 0.8);
 }
+.gameinfo.nctu,
+.gameinfo.nthu,
+.gameinfo.draw,
+.gameinfo.stop{
+    border-left-width:0.5rem;
+}
+
 .gameinfo .gameboard-background {
     z-index: -1;
     position: absolute;
