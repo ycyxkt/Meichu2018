@@ -124,8 +124,15 @@
             <a class="news-more" href="/news">查看更多最新消息 >></a>
 
         </section>
+        
         <section class="flex-50">
-            
+            <h2 class="sec-header">
+                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <span>宣傳影片</span>
+            </h2>
+            <div class="broadcast-frame" id="video-cf">
+                <img src="{{ asset('images/screenshot.png') }}" width="100%">
+            </div>
         </section>
     </div>
 
@@ -185,4 +192,15 @@
     </section>
 
 </div>
+@endsection
+
+@section('custom_script')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#video-cf").click(function(e){
+            $("#video-cf").html('<iframe src="https://www.youtube.com/embed/fzuy63eCUKc?rel=0&amp;showinfo=0&autoplay=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>');
+            console.log('success');
+        }); 
+    });
+</script>
 @endsection
