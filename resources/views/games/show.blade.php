@@ -287,7 +287,7 @@
             <i class="fa fa-percent" aria-hidden="true"></i>
             <span>歷史對戰數據</span>
             <span class="sec-subtitle">
-                截至丁酉梅竹（2017）
+                截至丁酉（2017）梅竹
             </span>
         </h2>
         <div class="history-bar history-bar-top">
@@ -307,8 +307,7 @@
                     {{ $history['nctu'] }}<span class="team-wdl">%</span>
                 </div>
                 <div>
-                    交大@if($game->type!='notgame' && $game->team_nctu!=NULL)<span class="team-name">{{ $game->team_nctu->name }}</span>
-                    @endif
+                    交通大學
                 </div>
                 <div class="team-wdl">
                     {{ $game->history_nctu }}勝 - {{ $game->history_draw }}平 - {{ $game->history_nthu }}敗
@@ -330,8 +329,7 @@
                     {{ $history['nthu'] }}<span class="team-wdl">%</span>
                 </div>
                 <div>
-                    清大@if($game->type!='notgame' && $game->team_nthu!=NULL)<span class="team-name">{{ $game->team_nthu->name }}</span>
-                    @endif
+                    清華大學
                 </div>
                 <div class="team-wdl">
                     {{ $game->history_nthu }}勝 - {{ $game->history_draw }}平 - {{ $game->history_nctu }}敗
