@@ -127,7 +127,7 @@
         
         <section class="flex-50">
             <h2 class="sec-header">
-                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
                 <span>宣傳影片</span>
             </h2>
             <div class="broadcast-frame" id="video-cf">
