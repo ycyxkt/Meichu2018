@@ -141,51 +141,43 @@
             <span>隊伍介紹</span>
         </h2>
         <div class="flex-layer">
-            @foreach($game->teams as $team)
+
             <div class="flex-50 card-block infoblock">
-                @if($team->photo)
+                @if($game->team_nctu->photo)
                 <div class="card-image">
-                    <img src="{{ $team->photo }}">
+                    <img src="{{ $game->team_nctu->photo }}">
                 </div>
                 @endif
                 <div class="card-inner">
                     <div class="card-header">
-                    @switch($team->school)
-                        @case('NTHU')國立清華大學@break
-                        @case('NCTU')國立交通大學@break
-                        @default@break
-                    @endswitch{{ $team->name }}
+                        國立交通大學{{ $game->team_nctu->name }}
                     </div>
                     <div class="card-subtitle">
-                        @if($team->name_en!=NULL)
-                            @switch($team->school)
-                                @case('NTHU'){{ $team->name_en }}, NTHU @break
-                                @case('NCTU'){{ $team->name_en }}, NCTU @break
-                                @default{{ $team->name_en }} @break
-                            @endswitch
+                        @if($game->team_nctu->name_en!=NULL)
+                            {{ $game->team_nctu->name_en }}, NCTU
                         @endif
                     </div>
                     <div class="card-info">
 
-                    {!! nl2br(e($team->introduction)) !!}
+                    {!! nl2br(e($game->team_nctu->introduction)) !!}
                 </div>
                 </div>
-                @if ($team->link_website!=NULL || $team->link_facebook!=NULL || $team->link_instagram!=NULL)
+                @if ($game->team_nctu->link_website!=NULL || $game->team_nctu->link_facebook!=NULL || $game->team_nctu->link_instagram!=NULL)
                 <div class="card-link">
-                    @if ($team->link_facebook!=NULL)
-                    <a href="{{ $team->link_facebook }}" target="_blank">
+                    @if ($game->team_nctu->link_facebook!=NULL)
+                    <a href="{{ $game->team_nctu->link_facebook }}" target="_blank">
                         <i class="fa fa-facebook-official" aria-hidden="true"></i>
                         Facebook
                     </a>
                     @endif
-                    @if ($team->link_instagram!=NULL)
-                    <a href="{{ $team->link_instagram }}" target="_blank">
+                    @if ($game->team_nctu->link_instagram!=NULL)
+                    <a href="{{ $game->team_nctu->link_instagram }}" target="_blank">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
                         Instagram
                     </a>
                     @endif
-                    @if ($team->link_website!=NULL)
-                    <a href="{{ $team->link_website }}" target="_blank">
+                    @if ($game->team_nctu->link_website!=NULL)
+                    <a href="{{ $game->team_nctu->link_website }}" target="_blank">
                         <i class="fa fa-globe" aria-hidden="true"></i>
                         官網
                     </a>
@@ -193,7 +185,51 @@
                 </div>
                 @endif
             </div>
-            @endforeach
+
+            <div class="flex-50 card-block infoblock">
+                @if($game->team_nthu->photo)
+                <div class="card-image">
+                    <img src="{{ $game->team_nthu->photo }}">
+                </div>
+                @endif
+                <div class="card-inner">
+                    <div class="card-header">
+                        國立清華大學{{ $game->team_nthu->name }}
+                    </div>
+                    <div class="card-subtitle">
+                        @if($game->team_nthu->name_en!=NULL)
+                            {{ $game->team_nthu->name_en }}, NTHU
+                        @endif
+                    </div>
+                    <div class="card-info">
+
+                    {!! nl2br(e($game->team_nthu->introduction)) !!}
+                </div>
+                </div>
+                @if ($game->team_nthu->link_website!=NULL || $game->team_nthu->link_facebook!=NULL || $game->team_nthu->link_instagram!=NULL)
+                <div class="card-link">
+                    @if ($game->team_nthu->link_facebook!=NULL)
+                    <a href="{{ $game->team_nthu->link_facebook }}" target="_blank">
+                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                        Facebook
+                    </a>
+                    @endif
+                    @if ($game->team_nthu->link_instagram!=NULL)
+                    <a href="{{ $game->team_nthu->link_instagram }}" target="_blank">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                        Instagram
+                    </a>
+                    @endif
+                    @if ($game->team_nthu->link_website!=NULL)
+                    <a href="{{ $game->team_nthu->link_website }}" target="_blank">
+                        <i class="fa fa-globe" aria-hidden="true"></i>
+                        官網
+                    </a>
+                    @endif
+                </div>
+                @endif
+            </div>
+
         </div>
     </section>
     @endif
@@ -281,22 +317,18 @@
     </section>
     @endif
 
-        <div class="pagination-nav infoblock">
-            <div class="pagination-nav-prev">
+    <div class="pagination-nav infoblock">
+        <div class="pagination-nav-prev"></div>
 
-            </div>
-
-            <div class="pagination-nav-index">
-                <a href="/games">
-                    <i class="fa fa-th" aria-hidden="true"></i>
-                    所有賽事
-                </a>
-            </div>
-
-            <div class="pagination-nav-next">
-
-            </div>
+        <div class="pagination-nav-index">
+            <a href="/games">
+                <i class="fa fa-th" aria-hidden="true"></i>
+                所有賽事
+            </a>
         </div>
+
+        <div class="pagination-nav-next"></div>
+    </div>
 
 </div>
 @endsection
