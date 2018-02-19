@@ -268,35 +268,31 @@ a:focus{
 .intro-fox{
     top: 0px;
     left: 0px;
-    /*
-    -moz-transform: translate(-350px, -100px);
-    -webkit-transform: translate(-350px, -100px);
-    transform: translate(-350px, -100px);
-    */
+    transform-origin: 0% 0%;
 }
 .intro-panda{
     right: 0px;
     bottom: 0px;
-    /*
-    -moz-transform: translate(350px, 100px);
-    -webkit-transform: translate(350px, 100px);
-    transform: translate(350px, 100px);
-    */
+    transform-origin: 100% 100%;
 }
-/*
+
 .intro-fox,
 .intro-panda{   
-    -moz-transition: -moz-transform 0.5s ease-in;
-    -webkit-transition: -webkit-transform 0.5s ease-in;
-    transition: transform 0.5s ease-in;
+    -moz-transform: scale(0);
+    -webkit-transform: scale(0);
+    transform: scale(0);
+
+    -moz-transition: -moz-transform 0.7s cubic-bezier(.18,.89,.32,1.28);
+    -webkit-transition: -webkit-transform 0.7s cubic-bezier(.18,.89,.32,1.28);
+    transition: transform 0.7s cubic-bezier(.18,.89,.32,1.28);
 }
 .intro-fox.move,
 .intro-panda.move {
-    -moz-transform: translate(0, 0);
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
 }
-*/
+
 @media (max-width: 650px){
     .intro-fox,
     .intro-panda{

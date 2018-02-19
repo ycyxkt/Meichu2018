@@ -48,12 +48,12 @@
                     e.preventDefault();
                     
                 });
-                /*
+                
                 setTimeout(function(){
                     $(".intro-fox").toggleClass('move');
                     $(".intro-panda").toggleClass('move');
                 },300);
-                */
+                
             });
         </script>
     </body>
