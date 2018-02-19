@@ -1039,7 +1039,7 @@ a.gameinfo:hover .game-name{
 }
 .history-bar{
     width: 100%;
-    height: 20px;
+    height: 1rem;
     background-color: #AAA;
     border-radius: 0.3rem;
     display: flex;
@@ -1064,15 +1064,15 @@ a.gameinfo:hover .game-name{
     }
 }
 .history-bar .bar-nctu{
-    height: 20px;
+    height: 1rem;
     background-color: rgba(51, 51, 255, 1);
 }
 .history-bar .bar-draw{
-    height: 20px;
+    height: 1rem;
     background-color: rgba(255, 153, 51, 1);
 }
 .history-bar .bar-nthu{
-    height: 20px;
+    height: 1rem;
     background-color: rgba(204, 51, 255, 1);
 }
 
