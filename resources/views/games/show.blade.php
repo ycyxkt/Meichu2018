@@ -142,7 +142,7 @@
         </h2>
         <div class="flex-layer">
 
-            <div class="flex-50 card-block infoblock">
+            <div class="flex-50 card-block">
                 @if($game->team_nctu->photo)
                 <div class="card-image">
                     <img src="{{ $game->team_nctu->photo }}">
@@ -186,7 +186,7 @@
                 @endif
             </div>
 
-            <div class="flex-50 card-block infoblock">
+            <div class="flex-50 card-block">
                 @if($game->team_nthu->photo)
                 <div class="card-image">
                     <img src="{{ $game->team_nthu->photo }}">
