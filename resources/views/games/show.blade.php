@@ -142,8 +142,9 @@
         </h2>
         <div class="flex-layer">
 
+            @if($game->team_nctu)
             <div class="flex-50 card-block">
-                @if($game->team_nctu->photo)
+                @if($game->team_nctu->photo != NULL)
                 <div class="card-image">
                     <img src="{{ $game->team_nctu->photo }}">
                 </div>
@@ -185,9 +186,11 @@
                 </div>
                 @endif
             </div>
+            @endif
 
+            @if($game->team_nthu)
             <div class="flex-50 card-block">
-                @if($game->team_nthu->photo)
+                @if($game->team_nthu->photo != NULL)
                 <div class="card-image">
                     <img src="{{ $game->team_nthu->photo }}">
                 </div>
@@ -229,6 +232,7 @@
                 </div>
                 @endif
             </div>
+            @endif
 
         </div>
     </section>
