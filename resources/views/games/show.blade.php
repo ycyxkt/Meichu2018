@@ -70,6 +70,8 @@
                         @case('stop')
                             <span class="stop">因故停賽</span>
                             @break
+                        @case('finish')已結束
+                            @break    
                     @endswitch
                 </div>
                 <div class="status-info">

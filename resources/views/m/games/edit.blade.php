@@ -69,11 +69,15 @@
                         <option value="notyet" @if($game->status == 'notyet') selected @endif>尚未開始</option>
                         <option value="prepare" @if($game->status == 'prepare') selected @endif>準備中</option>
                         <option value="inprogress" @if($game->status == 'inprogress') selected @endif>進行中</option>
+                        <option value="break" @if($game->status == 'break') selected @endif>暫停中</option>
+                        @if($game->type != 'notgame')
                         <option value="nthuwin" @if($game->status == 'nthuwin') selected @endif>清大勝</option>
                         <option value="nctuwin" @if($game->status == 'nctuwin') selected @endif>交大勝</option>
                         <option value="draw" @if($game->status == 'draw') selected @endif>平手</option>
-                        <option value="break" @if($game->status == 'break') selected @endif>暫停中</option>
                         <option value="stop" @if($game->status == 'stop') selected @endif>因故停賽</option>
+                        @else
+                        <option value="finish" @if($game->status == 'finish') selected @endif>已結束</option>
+                        @endif
                     </select>
                 </div>
             </div>

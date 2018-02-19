@@ -42,6 +42,9 @@
             @case('stop')
                 <th class="color_stop">因故停賽</th>
                 @break
+            @case('finish')
+                <th class="color_finish">已結束</th>
+                @break
             @default
                 <th class="color_other">{{ $data->status }}</th>
                 @break

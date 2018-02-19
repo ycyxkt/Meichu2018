@@ -29,8 +29,6 @@
                         <span class="nthu">{{ $status }}</span>
                     @elseif($status=='平手')
                         <span class="draw">{{ $status }}</span>
-                    @elseif($status=='因故停賽')
-                        <span class="stop">{{ $status }}</span>
                     @else
                         <span>{{ $status }}</span>
                     @endif
@@ -81,6 +79,8 @@
                             <div class="gameinfo-score">交大 {{ $data->score_nctu }} : {{ $data->score_nthu }} 清大</div>
                         @elseif($data->status=='stop')
                             <div class="gameinfo-score">因故停賽</div>
+                        @elseif($data->status=='finish')
+                            <div class="gameinfo-score">已結束</div>
                         @else
                             <div class="gameinfo-date">{{ \Carbon\Carbon::parse( $data->date )->format('m/d')}} {{ \Carbon\Carbon::parse( $data->time )->format('H:i')}}</div>
                             <div>{{ $data->location }}</div>
@@ -132,6 +132,8 @@
                             <div class="gameinfo-score">交大 {{ $data->score_nctu }} : {{ $data->score_nthu }} 清大</div>
                         @elseif($data->status=='stop')
                             <div class="gameinfo-score">因故停賽</div>
+                        @elseif($data->status=='finish')
+                            <div class="gameinfo-score">已結束</div>
                         @else
                             <div class="gameinfo-date">{{ \Carbon\Carbon::parse( $data->date )->format('m/d')}} {{ \Carbon\Carbon::parse( $data->time )->format('H:i')}}</div>
                             <div>{{ $data->location }}</div>
@@ -185,6 +187,8 @@
                             <div class="gameinfo-score">交大 {{ $data->score_nctu }} : {{ $data->score_nthu }} 清大</div>
                         @elseif($data->status=='stop')
                             <div class="gameinfo-score">因故停賽</div>
+                        @elseif($data->status=='finish')
+                            <div class="gameinfo-score">已結束</div>
                         @else
                             <div class="gameinfo-date">{{ \Carbon\Carbon::parse( $data->date )->format('m/d')}} {{ \Carbon\Carbon::parse( $data->time )->format('H:i')}}</div>
                             <div>{{ $data->location }}</div>

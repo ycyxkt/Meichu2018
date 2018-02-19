@@ -157,6 +157,8 @@
                             <div class="gameinfo-score">交大 {{ $data->score_nctu }} : {{ $data->score_nthu }} 清大</div>
                         @elseif($data->status=='stop')
                             <div class="gameinfo-score">因故停賽</div>
+                        @elseif($data->status=='finish')
+                            <div class="gameinfo-score">已結束</div>
                         @else
                             <div class="gameinfo-date">{{ \Carbon\Carbon::parse( $data->date )->format('m/d')}} {{ \Carbon\Carbon::parse( $data->time )->format('H:i')}}</div>
                             <div>{{ $data->location }}</div>
