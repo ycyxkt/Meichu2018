@@ -281,6 +281,66 @@
     </section>
     @endif
 
+    @if($game->history_nctu != 0 || $game->history_draw != 0 || $game->history_nthu != 0)
+    <section>
+        <h2 class="sec-header">
+            <i class="fa fa-percent" aria-hidden="true"></i>
+            <span>歷史對戰數據</span>
+            <span class="sec-subtitle">
+                截至丁酉梅竹（2017）
+            </span>
+        </h2>
+        <div class="history-bar history-bar-top">
+            @if($history['nctu'] != 0)
+            <div class="bar-nctu" style="width: {{ $history['nctu'] }}%"></div>
+            @endif
+            @if($history['draw'] != 0)
+            <div class="bar-draw" style="width: {{ $history['draw'] }}%"></div>
+            @endif
+            @if($history['nthu'] != 0)
+            <div class="bar-nthu" style="width: {{ $history['nthu'] }}%"></div>
+            @endif
+        </div>
+        <div class="game-history">
+            <div class="team team-nctu">
+                <div class="team-percent">
+                    {{ $history['nctu'] }}<span class="team-wdl">%</span>
+                </div>
+                <div>
+                    交大@if($game->type!='notgame' && $game->team_nctu!=NULL)<span class="team-name">{{ $game->team_nctu->name }}</span>
+                    @endif
+                </div>
+                <div class="team-wdl">
+                    {{ $game->history_nctu }}勝 - {{ $game->history_draw }}平 - {{ $game->history_nthu }}敗
+                </div>
+            </div>
+            <div class="history-bar history-bar-inline">
+                @if($history['nctu'] != 0)
+                <div class="bar-nctu" style="width: {{ $history['nctu'] }}%"></div>
+                @endif
+                @if($history['draw'] != 0)
+                <div class="bar-draw" style="width: {{ $history['draw'] }}%"></div>
+                @endif
+                @if($history['nthu'] != 0)
+                <div class="bar-nthu" style="width: {{ $history['nthu'] }}%"></div>
+                @endif
+            </div>
+            <div class="team team-nthu">
+                <div class="team-percent">
+                    {{ $history['nthu'] }}<span class="team-wdl">%</span>
+                </div>
+                <div>
+                    清大@if($game->type!='notgame' && $game->team_nthu!=NULL)<span class="team-name">{{ $game->team_nthu->name }}</span>
+                    @endif
+                </div>
+                <div class="team-wdl">
+                    {{ $game->history_nthu }}勝 - {{ $game->history_draw }}平 - {{ $game->history_nctu }}敗
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
+
         <div class="pagination-nav infoblock">
             <div class="pagination-nav-prev">
 

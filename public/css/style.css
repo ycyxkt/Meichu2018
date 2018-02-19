@@ -66,6 +66,11 @@ section {
     border-bottom: 1px solid rgba(34, 34, 34, 0.4);
     color: #DAA520;
 }
+.sec-header .sec-subtitle{
+    font-size: 0.7rem;
+    color: #666;
+    font-weight: normal;
+}
 /* Info Block*/
 .infoblock{
     margin: 1rem 6px;
@@ -991,7 +996,7 @@ a.gameinfo:hover .game-name{
 
 
 
-/* Game History *//*
+/* Game History */
 .game-history{
     height: 100px;
     display: flex;
@@ -1004,6 +1009,17 @@ a.gameinfo:hover .game-name{
     font-size: 1rem;
     width: 25%;
 }
+@media (max-width: 650px){
+    .game-history .team{
+        width: 50%;
+    }
+    .game-history .team-nthu{
+        text-align: right;
+    }
+    .game-history .team-nctu{
+        text-align: left;
+    }
+}
 .game-history .team .team-percent{
     font-size: 2.5rem;
     font-weight: bold;
@@ -1013,28 +1029,51 @@ a.gameinfo:hover .game-name{
 .game-history .team .team-wdl{
     font-size: 0.7rem;
     color: #666;
+    font-weight: normal;
 }
-.game-history .bar{
-    width: 50%;
-    padding: 0px;
-    height: 25px;
+.history-bar{
+    width: 100%;
+    height: 20px;
     background-color: #333;
     border-radius: 0.3rem;
     display: flex;
     flex-direction: row;
 }
-.game-history .bar .bar-nctu{
-    height: 25px;
-    background-color: blue;
-    border-radius: 0.3rem 0 0 0.3rem;
+
+.history-bar-inline{
+    display: none;
 }
-.game-history .bar .bar-draw{
-    height: 25px;
-    background-color: green;
+@media (min-width: 650px){
+    .history-bar-inline{
+        display: flex;
+        width: 50%;
+    }
+    .history-bar-top{
+        display: none;
+    }
 }
-.game-history .bar .bar-nthu{
-    height: 25px;
-    background-color: purple;
-    border-radius: 0 0.3rem 0.3rem 0;
+@media (max-width: 650px){
+    .history-bar{
+        margin-top: 1rem;
+    }
 }
-*/
+.history-bar .bar-nctu{
+    height: 20px;
+    background-color: rgba(128, 128, 255, 1);
+}
+.history-bar .bar-draw{
+    height: 20px;
+    background-color: rgba(255, 191, 128, 1);
+}
+.history-bar .bar-nthu{
+    height: 20px;
+    background-color: rgba(223, 128, 255, 1);
+}
+.history-bar>div:first-child{
+    border-top-left-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+}
+.history-bar>div:last-child{
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+}
