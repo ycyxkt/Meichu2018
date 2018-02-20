@@ -82,6 +82,7 @@
                 </div>
             </div>
 
+            @if($game->type != 'notgame')
             <div class="form-group{{ $errors->has('score_nthu') ? ' has-error' : '' }}">
                 <label for="score_nthu" class="col-md-4 control-label">
                     <span class="label label-default">數字</span>
@@ -127,6 +128,7 @@
                     @endif
                 </div>
             </div>
+            @endif
 
             <div class="form-group">
                 <label for="location" class="col-md-4 control-label">
