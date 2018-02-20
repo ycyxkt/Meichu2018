@@ -106,6 +106,39 @@
 </section>
 
 <div class="container">
+
+    @if('1' == $game->is_record && ! $records->isEmpty())
+    <section>
+        <table class="record-table" cellspacing="0" cellpadding="0" border="0" align="center">
+            <thead>
+                <th></th>
+                @foreach($records as $data)
+                <th>{{ $data->title }}</th>
+                @endforeach
+            </thead>
+            
+            <tr>
+                <td>
+                    交大@if($game->team_nctu!=NULL)<span class="team-name">{{ $game->team_nctu->name }}</span>
+                    @endif
+                </td>
+                @foreach($records as $data)
+                <td>{{ $data->nctu }}</td>
+                @endforeach
+            </tr>
+            <tr>
+                <td>
+                    清大@if($game->team_nthu!=NULL)<span class="team-name">{{ $game->team_nthu->name }}</span>
+                    @endif
+                </td>
+                @foreach($records as $data)
+                <td>{{ $data->nthu }}</td>
+                @endforeach
+            </tr>
+        </table>
+    </section>
+    @endif
+
     <div class="flex-layer">
         <section class="flex-50">
             <h2 class="sec-header">

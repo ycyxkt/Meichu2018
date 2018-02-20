@@ -19,6 +19,9 @@ use App\Repositories\GameRepository;
 use App\News;
 use App\Repositories\NewsRepository;
 
+use App\Record;
+use App\Repositories\RecordRepository;
+
 class GamesController extends Controller
 {
 
@@ -29,6 +32,7 @@ class GamesController extends Controller
     {
         $this->gameRepository = new GameRepository(new Game);
         $this->newsRepository = new NewsRepository(new News);
+        $this->recordRepository = new RecordRepository(new Record);
     }
 
     /**
@@ -215,7 +219,10 @@ class GamesController extends Controller
 
         });
         $gamenews = $this->newsRepository->getGameNews($gamename);
+        if('1' == $game->is_record){
+            $records = $this->recordRepository->getRecordsByGameId($game->id);
+        }
 
-        return view('games.show', compact('game','gamenews','history') );
+        return view('games.show', compact('game','gamenews','history','records') );
     }
 }
