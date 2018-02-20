@@ -11,6 +11,7 @@
         <th>狀態</th>
         <th></th>
         <th></th>
+        <th></th>
     </thead>
     @foreach($games as $data)
     <tr>
@@ -55,6 +56,13 @@
         <th>
             <a href="{{ route('games.edit', $data->id) }}" class="btn btn-primary" role="button">編輯</a>
         </th>
+        @if('notgame' == $data->type)
+        <th></th>
+        @else
+        <th>
+            <a href="{{ route('games.records', $data->id) }}" class="btn btn-default" role="button">賽事紀錄</a>
+        </th>
+        @endif
     </tr>
     @endforeach
 </table>
