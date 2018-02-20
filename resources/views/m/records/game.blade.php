@@ -12,6 +12,9 @@
     </div>
 </div>
 <h2 class="text-center">{{ $game->name }} 紀錄</h2>
+@if($records->isEmpty())
+    <div class="text-center">目前沒有紀錄</div>
+@else
 <table class="table table-striped table-bordered table-condensed table-responsive">
 
     <tr>
@@ -63,4 +66,5 @@
         @endforeach
     </tr>
 </table>
+@endif
 @endsection
