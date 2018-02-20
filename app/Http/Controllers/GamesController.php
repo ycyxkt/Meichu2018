@@ -216,6 +216,6 @@ class GamesController extends Controller
         });
         $gamenews = $this->newsRepository->getGameNews($gamename);
 
-        return view('games.show', compact('game','gamenews') );
+        return view('games.show', compact('game','gamenews','history') );
     }
 }

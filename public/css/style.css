@@ -998,7 +998,7 @@ a.gameinfo:hover .game-name{
 
 
 
-/* Game History *//*
+/* Game History */
 .game-history{
     height: 100px;
     display: flex;
@@ -1011,37 +1011,88 @@ a.gameinfo:hover .game-name{
     font-size: 1rem;
     width: 25%;
 }
+@media (max-width: 650px){
+    .game-history .team{
+        width: 50%;
+    }
+    .game-history .team-nthu{
+        text-align: right;
+    }
+    .game-history .team-nctu{
+        text-align: left;
+    }
+}
 .game-history .team .team-percent{
     font-size: 2.5rem;
     font-weight: bold;
     color: #DAA520;
     margin-bottom: -0.5rem;
 }
+.game-history .team-nctu .team-percent{
+    color: rgba(51, 51, 255, 1);
+}
+.game-history .team-nthu .team-percent{
+    color: rgba(204, 51, 255, 1);
+}
 .game-history .team .team-wdl{
     font-size: 0.7rem;
     color: #666;
+    font-weight: normal;
 }
-.game-history .bar{
-    width: 50%;
-    padding: 0px;
-    height: 25px;
-    background-color: #333;
+.history-bar{
+    width: 100%;
+    height: 1rem;
+    background-color: #AAA;
     border-radius: 0.3rem;
     display: flex;
     flex-direction: row;
 }
-.game-history .bar .bar-nctu{
-    height: 25px;
-    background-color: blue;
-    border-radius: 0.3rem 0 0 0.3rem;
+
+.history-bar-inline{
+    display: none;
 }
-.game-history .bar .bar-draw{
-    height: 25px;
-    background-color: green;
+@media (min-width: 650px){
+    .history-bar-inline{
+        display: flex;
+        width: 50%;
+    }
+    .history-bar-top{
+        display: none;
+    }
 }
-.game-history .bar .bar-nthu{
-    height: 25px;
-    background-color: purple;
-    border-radius: 0 0.3rem 0.3rem 0;
+@media (max-width: 650px){
+    .history-bar{
+        margin-top: 1rem;
+    }
 }
-*/
+.history-bar .bar-nctu{
+    height: 1rem;
+    background-color: rgba(51, 51, 255, 1);
+}
+.history-bar .bar-draw{
+    height: 1rem;
+    background-color: rgba(255, 153, 51, 1);
+}
+.history-bar .bar-nthu{
+    height: 1rem;
+    background-color: rgba(204, 51, 255, 1);
+}
+
+.history-bar>div:first-child{
+    border-top-left-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+}
+.history-bar>div:last-child{
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+}
+.history-note{
+    font-size: 0.7rem;
+    color: #666;
+}
+@media (min-width: 650px){
+    .history-note{
+        text-align: center;
+        margin-top: -1rem;
+    }
+}

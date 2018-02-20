@@ -323,8 +323,84 @@
     </section>
     @endif
 
-    <div class="pagination-nav infoblock">
-        <div class="pagination-nav-prev"></div>
+    @if($game->history_all != 0)
+    <section>
+        <h2 class="sec-header">
+            <i class="fa fa-percent" aria-hidden="true"></i>
+            <span>歷史對戰數據</span>
+        </h2>
+        <div class="history-bar history-bar-top">
+            @if($game->history_precentage_nctu != 0)
+            <div class="bar-nctu" style="width: {{ $game->history_precentage_nctu }}%"></div>
+            @endif
+            @if($game->history_precentage_draw != 0)
+            <div class="bar-draw" style="width: {{ $game->history_precentage_draw }}%"></div>
+            @endif
+            @if($game->history_precentage_nthu != 0)
+            <div class="bar-nthu" style="width: {{ $game->history_precentage_nthu }}%"></div>
+            @endif
+        </div>
+        <div class="game-history">
+            <div class="team team-nctu">
+                <div class="team-percent">
+                    {{ $game->history_precentage_nctu }}<span class="team-wdl">%</span>
+                </div>
+                <div>
+                    交通大學
+                </div>
+                <div class="team-wdl">
+                    {{ $game->history_nctu }}勝
+                    @if($game->history_draw != 0)
+                        - {{ $game->history_draw }}平
+                    @endif
+                    - {{ $game->history_nthu }}敗
+                </div>
+            </div>
+            <div class="history-bar history-bar-inline">
+                @if($game->history_precentage_nctu != 0)
+                <div class="bar-nctu" style="width: {{ $game->history_precentage_nctu }}%"></div>
+                @endif
+                @if($game->history_precentage_draw != 0)
+                <div class="bar-draw" style="width: {{ $game->history_precentage_draw }}%"></div>
+                @endif
+                @if($game->history_precentage_nthu != 0)
+                <div class="bar-nthu" style="width: {{ $game->history_precentage_nthu }}%"></div>
+                @endif
+            </div>
+            <div class="team team-nthu">
+                <div class="team-percent">
+                    {{ $game->history_precentage_nthu }}<span class="team-wdl">%</span>
+                </div>
+                <div>
+                    清華大學
+                </div>
+                <div class="team-wdl">
+                    {{ $game->history_nthu }}勝
+                    @if($game->history_draw != 0)
+                        - {{ $game->history_draw }}平
+                    @endif
+                     - {{ $game->history_nctu }}敗
+                </div>
+            </div>
+        </div>
+
+        <div class="history-note">
+            *紀錄截至丁酉（2017）梅竹
+            @if('chess' == $game->game)
+            <br/>*棋藝正式賽數據，辛卯（2011）梅竹前包含象棋及圍棋。
+            @elseif('go' == $game->game)
+            <br/>*圍棋表演賽數據，不包含辛卯（2011）梅竹前的棋藝正式賽（圍棋）。
+            @elseif('football-general' == $game->game)
+            <br/>*前身足球正式賽數據。
+            @endif
+        </div>
+    </section>
+    @endif
+
+        <div class="pagination-nav infoblock">
+            <div class="pagination-nav-prev">
+
+            </div>
 
         <div class="pagination-nav-index">
             <a href="/games">
