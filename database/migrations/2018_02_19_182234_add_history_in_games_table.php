@@ -45,7 +45,7 @@ class AddHistoryInGamesTable extends Migration
         DB::table('games')->where('game', '=', 'tabletennis')
             ->update([
                 "history_nctu" => "12",
-                "history_nthu" => "17",
+                "history_nthu" => "16",
                 "history_draw" => "0",
         ]);
         DB::table('games')->where('game', '=', 'badminton')
@@ -62,7 +62,7 @@ class AddHistoryInGamesTable extends Migration
         ]);
         DB::table('games')->where('game', '=', 'bridge')
             ->update([
-                "history_nctu" => "20",
+                "history_nctu" => "21",
                 "history_nthu" => "16",
                 "history_draw" => "0",
         ]);
@@ -70,7 +70,7 @@ class AddHistoryInGamesTable extends Migration
             ->update([
                 "history_nctu" => "23",
                 "history_nthu" => "12",
-                "history_draw" => "2",
+                "history_draw" => "3",
         ]);
         DB::table('games')->where('game', '=', 'go')
             ->update([
@@ -82,7 +82,7 @@ class AddHistoryInGamesTable extends Migration
             ->update([
                 "history_nctu" => "17",
                 "history_nthu" => "16",
-                "history_draw" => "0",
+                "history_draw" => "1",
         ]);
         DB::table('games')->where('game', '=', 'tennis')
             ->update([
