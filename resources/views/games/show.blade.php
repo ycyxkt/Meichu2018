@@ -286,9 +286,6 @@
         <h2 class="sec-header">
             <i class="fa fa-percent" aria-hidden="true"></i>
             <span>歷史對戰數據</span>
-            <span class="sec-subtitle">
-                截至丁酉（2017）梅竹
-            </span>
         </h2>
         <div class="history-bar history-bar-top">
             @if($game->history_precentage_nctu != 0)
@@ -343,6 +340,17 @@
                      - {{ $game->history_nctu }}敗
                 </div>
             </div>
+        </div>
+
+        <div class="history-note">
+            *紀錄截至丁酉（2017）梅竹
+            @if('chess' == $game->game)
+            <br/>*棋藝正式賽數據，辛卯（2011）梅竹前包含象棋及圍棋。
+            @elseif('go' == $game->game)
+            <br/>*圍棋表演賽數據，不包含辛卯（2011）梅竹前的棋藝正式賽（圍棋）。
+            @elseif('football-general' == $game->game)
+            <br/>*前身足球正式賽數據。
+            @endif
         </div>
     </section>
     @endif
