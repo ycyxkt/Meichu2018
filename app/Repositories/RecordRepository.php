@@ -34,10 +34,10 @@ class RecordRepository
      *
      * @return Collection
      */
-    public function getRecordByGameId($game_id)
+    public function getRecordsByGameId($game_id)
     {
         return $this->record->where('game_id', $game_id)
-            ->orderBy('order','asc')->orderBy('created_at','asc')
+            ->orderBy('order','asc')
             ->get();
     }
 

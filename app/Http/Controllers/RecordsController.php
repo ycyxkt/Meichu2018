@@ -42,7 +42,15 @@ class RecordsController extends Controller
      */
     public function store(Request $request)
     {
-        Record::create($request->all());
+        if($request['be_last'] || $request['order'] == NULL){
+            if($record = $this->recordRepository->getRecordsByGameId($request['game_id'])->last()){
+                $request['order'] = $record->order + 1;
+            }
+            else{
+                $request['order'] = 1;
+            }
+        }
+        Record::create($request->except('be_last'));
         return redirect()->route('games.records',$request['game_id'])->with('success','建立紀錄成功');
     }
 
@@ -55,12 +63,8 @@ class RecordsController extends Controller
     public function edit($id)
     {
         $record = $this->recordRepository->getRecordById($id);
-        $games = Game::orderBy('date','asc')
-                ->orderBy('time','asc')
-                ->select('name','id')
-                ->get();
 
-        return view('m.records.edit', compact('record','games'));
+        return view('m.records.edit', compact('record'));
     }
 
     /**
@@ -76,7 +80,7 @@ class RecordsController extends Controller
             abort(404);
         }
         $record->update($request->all());
-        return redirect()->route('games.records',$request['game_id'])->with('success','更新紀錄資訊成功');
+        return redirect()->route('games.records',$record['game_id'])->with('success','更新紀錄資訊成功');
     }
 
     /**
@@ -100,7 +104,7 @@ class RecordsController extends Controller
         if ( 'notgame' == $game->type){
             abort(404);
         }
-        $records = $this->recordRepository->getRecordByGameId($game_id);
+        $records = $this->recordRepository->getRecordsByGameId($game_id);
         
         return view('m.records.game', compact('records','game'));
     }

@@ -22,21 +22,34 @@
                 </label>
 
                 <div class="col-md-6">
-                    <select id="game_id" class="form-control" name="game_id" required autofocus>
+                    <select id="game_id" class="form-control" name="game_id" required>
                         <option value="{{ $game->id }}">{{ $game->name }}</option>
                     </select>
                 </div>
             </div>
 
             <div class="form-group">
+                <label for="be_last" class="col-md-4 control-label">
+                    自動填入順序
+                </label>
+
+                <div class="col-md-6">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="be_last" {{ old('be_last') ? 'checked' : '' }} checked>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label for="order" class="col-md-4 control-label">
-                    <span class="label label-primary">必填</span>
-                    <span class="label label-default">非負數</span>
+                    <span class="label label-default">正數</span>
                     順序
                 </label>
 
                 <div class="col-md-6">
-                    <input id="order" type="number" class="form-control" name="order" value="{{ old('order') }}" step="any" required>
+                    <input id="order" type="number" class="form-control" name="order" value="{{ old('order') }}" step="1">
                 </div>
             </div>
 
@@ -46,7 +59,7 @@
                 </label>
 
                 <div class="col-md-6">
-                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}">
+                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" autofocus>
                 </div>
             </div>
 

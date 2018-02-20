@@ -8,7 +8,7 @@
         
     </div>
     <div class="col-xs-6 text-right">
-        <a href="{{ route('games.records',$record->game_id) }}" class="btn btn-success" role="button">查看比賽紀錄</a>
+        <a href="{{ route('games.records',$record->game_id) }}" class="btn btn-success" role="button">查看{{ $record->game()->first()->name }}紀錄</a>
     </div>
 </div>
 <div class="panel panel-primary">
@@ -25,24 +25,20 @@
                     所屬賽事
                 </label>
 
-                <div class="col-md-6">
-                    <select id="game_id" class="form-control" name="game_id" required autofocus>
-                        @foreach($games as $data)    
-                        <option value="{{ $data->id }}" @if($record->game_id == $data->id) selected @endif>{{ $data->name }}</option>
-                        @endforeach
-                    </select>
+                <div class="col-md-6 form-control-static">
+                    {{ $record->game()->first()->name }}
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="order" class="col-md-4 control-label">
                     <span class="label label-primary">必填</span>
-                    <span class="label label-default">非負數</span>
+                    <span class="label label-default">正數</span>
                     順序
                 </label>
 
                 <div class="col-md-6">
-                    <input id="order" type="number" class="form-control" name="order" value="{{ $record->order }}" step="any" required>
+                    <input id="order" type="number" class="form-control" name="order" value="{{ $record->order }}" step="1" required>
                 </div>
             </div>
 

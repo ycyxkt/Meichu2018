@@ -30,6 +30,7 @@ class Game extends Model
         'is_vr360',
         'vr360_url',
         'vr360_info',
+        'is_record',
     ];
     public function teams(){
         return $this->hasMany('App\Team','game','game');
