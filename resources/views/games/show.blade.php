@@ -414,3 +414,39 @@
 
 </div>
 @endsection
+
+@section('custom_script')
+<script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Event",
+        "name": "戊戌梅竹 - {{ $game->name }}",
+        "startDate": "{{ \Carbon\Carbon::parse( $game->date )->format('Y-m-d')}}T{{ \Carbon\Carbon::parse( $game->time )->format('H:i')}}-08:00",
+        "location": {
+            "@type": "Place",
+            "name": "{{ $game->location }}",
+            "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "光復路二段101號",
+            "addressLocality": "東區",
+            "postalCode": "300",
+            "addressRegion": "新竹市",
+            "addressCountry": "台灣"
+            }
+        },
+        "image": [
+            "{{ $game->photosmall }}",
+            "{{ $game->photo }}"
+        ],
+        "description": "戊戌梅竹 - {{ $game->name }}，為國立清華大學與國立交通大學於每年初春時固定舉行的校際賽事。",
+        "offers": {
+            "@type": "Offer",
+            "url": "https://meichu.games/tickets",
+            "price": "0",
+            "priceCurrency": "NTD",
+            "availability": "http://schema.org/InStock",
+            "validFrom": "2018-02-22T10:00-08:00"
+        }
+      }
+    </script>
+@endsection
