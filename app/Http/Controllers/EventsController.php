@@ -79,7 +79,9 @@ class EventsController extends Controller
         $request['user_id']=Auth::user()->id;
         \App\Event::create($request->all());
 
-        Cache::forget("EVENT:ALL");
+        Cache::forget("EVENT:TICKETS");
+        Cache::forget("EVENT:NCTU");
+        Cache::forget("EVENT:NTHU");
         return redirect()->route('events.index')->with('success','建立活動成功');
     }
 
@@ -119,7 +121,9 @@ class EventsController extends Controller
         ]);
         $event->update($request->all());
 
-        Cache::forget("EVENT:ALL");
+        Cache::forget("EVENT:TICKETS");
+        Cache::forget("EVENT:NCTU");
+        Cache::forget("EVENT:NTHU");
         return redirect()->route('events.index')->with('success','更新活動資訊成功');
     }
 
@@ -135,7 +139,9 @@ class EventsController extends Controller
         if (Gate::allows('edit-events', $events)) {
             $events->delete();
             
-            Cache::forget("EVENT:ALL");
+            Cache::forget("EVENT:TICKETS");
+            Cache::forget("EVENT:NCTU");
+            Cache::forget("EVENT:NTHU");
             return redirect()->route('events.index')->with('success','刪除活動成功');
         }
         return redirect()->route('events.index')->with('error','您沒有權限刪除');
@@ -148,7 +154,9 @@ class EventsController extends Controller
      */
     public function ticket_front()
     {
-        $tickets = $this->eventRepository->getAskForTickets();
+        $tickets = Cache::remember('EVENT:TICKETS', 10, function() {
+            return $this->eventRepository->getAskForTickets();
+        });
 
         $text = \App\Text::whereIn('name', array('ticket_nthu','ticket_nctu'))
                 ->get()->groupBy('name');
@@ -166,10 +174,13 @@ class EventsController extends Controller
      */
     public function event_front()
     {
-        $events = Cache::remember('EVENT:ALL', 10, function() {
-            return $this->eventRepository->getEvents();
+        $events_nthu = Cache::remember('EVENT:NTHU', 10, function() {
+            return $this->eventRepository->getNTHUEvents();
+        });
+        $events_nctu = Cache::remember('EVENT:NCTU', 10, function() {
+            return $this->eventRepository->getNCTUEvents();
         });
 
-        return view('events', compact('events'));
+        return view('events', compact('events_nthu','events_nctu'));
     }
 }
