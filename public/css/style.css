@@ -858,26 +858,25 @@ a.gameinfo:hover .game-name{
     flex-wrap:wrap;
 }
 
-/* Cards in Events Page*/
-.card-event{
-    box-shadow: none;
-    font-size: 1rem;
+/* Event Info in Events Page*/
+.eventinfo .gameinfo-info{
+    margin-left: 4px;
 }
-.card-event.event-nctu{
-    border-left: 6px solid rgba(128, 128, 255, 1);
-    border-right: 6px solid rgba(128, 128, 255, 1);
+.eventinfo .event-nctu{
+    border-left: 4px solid rgba(128, 128, 255, 1);
 }
-.card-event.event-nthu{
-    border-left: 6px solid rgba(223, 128, 255, 1);
-    border-right: 6px solid rgba(223, 128, 255, 1);
+.eventinfo .event-nthu{
+    border-left: 4px solid rgba(223, 128, 255, 1);
 }
-.card-event.event-both{
-    border-left: 6px solid  rgba(255, 191, 128, 1);
-    border-right: 6px solid  rgba(255, 191, 128, 1);
+.eventinfo .event-both{
+    border-left: 4px solid  rgba(255, 191, 128, 1);
 }
-.card-event.event-games{
-    border-left: 6px solid rgba(255, 128, 128, 1);
-    border-right: 6px solid rgba(255, 128, 128, 1);
+.eventinfo .event-games{
+    border-left: 4px solid rgba(255, 128, 128, 1);
+}
+.eventinfo .event-group{
+    font-size: 0.7rem;
+    color: #666;
 }
 
 /* Broadcast in Games Show & Home Page*/
