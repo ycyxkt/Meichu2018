@@ -1015,12 +1015,6 @@ a.gameinfo:hover .game-name{
     .game-history .team{
         width: 50%;
     }
-    .game-history .team-nthu{
-        text-align: right;
-    }
-    .game-history .team-nctu{
-        text-align: left;
-    }
     .game-history .team-right{
         text-align: right;
     }

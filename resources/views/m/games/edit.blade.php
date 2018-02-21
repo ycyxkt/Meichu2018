@@ -127,6 +127,20 @@
                     @endif
                 </div>
             </div>
+            
+            @if($game->type != 'notgame')
+            <div class="form-group">
+                <label for="is_record" class="col-md-4 control-label">
+                    <span class="label label-primary">必填</span>
+                    是否開啟紀錄功能
+                </label>
+
+                <div class="col-md-6">
+                    <input id="is_record" type="radio" name="is_record" value="1" @if($game->is_record==true) checked @endif>是
+                    <input id="is_record" type="radio" name="is_record" value="0" @if($game->is_record==false) checked @endif>否
+                </div>
+            </div>
+            @endif
 
             <div class="form-group">
                 <label for="location" class="col-md-4 control-label">
@@ -190,19 +204,6 @@
                     <input id="is_ticket" type="radio" name="is_ticket" value="0" @if($game->is_ticket==false) checked @endif>否
                 </div>
             </div>
-            @if($game->type != 'notgame')
-            <div class="form-group">
-                <label for="is_record" class="col-md-4 control-label">
-                    <span class="label label-primary">必填</span>
-                    是否開啟紀錄功能
-                </label>
-
-                <div class="col-md-6">
-                    <input id="is_record" type="radio" name="is_record" value="1" @if($game->is_record==true) checked @endif>是
-                    <input id="is_record" type="radio" name="is_record" value="0" @if($game->is_record==false) checked @endif>否
-                </div>
-            </div>
-            @endif
 
             <div class="form-group">
                 <label for="is_broadcast" class="col-md-4 control-label">

@@ -30,6 +30,15 @@
         <th>{{ $data->title }}</th>
         @endforeach
     </tr>
+
+    @if('0' == $game->is_home)
+    <tr>
+        <th>清大</th>
+        @foreach($records as $data)
+        <th>{{ $data->nthu }}</th>
+        @endforeach
+    </tr>
+    @endif
     
     <tr>
         <th>交大</th>
@@ -37,12 +46,16 @@
         <th>{{ $data->nctu }}</th>
         @endforeach
     </tr>
+
+    @if('1' == $game->is_home)
     <tr>
         <th>清大</th>
         @foreach($records as $data)
         <th>{{ $data->nthu }}</th>
         @endforeach
     </tr>
+    @endif
+
     <tr>
         <th></th>
         @foreach($records as $data)

@@ -55,7 +55,7 @@
 
             <div class="form-group">
                 <label for="title" class="col-md-4 control-label">
-                    局/標題(表格最上層)
+                    局/標題列
                 </label>
 
                 <div class="col-md-6">
@@ -65,7 +65,7 @@
 
             <div class="form-group">
                 <label for="nctu" class="col-md-4 control-label">
-                    交大(上層)欄位
+                    交大分數
                 </label>
 
                 <div class="col-md-6">
@@ -75,7 +75,7 @@
 
             <div class="form-group">
                 <label for="nthu" class="col-md-4 control-label">
-                    清大(下層)欄位
+                    清大分數
                 </label>
 
                 <div class="col-md-6">
