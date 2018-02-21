@@ -222,7 +222,12 @@ class GamesController extends Controller
         if('1' == $game->is_record){
             $records = $this->recordRepository->getRecordsByGameId($game->id);
         }
+        if($game->is_home == '1'){
+            return view('games.show', compact('game','gamenews','records') );
+        }
+        else{
+            return view('games.show-guest', compact('game','gamenews','records') );
+        }
 
-        return view('games.show', compact('game','gamenews','history','records') );
     }
 }

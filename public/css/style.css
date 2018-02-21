@@ -1021,6 +1021,12 @@ a.gameinfo:hover .game-name{
     .game-history .team-nctu{
         text-align: left;
     }
+    .game-history .team-right{
+        text-align: right;
+    }
+    .game-history .team-left{
+        text-align: left;
+    }
 }
 .game-history .team .team-percent{
     font-size: 2.5rem;
