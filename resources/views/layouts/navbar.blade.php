@@ -12,6 +12,8 @@
         <li><a href="/tickets">票務</a></li>
         <li><a href="/news">最新消息</a></li>
         <li><a href="/about">關於梅竹</a></li>
+        <li><a href="/events">相關活動</a></li>
+
         
         <li><a href="https://www.facebook.com/MeiChuGamePreparatoryCommittee/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
     </ul>
