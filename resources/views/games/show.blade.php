@@ -106,6 +106,39 @@
 </section>
 
 <div class="container">
+
+    @if('1' == $game->is_record && ! $records->isEmpty())
+    <section>
+        <table class="record-table" cellspacing="0" cellpadding="0" border="0" align="center">
+            <thead>
+                <th></th>
+                @foreach($records as $data)
+                <th>{{ $data->title }}</th>
+                @endforeach
+            </thead>
+            
+            <tr>
+                <td>
+                    交大@if($game->team_nctu!=NULL)<span class="team-name">{{ $game->team_nctu->name }}</span>
+                    @endif
+                </td>
+                @foreach($records as $data)
+                <td>{{ $data->nctu }}</td>
+                @endforeach
+            </tr>
+            <tr>
+                <td>
+                    清大@if($game->team_nthu!=NULL)<span class="team-name">{{ $game->team_nthu->name }}</span>
+                    @endif
+                </td>
+                @foreach($records as $data)
+                <td>{{ $data->nthu }}</td>
+                @endforeach
+            </tr>
+        </table>
+    </section>
+    @endif
+
     <div class="flex-layer">
         <section class="flex-50">
             <h2 class="sec-header">
@@ -341,7 +374,7 @@
             @endif
         </div>
         <div class="game-history">
-            <div class="team team-nctu">
+            <div class="team team-nctu team-left">
                 <div class="team-percent">
                     {{ $game->history_precentage_nctu }}<span class="team-wdl">%</span>
                 </div>
@@ -367,7 +400,7 @@
                 <div class="bar-nthu" style="width: {{ $game->history_precentage_nthu }}%"></div>
                 @endif
             </div>
-            <div class="team team-nthu">
+            <div class="team team-nthu team-right">
                 <div class="team-percent">
                     {{ $game->history_precentage_nthu }}<span class="team-wdl">%</span>
                 </div>
@@ -387,11 +420,11 @@
         <div class="history-note">
             *紀錄截至丁酉（2017）梅竹
             @if('chess' == $game->game)
-            <br/>*棋藝正式賽數據，辛卯（2011）梅竹前包含象棋及圍棋。
+            <br/>*棋藝正式賽數據，辛卯（2011）梅竹前包含象棋及圍棋
             @elseif('go' == $game->game)
-            <br/>*圍棋表演賽數據，不包含辛卯（2011）梅竹前的棋藝正式賽（圍棋）。
+            <br/>*圍棋表演賽數據，不包含辛卯（2011）梅竹前的棋藝正式賽（圍棋）
             @elseif('football-general' == $game->game)
-            <br/>*前身足球正式賽數據。
+            <br/>*此賽事前身足球正式賽數據
             @endif
         </div>
     </section>
