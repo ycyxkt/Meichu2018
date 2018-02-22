@@ -44,6 +44,9 @@
                 @case("ann_games")
                     賽事公告
                     @break
+                @case("link")
+                    連結
+                    @break
                 @case("other")
                     其他
                     @break

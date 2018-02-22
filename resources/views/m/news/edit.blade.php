@@ -57,6 +57,10 @@
                 </div>
             </div>
 
+            @if(Auth::user()->group== 'committee' || Auth::user()->group == 'admin')
+                <div class="text-center">*[ 連結 ]分類只提供連結，不提供內文觀覽功能</div>
+            @endif
+
             <div class="form-group">
                 <label for="tag" class="col-md-4 control-label">
                     <span class="label label-primary">必填</span>
@@ -69,6 +73,7 @@
                         <option value="ann_events" @if($news->tag == 'ann_events') selected @endif>活動公告</option>
                         @if(Auth::user()->group== 'committee' || Auth::user()->group == 'admin')
                         <option value="ann_games" @if($news->tag == 'ann_games') selected @endif>賽事公告</option>
+                        <option value="link" @if($news->tag == 'link') selected @endif>連結</option>
                         @endif
                         <option value="other" @if($news->tag == 'other') selected @endif>其他</option>
                     </select>
@@ -123,7 +128,7 @@
             <div class="form-group{{ $errors->has('link') ? ' has-error' : '' }}">
                 <label for="link" class="col-md-4 control-label">
                     <span class="label label-default">網址</span>
-                    新聞連結
+                    連結
                 </label>
 
                 <div class="col-md-6">

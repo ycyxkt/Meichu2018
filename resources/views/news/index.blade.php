@@ -42,6 +42,13 @@
                         @endif
                         賽事公告</span>
                     @break
+                    @case('link')
+                        <span class="news-tag news-other">
+                        @if($data->is_sticky == '1')
+                            <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                        @endif
+                        連結</span>
+                    @break
                     @case('other')
                         <span class="news-tag news-other">
                         @if($data->is_sticky == '1')
@@ -50,7 +57,7 @@
                         其他</span>
                     @break
                 @endswitch
-                @if($data->tag != 'news')
+                @if($data->tag != 'news' && $data->tag != 'link')
                     <a href="{{ url('news/'.$data->id) }}" class="newstitle">
                     {{ $data->title }}</a>
                 @elseif($data->link != NULL)

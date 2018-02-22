@@ -46,7 +46,7 @@ class NewsRepository
      */
     public function getNewsById($id)
     {
-        return $this->news->where('tag', '!=', 'news')->findOrFail($id);
+        return $this->news->where('tag', '!=', 'news')->where('tag', '!=', 'link')->findOrFail($id);
     }
 
     /**
@@ -58,7 +58,7 @@ class NewsRepository
     public function getPrevious($id)
     {
         return $this->news->select(['id', 'title'])->where('id', '<', $id)
-            ->where('tag', '!=', 'news')
+            ->where('tag', '!=', 'news')->where('tag', '!=', 'link')
             ->orderBy('id','desc')
             ->first();
     }
@@ -72,7 +72,7 @@ class NewsRepository
     public function getNext($id)
     {
         return $this->news->select(['id', 'title'])->where('id', '>', $id)
-            ->where('tag', '!=', 'news')
+            ->where('tag', '!=', 'news')->where('tag', '!=', 'link')
             ->orderBy('id','asc')
             ->first();
     }
