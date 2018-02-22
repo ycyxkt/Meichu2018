@@ -41,13 +41,11 @@
                     @break
                 @endswitch
             </div>
-            <div class="news-info">
-                <span class="news-tag news-other"><i class="fa fa-calendar-o" aria-hidden="true"></i>
-                {{ \Carbon\Carbon::parse( $news['news']->created_at )->format('m/d')}}</span>
+            <div class="news-info"><i class="fa fa-calendar-o" aria-hidden="true"></i>
+                {{ \Carbon\Carbon::parse( $news['news']->created_at )->format('m/d')}}
                 </div>
-                <div class="news-info">
-                <span class="news-tag news-other"><i class="fa fa-users" aria-hidden="true"></i>
-                {{ $news['news']->group }}{{ $news['news']->author!=NULL ? ' / '.$news['news']->author : ''}}</span>
+                <div class="news-info"><i class="fa fa-users" aria-hidden="true"></i>
+                {{ $news['news']->group }}{{ $news['news']->author!=NULL ? ' / '.$news['news']->author : ''}}
             </div>
             <div class="news-content">
                 {!! nl2br(e($news['news']->content)) !!}
