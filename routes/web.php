@@ -76,6 +76,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/tickets', 'EventsController@ticket_front');
     Route::get('/events', 'EventsController@event_front');
     Route::get('/about', 'HomeController@about');
+    Route::get('/song', 'HomeController@song');
 
     
     Route::get('/', 'HomeController@home');
