@@ -14,7 +14,7 @@
             <span>梅竹主題曲</span>
         </h2>
         <div class="broadcast-frame">
-            <iframe src="https://www.youtube.com/embed/XpLo_qi2EL4?rel=0&amp;showinfo=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/PEYExgUpSeQ?rel=0&amp;showinfo=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
         </div>
         <div class="infoblock">
             <div class="news-title">梅竹，夢想，綻放</div>
