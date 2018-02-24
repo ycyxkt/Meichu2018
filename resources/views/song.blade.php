@@ -16,13 +16,14 @@
         <div class="broadcast-frame">
             <iframe src="https://www.youtube.com/embed/PEYExgUpSeQ?rel=0&amp;showinfo=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
         </div>
-        <div class="infoblock">
+        <div class="infoblock song">
             <div class="news-title">梅竹，夢想，綻放</div>
         
             演唱：晴呂出擊<br/>
             作詞、作曲：邱湘晴、呂毅隆<br/>
             <br/>
-            <strong>歌序</strong><br/>
+
+            <h3>歌序</h3>
             在這充滿汗水與記憶的操場<br/>
             環繞溫馨與和藹氣息的校園<br/>
             我們一筆一劃的將轉瞬即逝的回憶紀錄在歌曲中傳承下去。<br/>
@@ -30,7 +31,8 @@
             聽過的人都能夠心有戚戚<br/>
             跟著唱的人都能被悸動迴響<br/>
             <br/><br/>
-            <strong>歌詞</strong><br/>
+
+            <h3>歌詞</h3>
             聽說今天是好天氣<br/>
             走吧!一起看梅竹五零(看你看我)<br/>
             聽說今年比賽精采可期<br/>

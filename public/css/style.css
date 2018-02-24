@@ -1066,3 +1066,10 @@ a.gameinfo:hover .game-name{
         display: none;
     }
 }
+
+/* Song Page */
+@media (min-width: 650px){
+    .song{
+        text-align: center;
+    }
+}
