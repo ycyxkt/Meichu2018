@@ -296,7 +296,7 @@
 
                 <div class="col-md-6 form-control-static">
                     @if($game->photo != NULL)
-                        <img src="{{ $game->photo }}" width="400px">
+                        <img src="{{ $game->photosmall }}" width="300px">
                     @else
                         目前無照片
                     @endif

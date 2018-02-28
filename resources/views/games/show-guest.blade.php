@@ -4,7 +4,6 @@
 
 @section('content')
 <section class="gameboard">
-    <div class="gameboard-background" style="background-image:url({{ $game->photo }});"></div>
     <div class="container">
         <div class="gameboard-title">
             <div class="game-name">{{ $game->name }}</div>
@@ -527,5 +526,8 @@
             }
         }); 
     });
+    window.onload = function ShowGameboardImage() {
+        $(".gameboard")[0].innerHTML += '<div class="gameboard-background" style="background-image:url({{ $game->photo }});"></div>';
+    }
 </script>
 @endsection

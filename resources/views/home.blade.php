@@ -212,7 +212,6 @@
     $(document).ready(function () {
         $("#video-cf").click(function(e){
             $("#video-cf").html('<iframe src="https://www.youtube.com/embed/dtfqXifRYUs?rel=0&amp;showinfo=0&autoplay=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>');
-            console.log('success');
         }); 
     });
 </script>
