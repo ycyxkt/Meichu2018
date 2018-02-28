@@ -280,11 +280,20 @@
             <span>轉播資訊</span>
         </h2>
         @if($game->is_broadcast=='1')
+
             @if($game->broadcast_url!=NULL)
-            <div class="broadcast-frame">
-                <iframe src="{{ $game->broadcast_url }}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-            </div>
+                <div class="broadcast-frame" id="game-broadcast">
+                    <div class="broadcast-layer">
+                        <div class="broadcast-icon">
+                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                        </div>
+                        <div class="broadcast-title">
+                            戊戌梅竹 {{$game->name}}
+                        </div>
+                    </div>
+                </div>
             @endif
+
         <div class="broadcast-info">
             <div class="broadcast-group">
                 {!! nl2br(e($game->broadcast_org)) !!}
@@ -302,20 +311,28 @@
     <section>
         <h2 class="sec-header">
             <i class="fa fa-eercast" aria-hidden="true"></i>
-            <span>VR 360資訊</span>
+            <span>VR 360°資訊</span>
         </h2>
         
         @if($game->vr360_url!=NULL)
-        <div class="broadcast-frame">
-            <iframe src="{{ $game->vr360_url }}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-        </div>
+            <div class="broadcast-frame" id="game-vr360">
+                <div class="broadcast-layer">
+                    <div class="broadcast-icon">
+                        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    </div>
+                    <div class="broadcast-title">
+                        戊戌梅竹 {{$game->name}} VR 360°全景
+                    </div>
+                </div>
+            </div>
         @endif
+
         <div class="broadcast-info">
             <div class="broadcast-group">
                 {!! nl2br(e($game->vr360_info)) !!}
             </div>
             <div class="broadcast-anchor">
-                本轉播為VR 360環景轉播，無主播球評播報。
+                本轉播為VR 360°全景轉播，無主播球評播報。
             </div>
         </div>
     </section>
@@ -483,4 +500,32 @@
         }
       }
     </script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#game-broadcast").click(function(e){
+            var url = String("{{ $game->broadcast_url }}");
+            if($(window).width() >= 650 && url.indexOf("https://www.youtube.com/watch?v=") !== -1){
+                    url = String(url.split('https://www.youtube.com/watch?v=')[1]);
+                    url = String(url.split('?')[0]);
+                    $("#game-broadcast").html("<iframe src='https://www.youtube.com/embed/" + url + "?rel=0&amp;showinfo=0&autoplay=1' frameborder='0' gesture='media' allow='encrypted-media' allowfullscreen></iframe>");
+            }
+            else{
+                window.open(url);
+            }
+        });
+
+        $("#game-vr360").click(function(e){
+            var url = String("{{ $game->vr360_url }}");
+            if($(window).width() >= 650 && url.indexOf("https://www.youtube.com/watch?v=") !== -1){
+                    url = String(url.split('https://www.youtube.com/watch?v=')[1]);
+                    url = String(url.split('?')[0]);
+                    $("#game-vr360").html("<iframe src='https://www.youtube.com/embed/" + url + "?rel=0&amp;showinfo=0&autoplay=1' frameborder='0' gesture='media' allow='encrypted-media' allowfullscreen></iframe>");
+            }
+            else{
+                window.open(url);
+            }
+        }); 
+    });
+</script>
 @endsection

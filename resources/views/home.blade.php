@@ -138,7 +138,11 @@
                 <span>宣傳影片</span>
             </h2>
             <div class="broadcast-frame" id="video-cf">
-                <img src="{{ asset('images/video-image.jpg') }}" width="100%">
+                <div class="broadcast-layer">
+                    <div class="broadcast-icon">
+                        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    </div>
+                </div>
             </div>
         </section>
     </div>

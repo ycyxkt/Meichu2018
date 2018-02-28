@@ -85,6 +85,7 @@ class GamesController extends Controller
         /**
          * 如果有直播網址，檢查是否為 Youtube 格式
          */
+        /*
         if ($request['broadcast_url']) {
 
             if ( ! $broadcast_url = UrlHelper::getYoutubeEmbed($request['broadcast_url']) )  {
@@ -101,6 +102,7 @@ class GamesController extends Controller
 
             $request['vr360_url'] = $vr360_url;
         }
+        */
 
         $game->update($request->except('file_photo'));
 

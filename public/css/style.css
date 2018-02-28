@@ -894,7 +894,46 @@ a.gameinfo:hover .game-name{
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
 	padding-top: 25px;
-	height: 0;
+    height: 0;
+    background-color:#222;
+}
+.broadcast-layer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+    color: #FFF;
+}
+.broadcast-frame:hover .broadcast-icon{
+    color: red;
+}
+.broadcast-icon{
+    font-size: 12vw;
+}
+.broadcast-title{
+    color: #EEE;
+}
+@media (max-width: 650px){
+    .broadcast-title{
+        font-size: 4vw;
+    }
+}
+@media (min-width: 650px){
+    .broadcast-title{
+        font-size: 1.5rem;
+    }
+    #video-cf .broadcast-icon{
+        font-size: 3.2rem;
+    }
 }
 .broadcast-frame iframe {
 	position: absolute;
