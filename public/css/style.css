@@ -590,9 +590,6 @@ a:focus{
     line-height: 1.8;
 }
 @media (max-width: 800px){
-    .news li a{
-        display: inline-block;
-    }
     .news .news-right{
         display: none;
     }

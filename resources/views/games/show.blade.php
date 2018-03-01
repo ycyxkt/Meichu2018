@@ -328,9 +328,11 @@
         <div class="broadcast-info">
             <div class="broadcast-group">
                 {!! nl2br(e($game->vr360_info)) !!}
+                <br/>註：VR 360°全景轉播，無主播球評播報
             </div>
             <div class="broadcast-anchor">
-                本轉播為VR 360°全景轉播，無主播球評播報。
+                電腦使用者請用滑鼠來轉動畫面<br/>
+                手機使用者請轉動、傾斜手機，或用手指滑動觀看不同角度畫面。
             </div>
         </div>
     </section>
