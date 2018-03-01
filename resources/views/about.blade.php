@@ -27,11 +27,11 @@
             </p>
             <p>
                 <strong>50周年限量紀念品</strong><br/>
-                適逢梅竹50周年，梅竹籌委會特別推出了限量「吉祥物立體紙雕」，讓大家可以簡單幾個步驟做出屬於自己的熊貓、狐狸！只要在梅竹賽期間至現場觀看任三場比賽並集點，即可一次帶走兩款紙雕！
+                適逢梅竹50周年，梅竹籌委會特別推出了限量「<a href="https://www.facebook.com/MeiChuGamePreparatoryCommittee/posts/1123278021147087" target="_blank">吉祥物立體紙雕</a>」，讓大家可以簡單幾個步驟做出屬於自己的熊貓、狐狸！只要在梅竹賽期間至現場觀看任三場比賽並集點，即可一次帶走兩款紙雕！
             </p>
             <p>
                 <strong>轉播服務再升級</strong><br/>
-                這次梅竹賽特別和MOD頻道「智林體育台」合作，除了將在羽球、棒球、籃球、排球等賽事導入業界品質的轉播服務，也會將直播畫面導入梅籌粉專、網站，讓你不用再花時間找轉播連結，精采畫面不漏接！
+                這次梅竹賽特別和MOD頻道「<a href="https://www.facebook.com/OurSport.tv/" target="_blank">智林體育台</a>」合作，除了將在羽球、棒球、籃球、排球等賽事導入業界品質的轉播服務，也會將直播畫面導入梅籌粉專、網站，讓你不用再花時間找轉播連結，精采畫面不漏接！
             </p>
             <p>
                 <strong><a href="song">梅竹，夢想，綻放</a></strong><br/>
@@ -208,6 +208,41 @@
                         <a href="https://www.facebook.com/nctu.on.fire/" target="_blank">
                             <i class="fa fa-facebook-official"></i>
                             交大火力班
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="orginfo">
+                <div class="orginfo-left">
+                    <div class="orginfo-name">
+                        賽事媒體
+                    </div>
+                    <div class="orginfo-enname">     
+                        Media
+                    </div>
+                    
+                </div>
+                <div class="orginfo-right">
+                    <div class="orginfo-info">
+                        提供轉播服務以及賽後回顧、賽事戰況的相關新聞。
+                    </div>
+                    <div class="orginfo-link">
+                        <a href="https://www.facebook.com/OurSport.tv/" target="_blank">
+                            <i class="fa fa-facebook-official"></i>
+                            智林體育台
+                        </a>
+                        <a href="https://castnet.nctu.edu.tw/meichu2018" target="_blank">
+                            <i class="fa fa-globe"></i>
+                            交大喀報Castnet
+                        </a>
+                        <a href="https://www.facebook.com/NTHUTsing/" target="_blank">
+                            <i class="fa fa-facebook-official"></i>
+                            清一下。影音新聞
+                        </a>
+                        <a href="https://www.facebook.com/gotoandplay.nctu/" target="_blank">
+                            <i class="fa fa-facebook-official"></i>
+                            goto&Play交大網路電台
                         </a>
                     </div>
                 </div>
