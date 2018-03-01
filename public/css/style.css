@@ -259,6 +259,9 @@ a:focus{
     filter: saturate(70%) opacity(80%);
     background-position: center;
 }
+.home-intro .intro-background{
+    filter: none;
+}
 .intro-fox,
 .intro-panda{
     position: absolute;
