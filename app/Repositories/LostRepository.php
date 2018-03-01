@@ -29,7 +29,7 @@ class LostRepository
      */
     public function getLosts()
     {
-        return $this->lost->orderBy('date','asc')->simplePaginate(20);
+        return $this->lost->orderBy('date','desc')->orderBy('id','desc')->simplePaginate(20);
     }
 
     /**

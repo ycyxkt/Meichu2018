@@ -31,7 +31,7 @@
             </p>
             <p>
                 <strong>轉播服務再升級</strong><br/>
-                這次梅竹賽特別和MOD頻道「<a href="https://www.facebook.com/OurSport.tv/" target="_blank">智林體育台</a>」合作，除了將在羽球、棒球、籃球、排球等賽事導入業界品質的轉播服務，也會將直播畫面導入梅籌粉專、網站，讓你不用再花時間找轉播連結，精采畫面不漏接！
+                這次梅竹賽特別和MOD頻道「<a href="https://www.facebook.com/OurSport.tv/" target="_blank">智林體育台</a>」合作，除了將在羽球、棒球、籃球、排球等賽事導入業界品質的轉播服務，也會將直播畫面導入官方網站，讓你不用再花時間找轉播連結，精采畫面不漏接！
             </p>
             <p>
                 <strong><a href="song">梅竹，夢想，綻放</a></strong><br/>

@@ -119,7 +119,7 @@
 
                 <div class="col-md-6 form-control-static">
                     @if($lost->photo != NULL)
-                        <img src="{{ $lost->photo }}" width="400px">
+                        <img src="{{ $lost->photo }}" width="300px">
                     @else
                         目前無照片
                     @endif

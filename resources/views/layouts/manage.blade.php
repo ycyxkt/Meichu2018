@@ -66,6 +66,9 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
+                        <li class="{{ Request::segment(2) === 'users' ? 'active' : null }}">
+                            <a href="{{ url('/') }}">官網首頁</a>
+                        </li>
                         @guest
                             <li class="{{ Request::segment(2) === 'login' ? 'active' : null }}">
                                 <a href="{{ route('login') }}">登入</a>

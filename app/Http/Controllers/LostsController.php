@@ -41,7 +41,7 @@ class LostsController extends Controller
         else {
             $query = \App\Lost::where('user_id', '=', Auth::user()->id);
         }
-        $losts = $query->orderBy('id','asc')
+        $losts = $query->orderBy('id','desc')
                 ->get();
         $data = compact('losts');
         return view('m.losts.index', $data);
@@ -82,7 +82,7 @@ class LostsController extends Controller
         if($request->hasFile('file_photo'))
         {
             $image = Imgur::upload($request->file('file_photo'));
-            $request['photo'] = Imgur::size($image->link(), 'm');
+            $request['photo'] = Imgur::size($image->link(), 'l');
         }
 
         $request['user_id'] = Auth::user()->id;
@@ -166,7 +166,7 @@ class LostsController extends Controller
         if($request->hasFile('file_photo'))
         {
             $image = Imgur::upload($request->file('file_photo'));
-            $request['photo'] = Imgur::size($image->link(), 'm');
+            $request['photo'] = Imgur::size($image->link(), 'l');
         }
 
         $lost->update($request->except('file_photo'));

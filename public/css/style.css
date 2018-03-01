@@ -260,7 +260,7 @@ a:focus{
     background-position: center;
 }
 .home-intro .intro-background{
-    filter: none;
+    filter: opacity(85%);
 }
 .intro-fox,
 .intro-panda{
@@ -582,9 +582,7 @@ a:focus{
     border-bottom: 1px solid transparent;
 }
 .news .newstitle{
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-left: 6px;
+    margin-left: 4px;
 }
 .news .news-right{
     color: #666;
@@ -840,6 +838,9 @@ a.gameinfo:hover .game-name{
     font-weight: bold;
     font-size: 1.2rem;
     text-align: justify;
+}
+.card-news .card-inner .card-header{
+    font-weight: normal;
 }
 .card-block .card-inner .card-subtitle{
     font-size: 0.7rem;
