@@ -226,11 +226,7 @@ class GamesController extends Controller
         });
 
         if('1' == $game->is_record){
-             $records = Cache::remember("GAME:RECORD:{$gamename}", 5, function() {
-
-                return $this->recordRepository->getRecordsByGameId($game->id);
-    
-            });
+            $records = $this->recordRepository->getRecordsByGameId($game->id);
         }
         if($game->is_home == '1'){
             return view('games.show', compact('game','gamenews','records') );
