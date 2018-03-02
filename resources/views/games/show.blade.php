@@ -78,7 +78,7 @@
                         預計於{{ \Carbon\Carbon::parse( $game->date )->format('m/d')}} {{ \Carbon\Carbon::parse( $game->time )->format('H:i')}}開始
                     @endif
                 </div>
-                @if($game->score_draw>=0  && $game->type!='notgame')
+                @if($game->score_draw!=NULL  && $game->type!='notgame')
                 <div class="status-draw">平手 : {{$game->score_draw}}</div>
                 @endif
             </div>
