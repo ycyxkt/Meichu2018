@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            @if($game->score_nctu!=NULL && $game->type!='notgame')
+            @if($game->score_nctu>=0 && $game->type!='notgame')
             <div class="score">{{$game->score_nctu}}</div>
             @endif
 
@@ -78,12 +78,12 @@
                         預計於{{ \Carbon\Carbon::parse( $game->date )->format('m/d')}} {{ \Carbon\Carbon::parse( $game->time )->format('H:i')}}開始
                     @endif
                 </div>
-                @if($game->score_draw!=NULL && $game->type!='notgame')
+                @if($game->score_draw>=0  && $game->type!='notgame')
                 <div class="status-draw">平手 : {{$game->score_draw}}</div>
                 @endif
             </div>
 
-            @if($game->score_nthu!=NULL && $game->type!='notgame')
+            @if($game->score_nthu>=0  && $game->type!='notgame')
             <div class="score">{{$game->score_nthu}}</div>
             @endif
 
