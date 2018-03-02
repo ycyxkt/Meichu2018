@@ -220,7 +220,11 @@ class GamesController extends Controller
             return $game;
 
         });
-        $gamenews = $this->newsRepository->getGameNews($gamename);
+
+        $gamenews = Cache::tags("NEWS")->remember("NEWS:GAME:{$gamename}", 5, function() use ($gamename) {
+            return $this->newsRepository->getGameNews($gamename);
+        });
+
         if('1' == $game->is_record){
             $records = $this->recordRepository->getRecordsByGameId($game->id);
         }
