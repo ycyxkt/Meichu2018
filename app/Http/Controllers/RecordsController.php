@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Cache;
 use Illuminate\Http\Request;
 
 use App\Record;
@@ -51,6 +52,7 @@ class RecordsController extends Controller
             }
         }
         Record::create($request->except('be_last'));
+        Cache::forget("GAME:RECORD:{$request->game_id}");
         return redirect()->route('games.records',$request['game_id'])->with('success','建立紀錄成功');
     }
 
@@ -80,6 +82,7 @@ class RecordsController extends Controller
             abort(404);
         }
         $record->update($request->all());
+        Cache::forget("GAME:RECORD:{$request->game_id}");
         return redirect()->route('games.records',$record['game_id'])->with('success','更新紀錄資訊成功');
     }
 
@@ -94,6 +97,7 @@ class RecordsController extends Controller
         if ( ! $record = $this->recordRepository->getRecordById($id) ){
             abort(404);
         }
+        Cache::forget("GAME:RECORD:{$record->game_id}");
         $record->delete();
         return redirect()->route('games.records',$record['game_id'])->with('success','刪除紀錄成功');
     }

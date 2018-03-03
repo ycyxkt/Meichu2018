@@ -226,7 +226,7 @@ class GamesController extends Controller
         });
 
         if('1' == $game->is_record){
-            $records = Cache::remember("GAME:RECORD:{$gamename}", 5, function() use ($game) {
+            $records = Cache::remember("GAME:RECORD:{$game->id}", 5, function() use ($game) {
 
                 return $this->recordRepository->getRecordsByGameId($game->id);
     
