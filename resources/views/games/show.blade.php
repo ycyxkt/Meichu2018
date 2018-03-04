@@ -511,6 +511,12 @@
                     url = String(url.split('?')[0]);
                     $("#game-broadcast").html("<iframe src='https://www.youtube.com/embed/" + url + "?rel=0&amp;showinfo=0&autoplay=1' frameborder='0' gesture='media' allow='encrypted-media' allowfullscreen></iframe>");
             }
+            else if($(window).width() >= 650 && url.indexOf("https://youtu.be/") !== -1){
+                    url = String(url.split('https://youtu.be/')[1]);
+                    url = String(url.split('&')[0]);
+                    url = String(url.split('?')[0]);
+                    $("#game-broadcast").html("<iframe src='https://www.youtube.com/embed/" + url + "?rel=0&amp;showinfo=0&autoplay=1' frameborder='0' gesture='media' allow='encrypted-media' allowfullscreen></iframe>");
+            }
             else{
                 window.open(url);
             }
@@ -523,6 +529,12 @@
                     url = String(url.split('&')[0]);
                     url = String(url.split('?')[0]);
                     $("#game-vr360").html("<iframe src='https://www.youtube.com/embed/" + url + "?rel=0&amp;showinfo=0&autoplay=1' frameborder='0' gesture='media' allow='encrypted-media' allowfullscreen></iframe>");
+            }
+            else if($(window).width() >= 650 && url.indexOf("https://youtu.be/") !== -1){
+                    url = String(url.split('https://youtu.be/')[1]);
+                    url = String(url.split('&')[0]);
+                    url = String(url.split('?')[0]);
+                    $("#game-broadcast").html("<iframe src='https://www.youtube.com/embed/" + url + "?rel=0&amp;showinfo=0&autoplay=1' frameborder='0' gesture='media' allow='encrypted-media' allowfullscreen></iframe>");
             }
             else{
                 window.open(url);
