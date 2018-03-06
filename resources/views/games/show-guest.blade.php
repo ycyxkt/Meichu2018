@@ -105,6 +105,10 @@
     </div>
 </section>
 
+<section style="text-align: center; font-size: 1.2rem; font-weight: bold;">
+    恭喜國立清華大學拿下戊戌梅竹總錦標，若您對戊戌梅竹有任何建議，歡迎填寫<a href="https://www.surveycake.com/s/YOOOK" targer="_BLANK">賽後問卷</a>，謝謝！
+</section>
+
 <div class="container">
 
     @if('1' == $game->is_record && ! $records->isEmpty())

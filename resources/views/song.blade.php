@@ -7,6 +7,11 @@
     <div class="introboard-background" style="background-image:url({{ asset('images/cover.png') }});"></div>
     <div class="introboard-title">梅竹主題曲</div>
 </section>
+
+<section style="text-align: center; font-size: 1.2rem; font-weight: bold;">
+    恭喜國立清華大學拿下戊戌梅竹總錦標，若您對戊戌梅竹有任何建議，歡迎填寫<a href="https://www.surveycake.com/s/YOOOK" targer="_BLANK">賽後問卷</a>，謝謝！
+</section>
+
 <div class="container">
     <section>
         <h2 class="sec-header">
