@@ -43,7 +43,7 @@ https://meichu.games/
 
 3. 還原`.env`檔
 
-    若在目錄中未出先`.env`，則請先做以下步驟
+    若在目錄中未出現`.env`，則請先做以下步驟
     ```Shell
     cp .env.example .env
     php artisan key:generate
