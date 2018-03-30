@@ -76,4 +76,4 @@ https://meichu.games/
 
 > 戊戌梅竹賽籌備委員會保有網站相關權利
 
-> 特別感謝 @banqhsia 在製作時提供許多意見與提點。
+> 特別感謝 [@banqhsia](https://github.com/banqhsia) 在製作時提供許多意見與提點。
