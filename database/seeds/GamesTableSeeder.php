@@ -26,6 +26,7 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/uvGXXDY.jpg',
             'photosmall' => 'https://i.imgur.com/uvGXXDYl.jpg',
+            "is_home" => true,
         ]);
         \App\Game::create([
             'game' => 'closing',
@@ -40,6 +41,7 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/nQPCDtL.jpg',
             'photosmall' => 'https://i.imgur.com/nQPCDtLl.jpg',
+            "is_home" => true,
         ]);
         \App\Game::create([
             'game' => 'football-general',
@@ -54,6 +56,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/uvGXXDY.jpg',
             'photosmall' => 'https://i.imgur.com/uvGXXDYl.jpg',
+            "is_home" => true,
+            "history_nctu" => "15",
+            "history_nthu" => "10",
+            "history_draw" => "5",
         ]);
         \App\Game::create([
             'game' => 'football-open',
@@ -68,6 +74,7 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/uvGXXDY.jpg',
             'photosmall' => 'https://i.imgur.com/uvGXXDYl.jpg',
+            "is_home" => false,
         ]);
         \App\Game::create([
             'game' => 'kendo',
@@ -82,6 +89,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => false,
             'photo' => 'https://i.imgur.com/ewdSRX8.jpg',
             'photosmall' => 'https://i.imgur.com/ewdSRX8l.jpg',
+            "is_home" => false,
+            "history_nctu" => "8",
+            "history_nthu" => "1",
+            "history_draw" => "0",
         ]);
         \App\Game::create([
             'game' => 'billiards',
@@ -96,6 +107,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => false,
             'photo' => 'https://i.imgur.com/uvGXXDY.jpg',
             'photosmall' => 'https://i.imgur.com/uvGXXDYl.jpg',
+            "is_home" => false,
+            "history_nctu" => "1",
+            "history_nthu" => "4",
+            "history_draw" => "0",
         ]);
         \App\Game::create([
             'game' => 'women-tabletennis',
@@ -110,6 +125,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/Uvg8rmS.jpg',
             'photosmall' => 'https://i.imgur.com/Uvg8rmSl.jpg',
+            "is_home" => true,
+            "history_nctu" => "1",
+            "history_nthu" => "7",
+            "history_draw" => "1",
         ]);
         \App\Game::create([
             'game' => 'tabletennis',
@@ -124,6 +143,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/Uvg8rmS.jpg',
             'photosmall' => 'https://i.imgur.com/Uvg8rmSl.jpg',
+            "is_home" => true,
+            "history_nctu" => "12",
+            "history_nthu" => "16",
+            "history_draw" => "0",
         ]);
         \App\Game::create([
             'game' => 'badminton',
@@ -138,6 +161,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/bDufRd1.jpg',
             'photosmall' => 'https://i.imgur.com/bDufRd1l.jpg',
+            "is_home" => true,
+            "history_nctu" => "19",
+            "history_nthu" => "9",
+            "history_draw" => "0",
         ]);
         \App\Game::create([
             'game' => 'men-badminton',
@@ -152,6 +179,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/bDufRd1.jpg',
             'photosmall' => 'https://i.imgur.com/bDufRd1l.jpg',
+            "is_home" => true,
+            "history_nctu" => "0",
+            "history_nthu" => "0",
+            "history_draw" => "2",
         ]);
         \App\Game::create([
             'game' => 'bridge',
@@ -166,6 +197,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => false,
             'photo' => 'https://i.imgur.com/3A6NABw.jpg',
             'photosmall' => 'https://i.imgur.com/3A6NABwl.jpg',
+            "is_home" => true,
+            "history_nctu" => "21",
+            "history_nthu" => "16",
+            "history_draw" => "0",
         ]);
         \App\Game::create([
             'game' => 'chess',
@@ -180,6 +215,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => false,
             'photo' => 'https://i.imgur.com/dZcUqbD.jpg',
             'photosmall' => 'https://i.imgur.com/dZcUqbDl.jpg',
+            "is_home" => false,
+            "history_nctu" => "23",
+            "history_nthu" => "12",
+            "history_draw" => "3",
         ]);
         \App\Game::create([
             'game' => 'go',
@@ -194,6 +233,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => false,
             'photo' => 'https://i.imgur.com/caFwgx8.jpg',
             'photosmall' => 'https://i.imgur.com/caFwgx8l.jpg',
+            "is_home" => false,
+            "history_nctu" => "2",
+            "history_nthu" => "1",
+            "history_draw" => "0",
         ]);
 
         \App\Game::create([
@@ -209,6 +252,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/ZhzXtpb.jpg',
             'photosmall' => 'https://i.imgur.com/ZhzXtpbl.jpg',
+            "is_home" => true,
+            "history_nctu" => "17",
+            "history_nthu" => "16",
+            "history_draw" => "1",
         ]);
         \App\Game::create([
             'game' => 'tennis',
@@ -223,6 +270,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => false,
             'photo' => 'https://i.imgur.com/uvGXXDY.jpg',
             'photosmall' => 'https://i.imgur.com/uvGXXDYl.jpg',
+            "is_home" => false,
+            "history_nctu" => "17",
+            "history_nthu" => "10",
+            "history_draw" => "0",
         ]);
         \App\Game::create([
             'game' => 'women-tennis',
@@ -237,6 +288,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => false,
             'photo' => 'https://i.imgur.com/DYZEVXM.jpg',
             'photosmall' => 'https://i.imgur.com/DYZEVXMl.jpg',
+            "is_home" => false,
+            "history_nctu" => "9",
+            "history_nthu" => "4",
+            "history_draw" => "0",
         ]);
         \App\Game::create([
             'game' => 'women-basketball',
@@ -251,6 +306,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/aXRYOeA.jpg',
             'photosmall' => 'https://i.imgur.com/aXRYOeAl.jpg',
+            "is_home" => false,
+            "history_nctu" => "14",
+            "history_nthu" => "12",
+            "history_draw" => "0",
         ]);
         \App\Game::create([
             'game' => 'men-basketball',
@@ -265,6 +324,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/5Jw3tli.jpg',
             'photosmall' => 'https://i.imgur.com/5Jw3tlil.jpg',
+            "is_home" => false,
+            "history_nctu" => "11",
+            "history_nthu" => "27",
+            "history_draw" => "0",
         ]);
 
         \App\Game::create([
@@ -280,6 +343,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/fC4Mys4.jpg',
             'photosmall' => 'https://i.imgur.com/fC4Mys4l.jpg',
+            "is_home" => false,
+            "history_nctu" => "0",
+            "history_nthu" => "3",
+            "history_draw" => "0",
         ]);
         \App\Game::create([
             'game' => 'softball-open',
@@ -294,6 +361,7 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/fC4Mys4.jpg',
             'photosmall' => 'https://i.imgur.com/fC4Mys4l.jpg',
+            "is_home" => false,
         ]);
         \App\Game::create([
             'game' => 'darts',
@@ -308,6 +376,7 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => false,
             'photo' => 'https://i.imgur.com/uvGXXDY.jpg',
             'photosmall' => 'https://i.imgur.com/uvGXXDYl.jpg',
+            "is_home" => true,
         ]);
         \App\Game::create([
             'game' => 'men-volleyball',
@@ -322,6 +391,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/Xa0uCdb.jpg',
             'photosmall' => 'https://i.imgur.com/Xa0uCdbl.jpg',
+            "is_home" => true,
+            "history_nctu" => "19",
+            "history_nthu" => "19",
+            "history_draw" => "0",
         ]);
         \App\Game::create([
             'game' => 'women-volleyball',
@@ -336,6 +409,10 @@ class GamesTableSeeder extends Seeder
             'is_broadcast' => true,
             'photo' => 'https://i.imgur.com/ZnoItDA.jpg',
             'photosmall' => 'https://i.imgur.com/ZnoItDAl.jpg',
+            "is_home" => true,
+            "history_nctu" => "8",
+            "history_nthu" => "16",
+            "history_draw" => "0",
         ]);
     }
 }

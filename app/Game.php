@@ -9,29 +9,7 @@ use App\Helpers\RenderHelper;
 class Game extends Model
 {
     //
-    protected $fillable = [
-        'photo',
-        'photosmall',
-        'date',
-        'time',
-        'location',
-        'location_url',
-        'status',
-        'score_nctu',
-        'score_nthu',
-        'score_draw',
-        'info_entry',
-        'info_rule',
-        'is_ticket',
-        'is_broadcast',
-        'broadcast_url',
-        'broadcast_org',
-        'broadcast_anchor',
-        'is_vr360',
-        'vr360_url',
-        'vr360_info',
-        'is_record',
-    ];
+    protected $guarded = ['id'];
     public function teams(){
         return $this->hasMany('App\Team','game','game');
     }
