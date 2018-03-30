@@ -13,8 +13,6 @@
         <li><a href="/news">最新消息</a></li>
         <li><a href="/about">關於梅竹</a></li>
         <li><a href="/song">主題曲</a></li>
-        <li><a href="/losts">遺失物</a></li>
-
         
         <li><a href="https://www.facebook.com/MeiChuGamePreparatoryCommittee/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
     </ul>
