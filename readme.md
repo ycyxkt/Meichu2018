@@ -30,6 +30,9 @@ https://meichu.games/
 - MYSQL Ver 14.14
 - PHP 7.0.28
 - Laravel 5.5.29
+- Redis-server
+    
+    `sudo apt-get install redis-server`
 
 ## 安裝步驟
 
@@ -64,6 +67,13 @@ https://meichu.games/
 5. 重建資料庫資料
 
     `php artisan db:seed`
+
+6. 在`.env`中，設定Imgur (因後台上傳照片皆使用Imgur)
+
+    ```
+    IMGUR_CLIENT_ID=
+    IMGUR_CLIENT_SECRET=
+    ```
 
 *備註：後台(`/m`)登入，預設帳密請見`/database/seeds/UsersTableSeeder.php`
 
